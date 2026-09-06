@@ -13,6 +13,7 @@
 | 🏛️ **展馆总门户入口** | [👉 点击进入展馆主页](https://moloym00.github.io/boardgames/) | — |
 | 👑 **《今晚必须有个预言成真》** (3~5人) | [📖 翻开图文玩法说明书](https://moloym00.github.io/boardgames/prophecy/index.html) | [🖨️ A4 卡牌打印排版](https://moloym00.github.io/boardgames/prophecy/cards.html) |
 | ⚓ **《劫走黎明》** (4~8人) | [📖 翻开全彩玩法说明书](https://moloym00.github.io/boardgames/dawn/index.html) | [🖨️ A4 卡牌打印工坊](https://moloym00.github.io/boardgames/dawn/cards.html) |
+| 🕯️ **《真名之火 · 最后的火塘》** (3~6人) | [📖 沉浸版玩法书(含计分器)](https://moloym00.github.io/boardgames/mythology/index.html) · [📜 简洁版玩法书](https://moloym00.github.io/boardgames/mythology/rules_compact.html) | [🎨 规则与开发仓库](https://github.com/Moloym00/mythology) |
 
 ---
 
@@ -31,6 +32,13 @@
   * **机制**：炮击、钩索、俯冲循环克制；打出指令次轮冷却；三人齐聚全员落空。
   * **组件**：全套指令牌 + 10 幅独立手绘私人委托卡 + 中央空域图。
   * **制作门槛**：A4 纸绝对几何居中，正反翻面通贯 8 刀直出成卡。
+
+### 3. 《真名之火 · 最后的火塘》（火塘守夜 🔥）
+* **定位**：3～6人 / 30～45分钟 / 语素拼名 / 半合作共存 / 传火争先
+* **特色**：
+  * **机制**：骨·风·潮·炎·星五大语素组合真名供奉诸神，濒死抢救安魂留下终局遗赠。
+  * **组件**：6 大传承萨满、12 尊古神明牌、12 张初深极夜风暴牌、极夜合诵机制。
+  * **双重排版**：提供支持明暗主题切换与内置交互计分器的【沉浸版玩法书】，以及方便桌边随时查阅的【简洁版玩法书】。
 
 ---
 
