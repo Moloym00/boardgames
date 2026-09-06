@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>劫走黎明 · 船长的卡牌工坊</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@600;700;800;900&family=Noto+Serif+SC:wght@600;700;800;900&family=Special+Elite&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/atelier.css">
+  <script defer src="assets/game.js"></script>
+  <script defer src="assets/atelier.js"></script>
+</head>
+<body>
+<header class="atelier-head">
+  <p class="eyebrow">THE DAWN RAID / ATELIER</p>
+  <h1>船长的卡牌工坊</h1>
+  <p>炮火、绞索与俯冲。十个要挽救的地方，十幅不同的故事。</p>
+  <p>
+    <a href="玩法书.html">图文玩法书</a>　·　
+    <a href="打印与塑封指南.html">G3812 打印与塑封指南</a>　·　
+    <a href="聊天长图.html">发给朋友的聊天长图</a>
+  </p>
+</header>
+
+<main class="atelier-shell">
+  <!-- 桌面工坊制作指引 -->
+  <div class="atelier-notice">
+    <div>
+      <span class="badge-notice">船长工坊指引</span>
+      <strong>桌面制作与双面对印规格：</strong>
+      ① <b>A4 绝对几何居中</b>：单面打印机纸头倒过来原纸翻面送入，正反卡牌严丝合缝自动对齐；
+      ② <b>9 卡无缝密排</b>：横竖各 4 刀（共 8 刀）直接裁切出完整双面卡，彻底告别正反贴胶；
+      ③ <b>黄铜装甲与做旧纸感</b>：重磅雕版金属铭牌 ＋ 焦香羊皮纸底色 ＋ 四角装配黄铜铆钉；
+      ④ <b>佳能 G3812 适配</b>：高对比度矢量线条，浅暖底色轻薄快干不糊纸。
+    </div>
+  </div>
+
+  <section class="atelier-controls">
+    <div class="control-row">
+      <label for="print-players">玩家人数
+        <select id="print-players">
+          <option value="4">4 人</option>
+          <option value="5">5 人</option>
+          <option value="6">6 人</option>
+          <option value="7">7 人</option>
+          <option value="8" selected>8 人 / 完整套装</option>
+        </select>
+      </label>
+      <label for="print-scope">查看与打印范围
+        <select id="print-scope">
+          <option value="duplex" selected>正反逐页对印（单张进纸：正1→背1→正2→背2...）</option>
+          <option value="cards">批量模式：先打印全部正面</option>
+          <option value="backs">批量模式：整叠纸头倒过来打全部背面</option>
+          <option value="all">完整顺序：全部正面 ＋ 全部背面 ＋ 空域图</option>
+          <option value="board">中央空域图（A4 纵向不裁切）</option>
+          <option value="sample">对位测试样张（1正1反，先打一张测对齐）</option>
+        </select>
+      </label>
+      <button type="button" id="print-cards">打印正反对印 · 14 页</button>
+    </div>
+    <div class="scope-shortcuts">
+      <button type="button" id="view-all">正反对印模式</button>
+      <button type="button" id="view-sample">测试对位样张（1张纸）</button>
+    </div>
+    <div id="print-inventory" class="print-inventory"></div>
+    <p id="print-summary" class="print-summary" aria-live="polite"></p>
+    <p id="print-page-links" class="print-page-links"></p>
+  </section>
+
+  <div class="tips">
+    <section class="tip">
+      <h2>单面打印机「纸头倒转」对印秘诀</h2>
+      <p><b>A4 纵向 · 实际大小 100% · 关闭页眉页脚 · 开启背景图形。</b></p>
+      <p>本版 9 卡网格经数学对齐：<b>左右白边各 10.5mm，上下白边各 16.5mm</b>，处于绝对几何中心。单张打印完正面后，将纸张<b>“纸头倒过来（纸头变纸尾，翻到背面）”</b>重新送入打印机，正反面卡牌将严丝合缝重合！</p>
+      <p class="small">建议先在上方切换到「测试对位样张」，用 1 张普通纸实际走一遍出纸翻面流程，对着光线确认完全对齐后再打印全套。</p>
+    </section>
+    <section class="tip">
+      <h2>无缝密排 8 刀裁切与塑封</h2>
+      <p><b>无缝密排免贴合：</b>双面打印完毕后，正反两面直接是一张完整卡牌，无需用胶水粘贴正反面！使用钢尺和美工刀，整页只需<b>横向 4 刀、纵向 4 刀</b>即可分离全部 9 张卡。</p>
+      <p><b>塑封建议：</b>四周保留约 3.2 mm 透明封边；纸卡边缘自带 R3.5mm 圆弧指引，可用圆角钳修圆或直接入膜塑封。</p>
+      <p class="small">单纸双面成型后的卡牌厚度适中、平整挺括，极易放入标准扑克牌套或塑封膜。</p>
+    </section>
+  </div>
+
+  <p class="print-notice">
+    先用样张确认纸张、颜色与尺寸，再印全套。G3812 的普通纸重量范围为 64–105 g/m²；更厚的特种纸请按兼容清单选择。<a href="打印与塑封指南.html">查看纸张依据与完整制作步骤 →</a>
+  </p>
+
+  <noscript>这是本地 HTML 打印包，运行脚本后会自动排版，不需要网络。请在浏览器中打开。</noscript>
+  <div id="print-pages"></div>
+
+  <p class="footer-note">劫走黎明 · 船长的卡牌工坊 · <a href="独立委托插画记录.html">查看十一幅独立场景插画</a></p>
+</main>
+
+<!-- Portal Back Navigation -->
+<div class="portal-floating-nav" style="position:fixed;bottom:24px;left:24px;z-index:99999;">
+  <a href="../index.html" style="display:inline-flex;align-items:center;gap:8px;background:rgba(18,22,28,0.92);backdrop-filter:blur(8px);color:#f0c059;border:1px solid rgba(212,175,55,0.45);border-radius:30px;padding:10px 18px;font-size:14px;font-weight:600;text-decoration:none;box-shadow:0 6px 16px rgba(0,0,0,0.4);font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif;transition:all .2s ease;" onmouseover="this.style.background='rgba(30,36,46,0.98)';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='rgba(18,22,28,0.92)';this.style.transform='translateY(0)'">
+    <span style="font-size:16px;">🏛️</span>
+    <span>返回桌游展馆</span>
+  </a>
+</div>
+<style>
+@media print {
+  .portal-floating-nav { display: none !important; }
+}
+</style>
+
+</body>
+</html>

@@ -1,0 +1,939 @@
+@charset "UTF-8";
+/* ========================================================
+   劫走黎明 · 船长的卡牌工坊 工业蒸汽朋克排版样式
+   1. 真实做旧羊皮纸底色 + 边缘焦化暗影 + 机械罗盘暗纹
+   2. 黄铜装甲铭牌标题栏（金属折光、双侧螺栓、立体凹凸字）
+   3. 维多利亚四级字栈（思源雕版宋体 + 帝国大写衬线 + 工程师手记 + 蒸汽打字机）
+   4. 单面打印机纸头倒过来翻面对印绝对几何居中（A4 189×264mm，左右10.5mm，上下16.5mm）
+   ======================================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@600;700;800;900&family=Noto+Serif+SC:wght@600;700;800;900&family=Special+Elite&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #eae7de;
+  color: #1a1005;
+  font: 16px/1.85 'Microsoft YaHei', 'PingFang SC', sans-serif;
+}
+
+a {
+  color: #1a4f4b;
+  text-underline-offset: 4px;
+}
+
+button, select {
+  font: inherit;
+  font-size: 14px;
+}
+
+button {
+  cursor: pointer;
+  border: 1px solid #183339;
+  padding: 10px 18px;
+  background: #183339;
+  color: #f8efdc;
+  border-radius: 3px;
+  transition: all 0.2s ease;
+}
+
+button:hover {
+  background: #254a52;
+}
+
+select {
+  border: 1px solid #c4a977;
+  padding: 7px 10px;
+  background: #fffdf7;
+  color: #1a1005;
+  border-radius: 3px;
+}
+
+:focus-visible {
+  outline: 3px solid #b58232;
+  outline-offset: 4px;
+}
+
+.atelier-head {
+  background: #183339;
+  color: #f6edda;
+  max-width: none;
+  padding: 39px max(25px, calc((100vw - 1100px)/2));
+  border-bottom: 4px solid #b39255;
+}
+
+.atelier-head .eyebrow {
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: #cead74;
+  margin: 0;
+}
+
+.atelier-head h1 {
+  font: 44px/1.4 'STZhongsong', 'SimSun', serif;
+  letter-spacing: 3px;
+  margin: 12px 0;
+}
+
+.atelier-head p {
+  margin: 6px 0;
+}
+
+.atelier-head a {
+  color: #d9c49a;
+  font-size: 14px;
+}
+
+.atelier-shell {
+  max-width: 1100px;
+  padding: 26px 25px 60px;
+  margin: auto;
+}
+
+.atelier-notice {
+  background: linear-gradient(135deg, #f7f1e1, #eee4cb);
+  border: 1px solid #bda881;
+  border-left: 4px solid #785319;
+  padding: 14px 18px;
+  margin-bottom: 24px;
+  font-size: 14px;
+  line-height: 1.7;
+  color: #3d2a17;
+  border-radius: 3px;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.7), 0 2px 6px rgba(0,0,0,0.04);
+}
+
+.badge-notice {
+  display: inline-block;
+  background: #785319;
+  color: #fff4db;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 3px;
+  letter-spacing: 1px;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+.atelier-controls {
+  background: #fffdf6;
+  border: 1px solid #c4a977;
+  padding: 21px 24px;
+  margin-bottom: 24px;
+}
+
+.control-row {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.control-row label {
+  font-size: 14px;
+}
+
+.control-row select {
+  margin-left: 6px;
+}
+
+.scope-shortcuts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 18px 0;
+}
+
+.scope-shortcuts button {
+  padding: 7px 13px;
+  background: #f7f1e3;
+  color: #315557;
+  border-color: #b1a080;
+  font-size: 14px;
+}
+
+.scope-shortcuts button[aria-pressed="true"] {
+  background: #315557;
+  color: #fff6e1;
+  border-color: #315557;
+}
+
+.print-inventory {
+  border-top: 1px solid #c4a977;
+  padding-top: 16px;
+  margin-top: 18px;
+  font-size: 15px;
+}
+
+.inventory-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin: 10px 0;
+}
+
+.inventory-grid > span {
+  background: #f5f0e5;
+  padding: 10px 12px;
+  font-size: 14px;
+  border: 1px solid #dfd5c3;
+}
+
+.inventory-grid b {
+  font: 25px Georgia, serif;
+  color: #866029;
+}
+
+.inventory-grid small {
+  display: block;
+  font-size: 12px;
+  color: #657267;
+  line-height: 1.8;
+}
+
+.sample-warning {
+  background: #f1e3c3;
+  border: 1px solid #b88c48;
+  padding: 12px 15px !important;
+}
+
+.print-summary {
+  font-size: 15px;
+  margin: 15px 0 0;
+  border-top: 1px solid #c4a977;
+  padding-top: 15px;
+}
+
+.print-page-links {
+  font-size: 14px;
+  margin: 13px 0 0;
+}
+
+.tips {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin: 20px 0;
+}
+
+.tip {
+  background: #f7f3e9;
+  padding: 19px 22px;
+  border: 1px solid #c4a977;
+}
+
+.tip h2 {
+  font-size: 17px;
+  margin: 0 0 9px;
+  color: #1a1005;
+}
+
+.tip p {
+  font-size: 14px;
+  margin: 8px 0;
+  line-height: 1.7;
+}
+
+.small {
+  font-size: 12px;
+  color: #5e462a;
+}
+
+.print-notice {
+  border-left: 4px solid #785319;
+  padding: 12px 18px;
+  background: #e5ddc9;
+  margin: 22px 0;
+  font-size: 14px;
+}
+
+#print-pages {
+  margin: 25px 0;
+}
+
+.footer-note {
+  text-align: center;
+  color: #5e462a;
+  font-size: 13px;
+  margin: 40px 0 20px;
+}
+
+@media (max-width: 850px) {
+  .atelier-head { padding: 30px 20px; }
+  .atelier-head h1 { font-size: 34px; }
+  .atelier-shell { padding: 22px 17px; }
+  .tips { grid-template-columns: 1fr; }
+  .atelier-controls { padding: 19px; }
+  .control-row { display: grid; gap: 14px; }
+  .control-row select { max-width: 100%; }
+  .inventory-grid { grid-template-columns: 1fr 1fr; }
+}
+
+:root {
+  --ink: #1a1005;
+  --muted: #5e462a;
+  --line: #c4a977;
+  --tone-brass: #785319;
+  --tone-rust: #852d18;
+  --tone-teal: #1a4f4b;
+  --font-title: 'Noto Serif SC', 'Source Han Serif SC', 'STZhongsong', '华文中宋', 'Songti SC', 'SimSun', serif;
+  --font-body: 'Noto Serif SC', 'Source Han Serif SC', 'STSong', '华文宋体', serif;
+  --font-hand: 'FangSong', 'STFangsong', '仿宋', serif;
+  --font-mono: 'Special Elite', 'Courier New', monospace;
+  --font-display-en: 'Cinzel Decorative', 'Cinzel', Georgia, serif;
+}
+
+/* ========================================================
+   1. A4 纸张绝对几何居中与手动双面翻面对齐
+   ======================================================== */
+.sheet {
+  width: 210mm !important;
+  height: 297mm !important;
+  padding: 0 !important;
+  margin: 24px auto !important;
+  background: #fff !important;
+  box-shadow: 0 4px 21px rgba(28, 48, 51, 0.15);
+  overflow: hidden;
+  position: relative !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;
+  box-sizing: border-box !important;
+  page-break-after: always;
+  break-after: page;
+}
+
+.sheet-header {
+  position: absolute;
+  top: 4mm;
+  left: 10.5mm;
+  right: 10.5mm;
+  height: 6mm;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 7.5pt;
+  color: #697871;
+  border-bottom: 0.15mm solid #d5cbba;
+  padding-bottom: 1mm;
+  z-index: 10;
+}
+.sheet-footer {
+  position: absolute;
+  bottom: 4mm;
+  left: 10.5mm;
+  right: 10.5mm;
+  height: 6mm;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 7pt;
+  color: #697871;
+  border-top: 0.15mm solid #d5cbba;
+  padding-top: 1mm;
+  z-index: 10;
+}
+
+/* 3x3 卡牌网格：总宽 189mm，总高 264mm
+   左白边 10.5mm ＝ 右白边 10.5mm
+   上白边 16.5mm ＝ 下白边 16.5mm */
+.card-grid {
+  width: 189mm !important;
+  height: 264mm !important;
+  display: grid !important;
+  grid-template-columns: repeat(3, 63mm) !important;
+  grid-template-rows: repeat(3, 88mm) !important;
+  gap: 0 !important;
+  margin: auto !important;
+  position: relative !important;
+  box-sizing: border-box !important;
+}
+
+.card-grid:before {
+  content: '';
+  position: absolute;
+  inset: -0.15mm;
+  border: 0.18mm solid #b09e7c;
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* ========================================================
+   2. 真实老旧羊皮纸底色、焦化阴影与黄铜铆钉装配
+   ======================================================== */
+.playing-card {
+  width: 63mm !important;
+  height: 88mm !important;
+  box-sizing: border-box !important;
+  border-radius: 3.5mm !important;
+  overflow: hidden !important;
+  padding: 2.8mm 3.2mm !important;
+  position: relative !important;
+  display: flex !important;
+  flex-direction: column !important;
+  color: var(--ink) !important;
+  border: 0.32mm solid #5a3d1c !important;
+
+  /* 真实老旧羊皮纸多阶焦黄渐变 + 罗盘微暗纹 */
+  background: 
+    radial-gradient(circle at 50% 68%, rgba(137, 96, 31, 0.05) 0%, rgba(137, 96, 31, 0.03) 40%, transparent 65%),
+    radial-gradient(circle at 50% 30%, #faf3e3 0%, #ede1c8 50%, #d8bf95 80%, #b08d5b 100%) !important;
+  box-shadow: 
+    inset 0 0 10mm rgba(80, 48, 12, 0.35),
+    inset 0 0 1.5mm rgba(40, 20, 5, 0.5) !important;
+}
+
+/* 内框与四角微型黄铜铆钉 */
+.playing-card:after {
+  content: '';
+  position: absolute;
+  inset: 1.1mm;
+  border-radius: 2.4mm !important;
+  border: 0.25mm solid #8c6731 !important;
+  pointer-events: none;
+  z-index: 5;
+  background:
+    radial-gradient(circle 0.6mm at 1.8mm 1.8mm, #ffe28a 25%, #825615 70%, transparent 80%),
+    radial-gradient(circle 0.6mm at calc(100% - 1.8mm) 1.8mm, #ffe28a 25%, #825615 70%, transparent 80%),
+    radial-gradient(circle 0.6mm at 1.8mm calc(100% - 1.8mm), #ffe28a 25%, #825615 70%, transparent 80%),
+    radial-gradient(circle 0.6mm at calc(100% - 1.8mm) calc(100% - 1.8mm), #ffe28a 25%, #825615 70%, transparent 80%);
+}
+
+.cargo-card {
+  background: 
+    radial-gradient(circle at 50% 68%, rgba(26, 79, 75, 0.05) 0%, transparent 65%),
+    radial-gradient(circle at 50% 30%, #faf4e6 0%, #eee3cb 50%, #dac59d 80%, #b59461 100%) !important;
+}
+.mission-card {
+  background: 
+    radial-gradient(circle at 50% 68%, rgba(133, 45, 24, 0.05) 0%, transparent 65%),
+    radial-gradient(circle at 50% 30%, #fbf3e0 0%, #eee0c4 50%, #dcbf94 80%, #b89158 100%) !important;
+}
+.leader-card, .quick-card {
+  background: 
+    radial-gradient(circle at 50% 30%, #f7f1e1 0%, #e9dbc2 50%, #d5be94 80%, #af8f5c 100%) !important;
+}
+
+/* 统一卡背：完全中心对称、远航罗盘与铜版边框 */
+.back-card {
+  width: 63mm !important;
+  height: 88mm !important;
+  box-sizing: border-box !important;
+  border-radius: 3.5mm !important;
+  border: 0.35mm solid #5a3d1c !important;
+  background: 
+    radial-gradient(circle at 50% 50%, #faf3e3 0%, #eee2ca 45%, #d8be93 75%, #af8b58 100%) !important;
+  box-shadow: 
+    inset 0 0 12mm rgba(80, 48, 12, 0.4),
+    inset 0 0 1.5mm rgba(40, 20, 5, 0.5) !important;
+}
+.back-card:before {
+  inset: 1.8mm !important;
+  border-radius: 2.2mm !important;
+  border: 0.35mm double #8c6731 !important;
+}
+.back-caption {
+  font-family: var(--font-title) !important;
+  color: #2b1706 !important;
+  letter-spacing: 1.5mm !important;
+  text-shadow: 0 0.25mm 0 rgba(255,255,255,0.85);
+}
+.back-caption small {
+  font-family: var(--font-display-en) !important;
+  letter-spacing: 1.2mm !important;
+  color: #634316 !important;
+  font-weight: 700 !important;
+}
+
+/* 插画外框：微阴影与黄铜包边 */
+.card-art {
+  border-radius: 1mm !important;
+  border: 0.28mm solid #75552b !important;
+  box-shadow: 0 0.3mm 1mm rgba(30, 20, 10, 0.25) !important;
+}
+
+/* ========================================================
+   3. 黄铜铆钉铭牌标题栏（核心蒸汽朋克机构感）
+   ======================================================== */
+.card-title.brass-plate {
+  margin: 1.2mm 0 1.5mm !important;
+  background: linear-gradient(180deg, #dfc79b 0%, #caa66d 45%, #b38b4a 100%) !important;
+  border: 0.28mm solid #573a15 !important;
+  border-radius: 1.2mm !important;
+  padding: 0.6mm 2.2mm !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  height: 9.8mm !important;
+  min-height: 9.8mm !important;
+  box-shadow: 
+    inset 0 0.25mm 0 rgba(255,255,255,0.7),
+    inset 0 -0.25mm 0 rgba(0,0,0,0.2),
+    0 0.5mm 1mm rgba(0,0,0,0.18) !important;
+  position: relative !important;
+  box-sizing: border-box !important;
+}
+.card-title.brass-plate::before,
+.card-title.brass-plate::after {
+  content: '';
+  position: absolute;
+  width: 0.9mm;
+  height: 0.9mm;
+  border-radius: 50%;
+  background: #472d0e;
+  box-shadow: 0 0.15mm 0 rgba(255,255,255,0.6);
+  top: 50%;
+  transform: translateY(-50%);
+}
+.card-title.brass-plate::before { left: 0.9mm; }
+.card-title.brass-plate::after { right: 0.9mm; }
+
+.title-text-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 1.2mm;
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+/* 标题字体：站酷小薇体 / 思源宋体雕版，金属立体刻印 */
+.command-card .card-title h2 {
+  font-family: var(--font-title) !important;
+  font-size: 18pt !important;
+  font-weight: 900 !important;
+  line-height: 1.05 !important;
+  margin: 0 !important;
+  letter-spacing: 0.6mm !important;
+  color: #211204 !important;
+  text-shadow: 0 0.25mm 0 rgba(255,255,255,0.85);
+  white-space: nowrap !important;
+}
+.cargo-card .card-title h2 {
+  font-family: var(--font-title) !important;
+  font-size: 17pt !important;
+  font-weight: 900 !important;
+  line-height: 1.05 !important;
+  margin: 0 !important;
+  letter-spacing: 0.6mm !important;
+  color: #172d1f !important;
+  text-shadow: 0 0.25mm 0 rgba(255,255,255,0.85);
+  white-space: nowrap !important;
+}
+.mission-card .card-title.brass-plate {
+  height: 8.5mm !important;
+  min-height: 8.5mm !important;
+}
+.mission-card .card-title h2 {
+  font-family: var(--font-title) !important;
+  font-size: 12.5pt !important;
+  font-weight: 900 !important;
+  line-height: 1.1 !important;
+  margin: 0 !important;
+  letter-spacing: 0.25mm !important;
+  color: #241405 !important;
+  text-shadow: 0 0.25mm 0 rgba(255,255,255,0.85);
+  white-space: nowrap !important;
+}
+.leader-card .card-title h2 {
+  font-family: var(--font-title) !important;
+  font-size: 14pt !important;
+  font-weight: 900 !important;
+  line-height: 1.1 !important;
+  margin: 0 !important;
+  letter-spacing: 0.5mm !important;
+  color: #1f2a24 !important;
+  text-shadow: 0 0.25mm 0 rgba(255,255,255,0.85);
+  white-space: nowrap !important;
+}
+.quick-card .card-title h2 {
+  font-family: var(--font-title) !important;
+  font-size: 12.5pt !important;
+  font-weight: 900 !important;
+  line-height: 1.1 !important;
+  margin: 0 !important;
+  letter-spacing: 0.3mm !important;
+  color: #211204 !important;
+  text-shadow: 0 0.25mm 0 rgba(255,255,255,0.85);
+  white-space: nowrap !important;
+}
+
+.micro-sub {
+  font-family: var(--font-display-en) !important;
+  font-size: 5pt !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.35mm !important;
+  color: #5a3e1a !important;
+  text-transform: uppercase !important;
+  margin-top: 0.2mm !important;
+  display: block !important;
+  line-height: 1 !important;
+}
+
+/* ========================================================
+   4. 徽章与钢印五金配件
+   ======================================================== */
+.card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 4.8mm;
+  min-height: 4.8mm;
+  border-bottom: 0.3mm solid #825e2d;
+  padding-bottom: 0.8mm;
+}
+.ship-tag {
+  font-size: 6.8pt;
+  letter-spacing: 0.3mm;
+  color: #573b18;
+  font-weight: bold;
+}
+.tag-pill {
+  font-size: 6.8pt;
+  font-weight: bold;
+  color: #fcf4e4;
+  background: #785319;
+  border-radius: 0.6mm;
+  padding: 0.3mm 1.6mm 0.2mm;
+  letter-spacing: 0.2mm;
+  box-shadow: 0 0.2mm 0.4mm rgba(0,0,0,0.2);
+}
+.command-card.rust .tag-pill { background: #852d18; }
+.command-card.brass .tag-pill { background: #785319; }
+.command-card.teal .tag-pill { background: #1a4f4b; }
+
+/* 船长座号金属扣 */
+.command-card .seat-label {
+  background: #2b1c0e !important;
+  border: 0.28mm solid #8c6731 !important;
+  border-radius: 1mm !important;
+  padding: 0.4mm 1.8mm 0.3mm !important;
+  text-align: center !important;
+  color: #e5cd9c !important;
+  box-shadow: 0 0.3mm 0.8mm rgba(0,0,0,0.25) !important;
+  font-size: 6.5pt !important;
+  line-height: 1.1 !important;
+  white-space: nowrap !important;
+}
+.command-card .seat-label b {
+  font-family: var(--font-display-en) !important;
+  font-size: 10.5pt !important;
+  font-weight: 900 !important;
+  color: #ffcb5a !important;
+  display: block !important;
+}
+
+/* 货物角标与分值扣 */
+.cargo-corner-tag {
+  display: inline-flex;
+  align-items: center;
+  font-size: 7pt;
+  font-weight: 700;
+  letter-spacing: 0.2mm;
+  color: #fcf4e4;
+  background: #173836;
+  border: 0.22mm solid #3c7d78;
+  padding: 0.3mm 1.5mm;
+  border-radius: 0.6mm;
+  line-height: 1.1;
+}
+.cargo-card .zone-badge {
+  font-size: 7pt;
+  color: #573b18;
+  font-weight: bold;
+  letter-spacing: 0.2mm;
+}
+.cargo-title-score {
+  background: #173836 !important;
+  border: 0.28mm solid #3c7d78 !important;
+  border-radius: 1mm !important;
+  padding: 0.6mm 2mm 0.5mm !important;
+  color: #d1eee9 !important;
+  font-size: 7.2pt !important;
+  font-weight: 700 !important;
+  white-space: nowrap !important;
+  box-shadow: 0 0.3mm 0.8mm rgba(0,0,0,0.25) !important;
+}
+.cargo-card .score-medal {
+  font: 800 13pt/1 var(--font-display-en);
+  color: #852d18;
+  border-left: 0.28mm solid #9b7a46;
+  padding-left: 2.5mm;
+}
+
+/* 私人委托极密红印 */
+.mission-card .mission-badge {
+  font: 700 6.5pt/1 var(--font-mono);
+  letter-spacing: 0.3mm;
+  color: #fff;
+  background: #882210;
+  border: 0.22mm solid #551408;
+  border-radius: 0.8mm;
+  padding: 0.4mm 1.5mm 0.3mm;
+  box-shadow: 0 0.2mm 0.5mm rgba(136, 34, 16, 0.3);
+  white-space: nowrap;
+}
+
+/* 领航标记与速查牌微标 */
+.leader-card .leader-badge {
+  background: #172728 !important;
+  border: 0.28mm solid #486a68 !important;
+  border-radius: 1mm !important;
+  padding: 0.6mm 2mm 0.5mm !important;
+  color: #d2ebe7 !important;
+  font: 700 7pt/1 var(--font-body) !important;
+  white-space: nowrap !important;
+  box-shadow: 0 0.3mm 0.8mm rgba(0,0,0,0.25) !important;
+}
+.quick-card .quick-badge {
+  background: #3a2a17 !important;
+  border: 0.28mm solid #7d5b30 !important;
+  border-radius: 1mm !important;
+  padding: 0.6mm 2mm 0.5mm !important;
+  color: #f1ddb8 !important;
+  font: 700 7pt/1 var(--font-body) !important;
+  white-space: nowrap !important;
+  box-shadow: 0 0.3mm 0.8mm rgba(0,0,0,0.25) !important;
+}
+
+/* ========================================================
+   5. 规则、风味与底栏布局
+   ======================================================== */
+.card-rule {
+  font-family: var(--font-body) !important;
+  font-weight: 800;
+  color: #1a0f04;
+  letter-spacing: 0.2mm;
+  font-size: 10.5pt;
+  margin: 1.5mm 0 0.8mm;
+  line-height: 1.3;
+}
+.card-detail {
+  font-family: var(--font-body) !important;
+  font-size: 8.2pt;
+  line-height: 1.55;
+  color: #382713;
+  margin: 0;
+}
+.flight-flavor, .card-flavor, .mission-strategy, .leader-first {
+  font-family: var(--font-hand) !important;
+  font-size: 7.6pt;
+  line-height: 1.55;
+  color: #5c472d;
+  font-style: italic;
+}
+.card-foot {
+  margin-top: auto;
+  border-top: 0.22mm solid #91713c !important;
+  padding-top: 1.2mm !important;
+  color: #422f18;
+  font-family: var(--font-body) !important;
+  font-size: 7.4pt;
+  line-height: 1.45;
+}
+.card-foot b {
+  color: #852d18;
+  font-weight: 800;
+}
+
+/* 委托牌专属三层独立底栏 */
+.mission-card .card-art {
+  height: 20mm;
+  min-height: 20mm;
+}
+.goal-icons {
+  display: flex;
+  gap: 2.5mm;
+  justify-content: center;
+  align-items: center;
+  margin: 1.5mm 0 1.2mm;
+  border-bottom: 0.2mm solid #bfa473;
+  padding-bottom: 1.2mm;
+}
+.goal-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 7.5pt;
+  font-family: var(--font-body);
+  font-weight: 700;
+  color: #271602;
+  line-height: 1.2;
+}
+.goal-item .symbol {
+  width: 8mm;
+  height: 8mm;
+  margin-bottom: 0.3mm;
+}
+.goal-item b {
+  font-size: 7.2pt;
+}
+
+.mission-card .card-foot {
+  margin-top: auto;
+  border-top: 0.22mm solid #9b7a46 !important;
+  padding-top: 1.2mm !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.8mm !important;
+}
+.mission-card .need-line {
+  font-family: var(--font-body);
+  font-size: 7.8pt;
+  line-height: 1.25;
+  color: #1a0f04;
+  white-space: nowrap;
+}
+.mission-card .need-line b {
+  color: #852d18;
+  font-weight: 800;
+}
+.mission-card .reward-line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  line-height: 1.25;
+  white-space: nowrap;
+}
+.mission-card .reward-pill {
+  font-size: 6.8pt;
+  font-family: var(--font-body);
+  font-weight: 700;
+  color: #fcf4e4;
+  background: #5a3814;
+  border: 0.18mm solid #382109;
+  border-radius: 0.6mm;
+  padding: 0.3mm 1.5mm 0.2mm;
+  letter-spacing: 0.2mm;
+}
+.mission-card .reward-pts {
+  color: #852d18;
+  font-family: var(--font-display-en), var(--font-body);
+  font-size: 8.8pt;
+  font-weight: 900;
+  letter-spacing: 0.2mm;
+}
+.mission-card .strategy-line {
+  font-family: var(--font-hand);
+  font-size: 7.2pt;
+  color: #554026;
+  line-height: 1.2;
+  white-space: nowrap;
+  letter-spacing: 0.1mm;
+}
+
+.quick-lines {
+  font-family: var(--font-body);
+  font-size: 7.6pt;
+  line-height: 1.48;
+  color: #1a0f04;
+}
+.quick-lines p {
+  margin: 0.6mm 0;
+  white-space: nowrap;
+}
+.quick-lines b {
+  color: #785319;
+  font-weight: 700;
+}
+
+/* 版本切换条 */
+.version-switcher {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fffdf5;
+  border: 1px solid #c8bea8;
+  border-radius: 6px;
+  padding: 12px 18px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+.version-switcher .badge-v14 {
+  background: #785319;
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 3px;
+  font-weight: bold;
+  font-size: 12px;
+  margin-right: 8px;
+  display: inline-block;
+}
+.version-switcher a {
+  font-weight: 600;
+  text-underline-offset: 3px;
+}
+
+/* ========================================================
+   6. 核心打印样式（零边距、绝对几何居中、正反对印 100% 吻合）
+   ======================================================== */
+@page {
+  size: 210mm 297mm !important;
+  margin: 0 !important;
+}
+
+@media print {
+  html, body {
+    width: 210mm !important;
+    height: 297mm !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #fff !important;
+  }
+  .atelier-head,
+  .atelier-controls,
+  .tips,
+  .print-notice,
+  .footer-note,
+  .version-switcher,
+  .atelier-notice,
+  .sheet-header,
+  .sheet-footer,
+  noscript,
+  .no-print {
+    display: none !important;
+  }
+  .atelier-shell {
+    max-width: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  #print-pages {
+    overflow: visible !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  .sheet {
+    width: 210mm !important;
+    height: 297mm !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    overflow: hidden !important;
+    page-break-after: always !important;
+    break-after: page !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+  .card-grid {
+    margin: auto !important;
+  }
+  .playing-card, .board-zone {
+    break-inside: avoid !important;
+    print-color-adjust: exact !important;
+    -webkit-print-color-adjust: exact !important;
+  }
+  .playing-card * {
+    print-color-adjust: exact !important;
+    -webkit-print-color-adjust: exact !important;
+  }
+}
