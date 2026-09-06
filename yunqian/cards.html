@@ -1,0 +1,604 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>云堑夜索 · A4 卡牌打印排版（佳能 G3812 专用）</title>
+<style>
+/* A4 打印核心设置 */
+@page {
+  size: A4 portrait;
+  margin: 10mm 8mm;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: #2b3036;
+  color: #1a1e22;
+  font-family: "PingFang SC", "Microsoft YaHei", "Noto Serif SC", sans-serif;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+/* 屏幕预览提示栏 */
+.print-toolbar {
+  background: #15191d;
+  color: #e6be75;
+  padding: 14px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #c59948;
+}
+.print-btn {
+  background: #c59948;
+  color: #111;
+  border: none;
+  font-weight: bold;
+  padding: 8px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+.print-tip { font-size: 13px; color: #aaa; }
+
+/* A4 单页容器 */
+.a4-page {
+  width: 194mm;
+  height: 277mm;
+  background: #fff;
+  margin: 15px auto;
+  padding: 4mm 2mm;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.5);
+  display: grid;
+  grid-template-columns: repeat(3, 63mm);
+  grid-template-rows: repeat(3, 88mm);
+  gap: 2mm;
+  justify-content: center;
+  align-content: center;
+  page-break-after: always;
+  position: relative;
+}
+
+/* 单张卡牌容器 (标准 63mm x 88mm 扑克牌尺寸) */
+.card {
+  width: 63mm;
+  height: 88mm;
+  background: #fbf8f0;
+  border: 1px solid #c59948;
+  border-radius: 3.5mm;
+  padding: 3mm;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  box-shadow: inset 0 0 4px rgba(197, 153, 72, 0.15);
+}
+
+/* 裁切角标辅助线 */
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 1.2mm;
+  border: 0.5px solid rgba(197, 153, 72, 0.5);
+  border-radius: 2.5mm;
+  pointer-events: none;
+}
+
+/* 卡牌头部 */
+.c-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-bottom: 1px solid #d3c9b6;
+  padding-bottom: 1mm;
+}
+.c-badge {
+  font-size: 8pt;
+  font-weight: bold;
+  color: #7d6b47;
+  letter-spacing: 0.5px;
+}
+.c-weight {
+  font-size: 11pt;
+  font-weight: 900;
+  color: #a84732;
+  font-family: Consolas, monospace;
+}
+
+/* 卡牌主标题 */
+.c-title {
+  font-family: "Noto Serif SC", "SimSun", serif;
+  font-size: 11pt;
+  font-weight: bold;
+  color: #171c20;
+  margin: 1.5mm 0 1mm;
+  letter-spacing: 0.8px;
+  line-height: 1.2;
+}
+
+/* 卡面示意图区 */
+.c-illu {
+  height: 25mm;
+  background: #ede6d6;
+  border: 0.5px dashed #b8ad96;
+  border-radius: 2mm;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 8pt;
+  color: #6a6252;
+  text-align: center;
+  padding: 2mm;
+}
+.c-illu-icon {
+  font-size: 18pt;
+  margin-bottom: 1mm;
+}
+
+/* 卡牌描述正文 */
+.c-desc {
+  font-size: 7pt;
+  line-height: 1.38;
+  color: #383e44;
+  margin: 1.5mm 0;
+  flex: 1;
+}
+
+/* 卡牌底部得分与信息 */
+.c-foot {
+  border-top: 1px solid #d3c9b6;
+  padding-top: 1mm;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 7pt;
+  color: #555;
+}
+.c-score-south { color: #a84732; font-weight: bold; }
+.c-score-north { color: #356762; font-weight: bold; }
+
+/* 卡牌背面样式 (暗藏印信) */
+.card-back {
+  background: #1e262c;
+  border: 1px solid #c59948;
+  color: #e6be75;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 4mm;
+}
+.back-ornament {
+  width: 44mm;
+  height: 44mm;
+  border: 1px dashed rgba(197, 153, 72, 0.4);
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle, rgba(197, 153, 72, 0.15), transparent 70%);
+}
+.back-title {
+  font-family: "Noto Serif SC", serif;
+  font-size: 10pt;
+  letter-spacing: 2px;
+  color: #f1dfb8;
+  margin-top: 2mm;
+}
+.back-seal {
+  font-size: 9pt;
+  font-weight: bold;
+  letter-spacing: 1px;
+  margin-top: 1.5mm;
+  padding: 1mm 3mm;
+  border-radius: 2mm;
+}
+.seal-south { background: #853322; color: #ffb8a8; }
+.seal-north { background: #254e4a; color: #a4e5de; }
+.seal-dual { background: #614c27; color: #ffd88a; }
+
+
+/* 📱 移动端屏幕专属自适应预览（打印时恢复 A4 纯净九宫格） */
+@media screen and (max-width: 768px) {
+  .print-toolbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 12px 16px;
+  }
+  .a4-page {
+    width: 100% !important;
+    height: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    padding: 20px 10px 40px !important;
+    margin: 12px auto !important;
+    border-radius: 8px;
+    gap: 16px !important;
+  }
+  .card {
+    width: min(88vw, 310px) !important;
+    height: calc(min(88vw, 310px) * 88 / 63) !important;
+    border-radius: 12px !important;
+    padding: 14px 16px !important;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1) !important;
+  }
+  .c-name {
+    font-size: 16pt !important;
+  }
+  .c-illu {
+    height: 40mm !important;
+  }
+  .c-illu-icon {
+    font-size: 26pt !important;
+  }
+  .c-desc {
+    font-size: 10pt !important;
+    line-height: 1.5 !important;
+  }
+  .c-foot {
+    font-size: 9.5pt !important;
+    padding-top: 2mm !important;
+  }
+  .card-back {
+    width: min(88vw, 310px) !important;
+    height: calc(min(88vw, 310px) * 88 / 63) !important;
+    border-radius: 12px !important;
+  }
+  .back-ornament {
+    width: 55mm !important;
+    height: 55mm !important;
+  }
+  .back-title {
+    font-size: 14pt !important;
+  }
+  .back-seal {
+    font-size: 11pt !important;
+  }
+}
+
+@media print {
+  @page {
+    size: A4 portrait !important;
+    margin: 10mm 8mm !important;
+  }
+  body { background: #fff !important; }
+  .print-toolbar { display: none !important; }
+  .a4-page {
+    width: 194mm !important;
+    height: 277mm !important;
+    margin: 0 !important;
+    padding: 4mm 2mm !important;
+    box-shadow: none !important;
+    display: grid !important;
+    grid-template-columns: repeat(3, 63mm) !important;
+    grid-template-rows: repeat(3, 88mm) !important;
+    gap: 2mm !important;
+    page-break-after: always !important;
+  }
+  .card {
+    width: 63mm !important;
+    height: 88mm !important;
+    border-radius: 3.5mm !important;
+    box-shadow: none !important;
+  }
+}
+
+  .print-toolbar { display: none; }
+  .a4-page { margin: 0; box-shadow: none; }
+}
+</style>
+</head>
+<body>
+
+<div class="print-toolbar">
+  <div>
+    <strong>《云堑夜索》卡牌 A4 喷墨打印排版文件</strong>
+    <span class="print-tip">（已适配佳能 G3812 打印机 · 无边距/标准 A4 · 63×88mm 扑克标准裁切线）</span>
+  </div>
+  <div style="display:flex;gap:12px;align-items:center;">
+    <a href="./index.html" style="color:#e6be75;text-decoration:none;font-size:13px;border:1px solid #c59948;padding:6px 14px;border-radius:4px;">📖 返回玩法说明书</a>
+    <button class="print-btn" onclick="window.print()">立即打印 (Ctrl + P)</button>
+  </div>
+</div>
+
+<!-- ================= 第 1 页：旧物重箱卡 (正面 01-09) ================= -->
+<div class="a4-page">
+  <!-- R01 -->
+  <div class="card">
+    <div class="c-head"><span class="c-badge">旧物 · 文稿</span><span class="c-weight">2 吨</span></div>
+    <div class="c-title">三十年高山云图</div>
+    <div class="c-illu"><span class="c-illu-icon">📜</span><span>[手绘云层与气压铅笔册]</span></div>
+    <div class="c-desc">三代观测员手工测量的高空气流图谱。记载着大陆唯一未被风暴污染的气流航道。</div>
+    <div class="c-foot">
+      <span>南坡分：<span class="c-score-south">+4</span></span>
+      <span>北峰分：<span class="c-score-north">+4</span></span>
+    </div>
+  </div>
+
+  <!-- R02 -->
+  <div class="card">
+    <div class="c-head"><span class="c-badge">旧物 · 人文</span><span class="c-weight">1 吨</span></div>
+    <div class="c-title">未寄越境家书匣</div>
+    <div class="c-illu"><span class="c-illu-icon">✉️</span><span>[压干龙胆花与银戒指]</span></div>
+    <div class="c-desc">封锁前滞留在关口的私人信函。写满了对南坡家眷的思念、食谱与最后的承诺。</div>
+    <div class="c-foot">
+      <span>南坡分：<span class="c-score-south">+5</span></span>
+      <span>北峰分：<span class="c-score-north">+1</span></span>
+    </div>
+  </div>
+
+  <!-- R03 -->
+  <div class="card">
+    <div class="c-head"><span class="c-badge">旧物 · 器械</span><span class="c-weight">5 吨</span></div>
+    <div class="c-title">自鸣微型天文钟</div>
+    <div class="c-illu"><span class="c-illu-icon">⚙️</span><span>[黄铜擒纵机构与水银锤]</span></div>
+    <div class="c-desc">纯手工切削的恒星钟。依靠重锤自行校对岁差，是旧工业时代精密理性的结晶。</div>
+    <div class="c-foot">
+      <span>南坡分：<span class="c-score-south">+1</span></span>
+      <span>北峰分：<span class="c-score-north">+6</span></span>
+    </div>
+  </div>
+
+  <!-- R04 -->
+  <div class="card">
+    <div class="c-head"><span class="c-badge">旧物 · 生命</span><span class="c-weight">2 吨</span></div>
+    <div class="c-title">耐寒青稞纯种胚芽</div>
+    <div class="c-illu"><span class="c-illu-icon">🌾</span><span>[充氮铅封双层铁罐]</span></div>
+    <div class="c-desc">可在零下四十度冻土发芽的古老种子。未来抵御漫长凛冬不可或缺的农业母本。</div>
+    <div class="c-foot">
+      <span>南坡分：<span class="c-score-south">+5</span></span>
+      <span>北峰分：<span class="c-score-north">+3</span></span>
+    </div>
+  </div>
+
+  <!-- R05 -->
+  <div class="card">
+    <div class="c-head"><span class="c-badge">旧物 · 文稿</span><span class="c-weight">3 吨</span></div>
+    <div class="c-title">全流域水文铜版图</div>
+    <div class="c-illu"><span class="c-illu-icon">🗺️</span><span>[深蚀刻双面厚铜版]</span></div>
+    <div class="c-desc">详尽刻画大裂谷地下暗河走向的母版图。若无此图，所有水利工程形同盲人摸象。</div>
+    <div class="c-foot">
+      <span>南坡分：<span class="c-score-south">+3</span></span>
+      <span>北峰分：<span class="c-score-north">+4</span></span>
+    </div>
+  </div>
+
+  <!-- R06 -->
+  <div class="card">
+    <div class="c-head"><span class="c-badge">旧物 · 器械</span><span class="c-weight">4 吨</span></div>
+    <div class="c-title">黄铜水银气压主表</div>
+    <div class="c-illu"><span class="c-illu-icon">🌡️</span><span>[两米长真空玻璃管]</span></div>
+    <div class="c-desc">第七缆关中央控制台的核心基准表。能够提前六小时预报深渊地热气压暴跌。</div>
+    <div class="c-foot">
+      <span>南坡分：<span class="c-score-south">+2</span></span>
+      <span>北峰分：<span class="c-score-north">+5</span></span>
+    </div>
+  </div>
+
+  <!-- R07 -->
+  <div class="card">
+    <div class="c-head"><span class="c-badge">旧物 · 人文</span><span class="c-weight">1 吨</span></div>
+    <div class="c-title">老站长手制风鸣琴</div>
+    <div class="c-illu"><span class="c-illu-icon">🎻</span><span>[松木共鸣箱与铜弦]</span></div>
+    <div class="c-desc">利用深谷山风穿过孔道发声的自鸣乐器。几十年来一直挂在站房屋檐下安抚人心。</div>
+    <div class="c-foot">
+      <span>南坡分：<span class="c-score-south">+4</span></span>
+      <span>北峰分：<span class="c-score-north">+2</span></span>
+    </div>
+  </div>
+
+  <!-- R08 -->
+  <div class="card">
+    <div class="c-head"><span class="c-badge">旧物 · 器械</span><span class="c-weight">3 吨</span></div>
+    <div class="c-title">高压蒸汽减压阀芯</div>
+    <div class="c-illu"><span class="c-illu-icon">🔧</span><span>[钛铜合金硬化阀体]</span></div>
+    <div class="c-desc">可承受两百个大气压的备用阀门。无论哪边的发电机组，没有它都无法维持运转。</div>
+    <div class="c-foot">
+      <span>南坡分：<span class="c-score-south">+3</span></span>
+      <span>北峰分：<span class="c-score-north">+3</span></span>
+    </div>
+  </div>
+
+  <!-- R09 -->
+  <div class="card">
+    <div class="c-head"><span class="c-badge">旧物 · 文稿</span><span class="c-weight">1 吨</span></div>
+    <div class="c-title">守灯人交接备忘录</div>
+    <div class="c-illu"><span class="c-illu-icon">📖</span><span>[防潮油纸手抄本]</span></div>
+    <div class="c-desc">记载着深谷每一处暗风漏洞、钢缆锈蚀周期以及如何用敲击声传递信息的口诀。</div>
+    <div class="c-foot">
+      <span>南坡分：<span class="c-score-south">+2</span></span>
+      <span>北峰分：<span class="c-score-north">+4</span></span>
+    </div>
+  </div>
+</div>
+
+<!-- ================= 第 2 页：旧物重箱卡 (正面 10-18) ================= -->
+<div class="a4-page">
+  <!-- R10 -->
+  <div class="card">
+    <div class="c-head"><span class="c-badge">旧物 · 器械</span><span class="c-weight">4 吨</span></div>
+    <div class="c-title">多频雾号发音铜簧</div>
+    <div class="c-illu"><span class="c-illu-icon">🎺</span><span>[特种青铜共振板]</span></div>
+    <div class="c-desc">能穿透五十里浓雾的低频汽笛发声核心。在大寂静时代它是寻找幸存船队的呼唤。</div>
+    <div class="c-foot"><span>南坡：<span class="c-score-south">+2</span></span><span>北峰：<span class="c-score-north">+5</span></span></div>
+  </div>
+
+  <!-- R11 -->
+  <div class="card">
+    <div class="c-head"><span class="c-badge">旧物 · 人文</span><span class="c-weight">2 吨</span></div>
+    <div class="c-title">越境贸易通商金印</div>
+    <div class="c-illu"><span class="c-illu-icon">🪙</span><span>[重达四斤的黄铜方印]</span></div>
+    <div class="c-desc">两岸和平互市时期的最高凭信。盖下它，南坡集市的所有粮商承诺免息放粮。</div>
+    <div class="c-foot"><span>南坡：<span class="c-score-south">+6</span></span><span>北峰：<span class="c-score-north">+1</span></span></div>
+  </div>
+
+  <!-- R12 -->
+  <div class="card">
+    <div class="c-head"><span class="c-badge">旧物 · 生命</span><span class="c-weight">1 吨</span></div>
+    <div class="c-title">高山岩蜂冬眠巢</div>
+    <div class="c-illu"><span class="c-illu-icon">🐝</span><span>[草木灰保温箱]</span></div>
+    <div class="c-desc">能忍耐严寒的高山授粉蜂种。没有它们，来年南坡所有的果木与庄稼将全部绝产。</div>
+    <div class="c-foot"><span>南坡：<span class="c-score-south">+5</span></span><span>北峰：<span class="c-score-north">+2</span></span></div>
+  </div>
+
+  <!-- R13 -->
+  <div class="card">
+    <div class="c-head"><span class="c-badge">旧物 · 文稿</span><span class="c-weight">2 吨</span></div>
+    <div class="c-title">跨谷铁桥工程原图</div>
+    <div class="c-illu"><span class="c-illu-icon">📐</span><span>[亚麻布晒蓝总图卷]</span></div>
+    <div class="c-desc">旧时代未能动工的“万丈悬索大铁桥”设计全案，留给后世重建天堑通道的希望。</div>
+    <div class="c-foot"><span>南坡：<span class="c-score-south">+3</span></span><span>北峰：<span class="c-score-north">+5</span></span></div>
+  </div>
+
+  <!-- R14 -->
+  <div class="card">
+    <div class="c-head"><span class="c-badge">旧物 · 人文</span><span class="c-weight">1 吨</span></div>
+    <div class="c-title">高山陈酿朗姆与雪茄</div>
+    <div class="c-illu"><span class="c-illu-icon">🥃</span><span>[橡木封蜡小桶]</span></div>
+    <div class="c-desc">工匠们在严寒长夜里唯一的慰藉。南坡的老码头工头曾说：“这能换回三条人命。”</div>
+    <div class="c-foot"><span>南坡：<span class="c-score-south">+4</span></span><span>北峰：<span class="c-score-north">+1</span></span></div>
+  </div>
+
+  <!-- R15 -->
+  <div class="card">
+    <div class="c-head"><span class="c-badge">旧物 · 器械</span><span class="c-weight">5 吨</span></div>
+    <div class="c-title">双向索道滑轮主轴</div>
+    <div class="c-illu"><span class="c-illu-icon">⚙️</span><span>[整块锻打高碳钢轴]</span></div>
+    <div class="c-desc">索道绞盘最核心的备件。若有朝一日想重修缆关，这是世上仅存的一根重型主轴。</div>
+    <div class="c-foot"><span>南坡：<span class="c-score-south">+2</span></span><span>北峰：<span class="c-score-north">+5</span></span></div>
+  </div>
+
+  <!-- R16 -->
+  <div class="card">
+    <div class="c-head"><span class="c-badge">旧物 · 文稿</span><span class="c-weight">1 吨</span></div>
+    <div class="c-title">末代撤离者名单册</div>
+    <div class="c-illu"><span class="c-illu-icon">📋</span><span>[压印羊皮封面名录]</span></div>
+    <div class="c-desc">记录着三千四百名越境避难者的姓名、籍贯与血型。文明的存续始于对名字的铭记。</div>
+    <div class="c-foot"><span>南坡：<span class="c-score-south">+4</span></span><span>北峰：<span class="c-score-north">+3</span></span></div>
+  </div>
+
+  <!-- R17 -->
+  <div class="card">
+    <div class="c-head"><span class="c-badge">旧物 · 器械</span><span class="c-weight">3 吨</span></div>
+    <div class="c-title">耐候夜航探照透镜</div>
+    <div class="c-illu"><span class="c-illu-icon">🔦</span><span>[多阶菲涅尔环形镜片]</span></div>
+    <div class="c-desc">采用特种火石玻璃烧制的高透镜片。能将微弱的煤油灯光汇聚成十里外的灯柱。</div>
+    <div class="c-foot"><span>南坡：<span class="c-score-south">+3</span></span><span>北峰：<span class="c-score-north">+4</span></span></div>
+  </div>
+
+  <!-- R18 -->
+  <div class="card">
+    <div class="c-head"><span class="c-badge">旧物 · 人文</span><span class="c-weight">2 吨</span></div>
+    <div class="c-title">关口铜界碑与鸣风磬</div>
+    <div class="c-illu"><span class="c-illu-icon">🔔</span><span>[刻着纪年铭文的界牌]</span></div>
+    <div class="c-desc">立于第七缆关悬崖边缘五十年的界石。上面刻着：“深渊之上，愿凡人安渡。”</div>
+    <div class="c-foot"><span>南坡：<span class="c-score-south">+4</span></span><span>北峰：<span class="c-score-north">+4</span></span></div>
+  </div>
+</div>
+
+<!-- ================= 第 3 页：工位操作牌与身份卡 ================= -->
+<div class="a4-page">
+  <!-- 操作牌 1 -->
+  <div class="card">
+    <div class="c-head"><span class="c-badge">工位牌 · 动力</span><span class="c-weight">OP-01</span></div>
+    <div class="c-title">注气牵引 · 强冲</div>
+    <div class="c-illu"><span class="c-illu-icon">💨</span><span>[蒸汽管过载增压手柄]</span></div>
+    <div class="c-desc">【抗风阶段】提供 +2 点向前冲力。<br>【道岔决断】若处于顺风，可迫使道岔朝向顺风侧偏转 1 格。</div>
+    <div class="c-foot"><span>工种：司炉/机械</span><span>基础操作</span></div>
+  </div>
+
+  <!-- 操作牌 2 -->
+  <div class="card">
+    <div class="c-head"><span class="c-badge">工位牌 · 制动</span><span class="c-weight">OP-02</span></div>
+    <div class="c-title">紧固抱闸 · 固位</div>
+    <div class="c-illu"><span class="c-illu-icon">🛑</span><span>[重型铸铁刹车抱箍]</span></div>
+    <div class="c-desc">【抗风阶段】防止吊箱被侧风横甩。<br>【道岔决断】坚决锁死当前道岔方向，抵消对方 1 点反切力。</div>
+    <div class="c-foot"><span>工种：制动/巡检</span><span>防御操作</span></div>
+  </div>
+
+  <!-- 操作牌 3 -->
+  <div class="card">
+    <div class="c-head"><span class="c-badge">工位牌 · 阻尼</span><span class="c-weight">OP-03</span></div>
+    <div class="c-title">悬挂配重 · 抵消</div>
+    <div class="c-illu"><span class="c-illu-icon">⚓</span><span>[迎风侧悬挂铸铁重块]</span></div>
+    <div class="c-desc">【抗风阶段】直接抵消 2 点侧风风力。<br>【道岔决断】本轮若吊箱超重，可作为紧急安全缓冲。</div>
+    <div class="c-foot"><span>工种：司秤/配重</span><span>平衡操作</span></div>
+  </div>
+
+  <!-- 操作牌 4 -->
+  <div class="card">
+    <div class="c-head"><span class="c-badge">工位牌 · 战术</span><span class="c-weight">OP-04</span></div>
+    <div class="c-title">迎风放缆 · 反切</div>
+    <div class="c-illu"><span class="c-illu-icon">🔄</span><span>[副绞盘紧急离合拉杆]</span></div>
+    <div class="c-desc">【抗风阶段】微调下坠角度。<br>【道岔决断】<strong>触发绝地反切！</strong> 可将本牌作为反转动力强扳道岔！</div>
+    <div class="c-foot"><span>工种：首席索道手</span><span>反转战术</span></div>
+  </div>
+
+  <!-- 身份卡 1：南坡 -->
+  <div class="card" style="border-color: #a84732;">
+    <div class="c-head"><span class="c-badge" style="color: #a84732;">秘密身份</span><span class="c-weight">南坡</span></div>
+    <div class="c-title">渡向人间 · 烟火派</div>
+    <div class="c-illu" style="background: #faece8;"><span class="c-illu-icon">🏮</span><span style="color:#a84732;">【阵营：南坡集镇】</span></div>
+    <div class="c-desc"><strong>终极目标：</strong>全力将旧物引渡至南坡港湾集镇。游戏结束时，南坡运达旧物的传世总分高于北峰即获胜！</div>
+    <div class="c-foot"><span>保持隐瞒</span><span>至死方休</span></div>
+  </div>
+
+  <!-- 身份卡 2：北峰 -->
+  <div class="card" style="border-color: #407570;">
+    <div class="c-head"><span class="c-badge" style="color: #407570;">秘密身份</span><span class="c-weight">北峰</span></div>
+    <div class="c-title">存诸永恒 · 孤塔派</div>
+    <div class="c-illu" style="background: #e6f0ef;"><span class="c-illu-icon">🏔️</span><span style="color:#407570;">【阵营：北峰高阁】</span></div>
+    <div class="c-desc"><strong>终极目标：</strong>全力将旧物送上北峰冰封档案馆。游戏结束时，北峰运达旧物的传世总分高于南坡即获胜！</div>
+    <div class="c-foot"><span>保持隐瞒</span><span>至死方休</span></div>
+  </div>
+
+  <!-- 身份卡 3：公证人 (奇数人数专属) -->
+  <div class="card" style="border-color: #c59948;">
+    <div class="c-head"><span class="c-badge" style="color: #c59948;">中立身份</span><span class="c-weight">中立</span></div>
+    <div class="c-title">终局公证人 (5/7人)</div>
+    <div class="c-illu" style="background: #fdf7eb;"><span class="c-illu-icon">⚖️</span><span style="color:#c59948;">【阵营：两岸平衡】</span></div>
+    <div class="c-desc"><strong>终极目标：</strong>追求两岸分数的绝对均衡！若终局两岸得分之差 ≤ 2分，则公证人一人独享最终胜利！</div>
+    <div class="c-foot"><span>天平守望者</span><span>奇数局专用</span></div>
+  </div>
+
+  <!-- 气象卡 1 -->
+  <div class="card">
+    <div class="c-head"><span class="c-badge">深渊山风</span><span class="c-weight">2 级</span></div>
+    <div class="c-title">穿谷偏北阵风</div>
+    <div class="c-illu"><span class="c-illu-icon">🌪️</span><span>[风向：偏北 · 阻尼+2]</span></div>
+    <div class="c-desc">深渊冷空气回流，产生自南向北的持续推力。若全员配重不足，吊箱将被压向北峰侧滑槽。</div>
+    <div class="c-foot"><span>每轮揭晓 1 张</span><span>气象指示</span></div>
+  </div>
+
+  <!-- 气象卡 2 -->
+  <div class="card">
+    <div class="c-head"><span class="c-badge">深渊山风</span><span class="c-weight">3 级</span></div>
+    <div class="c-title">地热特大强南风</div>
+    <div class="c-illu"><span class="c-illu-icon">⚠️</span><span>[风向：偏南 · 阻尼+3]</span></div>
+    <div class="c-desc">谷底地热爆燃喷发！巨大气浪猛烈横推吊箱。本轮需要全员至少合力打出 3 点配重！</div>
+    <div class="c-foot"><span>极端恶劣天气</span><span>高危警报</span></div>
+  </div>
+</div>
+
+
+<!-- Portal Back Navigation -->
+<div class="portal-floating-nav" style="position:fixed;bottom:24px;left:24px;z-index:99999;">
+  <a href="../index.html" style="display:inline-flex;align-items:center;gap:8px;background:rgba(18,22,28,0.92);backdrop-filter:blur(8px);color:#f0c059;border:1px solid rgba(212,175,55,0.45);border-radius:30px;padding:10px 18px;font-size:14px;font-weight:600;text-decoration:none;box-shadow:0 6px 16px rgba(0,0,0,0.4);font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif;transition:all .2s ease;" onmouseover="this.style.background='rgba(30,36,46,0.98)';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='rgba(18,22,28,0.92)';this.style.transform='translateY(0)'">
+    <span style="font-size:16px;">🏛️</span>
+    <span>返回桌游展馆</span>
+  </a>
+</div>
+<style>
+@media print {
+  .portal-floating-nav { display: none !important; }
+}
+</style>
+
+</body>
+</html>
