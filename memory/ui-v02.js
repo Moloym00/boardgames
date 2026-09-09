@@ -3,6 +3,7 @@ const saved=MemorySession.restore(M);
 let seed=saved.seed,g=saved.game,spectate=false,filter='',selected=null,timer;
 const names={awaken:'呼名',skip:'守住记忆',power:'回想神明',legacy:'最后馈赠',burn:'燃忆',recall:'寻忆',watch:'守望',offer:'供奉',contest:'改写',rest:'安魂',trim:'放下',end:'交棒',yield:'让出',defend:'守住'};
 function node(tag,text,cls){const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(cls)n.className=cls;return n;}
+function awakeningPreview(seat){const counts=g.players.map((_,i)=>g.seats[seat].offerings.filter(o=>o.player===i).length),winner=counts.findIndex(n=>n>=2);return winner<0?'众声觉醒：每人得1余音与一张记忆':`${g.players[winner].name}得5分与记忆`+counts.map((n,i)=>i!==winner&&n?`；${g.players[i].name}得${n}余音`:'').join('');}
 function apply(id){try{const who=M.actor(g);g=M.act(g,who,id);M.check(g);MemorySession.record(seed,who,id);selected=null;render();}catch(e){$('hint').textContent='火塘暂歇：'+e.message;clearTimeout(timer);}}
 function render(){clearTimeout(timer);const ended=g.phase==='ended',who=M.actor(g),p=g.players[0];
  let forecast=$('forecast');if(!forecast){forecast=node('p',undefined,'note');forecast.id='forecast';$('gods').before(forecast);}
@@ -16,12 +17,15 @@ function render(){clearTimeout(timer);const ended=g.phase==='ended',who=M.actor(
  $('hand').replaceChildren(...p.hand.map(c=>{const n=node('button',c.god===undefined?c.element:M.GODS[c.god].name+'的记忆','card'+(c.god===undefined?'':' gift')+(selected===c.id?' lifted':''));n.setAttribute('aria-pressed',String(selected===c.id));n.disabled=ended||who!==0||spectate;n.onclick=()=>{selected=selected===c.id?null:c.id;render();};return n;}));
  $('memory').textContent=`未想起 ${p.deck.length} · 暂时放下 ${p.discard.length} · 真正遗忘 ${p.forgotten.length} ｜ 唤醒 ${p.awake.length}×5 + 安魂 ${p.rested.length}×2 + 余音 ${p.echo} − 伤痕 ${p.scars} = ${M.score(p)}分`;
  $('zones').textContent='暂时放下：'+(p.discard.map(M.cardName).join('、')||'无')+'；真正遗忘：'+(p.forgotten.map(M.cardName).join('、')||'无')+'；遗赠：'+(p.rested.map(r=>M.GODS[r.god].name+(r.used?'（已用尽）':'（尚在）')).join('、')||'无');
- $('actionTitle').textContent=ended?'火已渐息':who!==0?'听火声，等候片刻':g.pending?'守住，还是让出':g.step==='aux'?'你愿付出什么':g.step==='main'?'今夜，你如何回应':'哪些记忆留在心中';
+ $('actionTitle').textContent=ended?'火已渐息':who!==0?'听火声，等候片刻':g.pending?'守住，还是让出':g.step==='aux'?'辅助行动 · 可跳过':g.step==='main'?'主行动 · 选择一次':p.hand.length>5?`整理记忆 · 还需放下${p.hand.length-5}张`:'本回合完成 · 交棒';
+ const jump=$('turnJump');if(jump){jump.hidden=ended||who!==0||spectate;jump.textContent=g.pending?'回应争夺 ↓':g.step==='cleanup'?'整理与交棒 ↓':'前往行动 ↓';}
  const actions=ended||who!==0||spectate?[]:M.legal(g),types=[...new Set(actions.map(a=>a.type))];if(!types.includes(filter))filter=types.includes('offer')?'offer':types.includes('skip')?'skip':types[0];
- $('filters').replaceChildren(...types.map(t=>{const b=node('button',names[t],t===filter?'selected':'');b.onclick=()=>{filter=t;render();};return b;}));
+ $('filters').replaceChildren(...(types.length>1?types:[]).map(t=>{const b=node('button',names[t],t===filter?'selected':'');b.setAttribute('aria-pressed',String(t===filter));b.onclick=()=>{filter=t;render();};return b;}));
  $('selection').replaceChildren();if(selected){const b=node('button','放回手中');b.onclick=()=>{selected=null;render();};$('selection').append(b);}
- const visible=actions.filter(a=>a.type===filter&&(!selected||a.card===selected||a.extra===selected||a.cards?.includes(selected)||!['power','burn','offer','contest','rest','trim','defend'].includes(a.type)));
- $('actions').replaceChildren(...visible.map(a=>{const b=node('button',a.label);b.onclick=()=>{if(a.type==='burn'&&!confirm('这张记忆将永远离开，你留下1点伤痕（−1分）。仍要燃忆吗？'))return;apply(a.id);};return b;}));
+ // 先按具体手牌筛选，再合并相同文案；保留该实体牌对应的合法行动ID。
+ const matching=actions.filter(a=>a.type===filter&&(!selected||a.card===selected||a.extra===selected||a.cards?.includes(selected)||!['power','burn','offer','contest','rest','trim','defend'].includes(a.type)));
+ const seen=new Set(),visible=matching.filter(a=>{if(seen.has(a.label))return false;seen.add(a.label);return true;});
+ $('actions').replaceChildren(...visible.map(a=>{const b=node('button',a.label+(a.type==='awaken'?' · '+awakeningPreview(a.seat):''));b.onclick=()=>{if(a.type==='burn'&&!confirm('这张记忆将永远离开，你留下1点伤痕（−1分）。仍要燃忆吗？'))return;apply(a.id);};return b;}));
  if(actions.length&&!visible.length)$('actions').append(node('p','这段记忆此刻无法这样使用。可以换一个行动，或把它放回手中。'));
  $('events').replaceChildren(...g.events.slice(-12).reverse().map(e=>node('li',`第${e.round}更 · ${e.text}`)));
  $('ending').replaceChildren();if(ended){const best=Math.max(...g.players.map(M.score));$('ending').append(node('p',g.failed?'四座神座俱毁，这一夜无人胜出。':g.players.filter(p=>M.score(p)===best).map(p=>p.name).join('、')+'留下最多余火，得分：'+best+'。'));for(const e of M.epilogue(g))$('ending').append(node('div',e.text));}
