@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "cards": 201,
+  "printedFaces": 402,
+  "pages": 50,
+  "artFilesVerified": 24,
+  "narrativeIdentities": 12,
+  "checks": [
+    "正背数量与配对一致",
+    "隐藏牌背哈希一致",
+    "版本文字隔离",
+    "图片哈希与引用",
+    "本地链接",
+    "残章与余韵长度",
+    "无cover裁切"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "date": "2026-09-10",
+  "surface": "Codex 内置 Chromium 浏览器",
+  "pages": 50,
+  "cardFaces": 402,
+  "overflowCount": 0,
+  "brokenImages": 0,
+  "nonContainArt": 0,
+  "minimumRuleFontPt": 9,
+  "fragmentFontPt": 10,
+  "minimumContentMarginMm": 10,
+  "geometryToleranceMm": 0.01,
+  "visualReview": "全套分页缩略总览；代表神牌、残章、面板另作可读尺寸检查；翻面按钮验证成功。",
+  "physicalCanonG3812Print": "尚未进行",
+  "printDialogPagination": "依据固定 A4 CSS 与浏览器页面几何检查，未以实体打印或自动双面套准替代验收。"
+}

@@ -1,0 +1,1332 @@
+{
+  "editions": {
+    "v12": {
+      "count": 146,
+      "pagesPerSide": 15,
+      "kinds": {
+        "gods": 12,
+        "small": 72,
+        "panels": 6,
+        "bits": 56
+      },
+      "cards": [
+        {
+          "id": "god01",
+          "kind": "gods",
+          "hidden": null,
+          "backHash": "49921570be50e349a11746643355145a09d5cf0f5de62522e4bea63886fa52f5"
+        },
+        {
+          "id": "god02",
+          "kind": "gods",
+          "hidden": null,
+          "backHash": "70ef63def1dfcc22cadf78c78ef4722408210ccb21f32921f5e8f1512d0d3f78"
+        },
+        {
+          "id": "god03",
+          "kind": "gods",
+          "hidden": null,
+          "backHash": "4ef461f293556f1ba915e63db3332fef68b22125a8b64814f13b9ef0b31ef4e8"
+        },
+        {
+          "id": "god04",
+          "kind": "gods",
+          "hidden": null,
+          "backHash": "d22007343275e6c5acf57495989ba20ef71bf5de4dadba7849fc2bc729e487f8"
+        },
+        {
+          "id": "god05",
+          "kind": "gods",
+          "hidden": null,
+          "backHash": "68793df12f7f2462ff218274bf7ba428ddde971cca4e652cbc7ff11a2a00f3f5"
+        },
+        {
+          "id": "god06",
+          "kind": "gods",
+          "hidden": null,
+          "backHash": "1cac3ba1b57e9971b7df75996c6b3abec41c457ea9a64b26cc4f723ecf5a4e1b"
+        },
+        {
+          "id": "god07",
+          "kind": "gods",
+          "hidden": null,
+          "backHash": "2142c9477f8a68a3e479e7d5662b10065d4c41761763d563ce322485dcd142b5"
+        },
+        {
+          "id": "god08",
+          "kind": "gods",
+          "hidden": null,
+          "backHash": "b2ff2fab0930dfb40234c85cef486099d8a8895be9a03cbaf0e17460ffa9ccaa"
+        },
+        {
+          "id": "god09",
+          "kind": "gods",
+          "hidden": null,
+          "backHash": "e83bfcaf0b3e9348d5a465dd283d98a2b6e0083156f5ad54037e51d59028a3c3"
+        },
+        {
+          "id": "god10",
+          "kind": "gods",
+          "hidden": null,
+          "backHash": "d84fef73972c7ad2c0064148ffdcea7702f92b1375271eee5427604d86fd6b09"
+        },
+        {
+          "id": "god11",
+          "kind": "gods",
+          "hidden": null,
+          "backHash": "81350ed643e0501716b00c1fe45134c55a5a4cbe9288a73af323846d887e1258"
+        },
+        {
+          "id": "god12",
+          "kind": "gods",
+          "hidden": null,
+          "backHash": "a86557366b5023b2545bc9d57eb1a46b6ae2d41ac22e8599cb92e26ff6db8525"
+        },
+        {
+          "id": "storm01",
+          "kind": "small",
+          "hidden": "storm",
+          "backHash": "1ea91a0bc33b8e2be25cae43700c1ba49c3f8cc82f1d6c275f84a5a8f2116534"
+        },
+        {
+          "id": "storm02",
+          "kind": "small",
+          "hidden": "storm",
+          "backHash": "1ea91a0bc33b8e2be25cae43700c1ba49c3f8cc82f1d6c275f84a5a8f2116534"
+        },
+        {
+          "id": "storm03",
+          "kind": "small",
+          "hidden": "storm",
+          "backHash": "1ea91a0bc33b8e2be25cae43700c1ba49c3f8cc82f1d6c275f84a5a8f2116534"
+        },
+        {
+          "id": "storm04",
+          "kind": "small",
+          "hidden": "storm",
+          "backHash": "1ea91a0bc33b8e2be25cae43700c1ba49c3f8cc82f1d6c275f84a5a8f2116534"
+        },
+        {
+          "id": "storm05",
+          "kind": "small",
+          "hidden": "storm",
+          "backHash": "1ea91a0bc33b8e2be25cae43700c1ba49c3f8cc82f1d6c275f84a5a8f2116534"
+        },
+        {
+          "id": "storm06",
+          "kind": "small",
+          "hidden": "storm",
+          "backHash": "1ea91a0bc33b8e2be25cae43700c1ba49c3f8cc82f1d6c275f84a5a8f2116534"
+        },
+        {
+          "id": "storm07",
+          "kind": "small",
+          "hidden": "storm",
+          "backHash": "1ea91a0bc33b8e2be25cae43700c1ba49c3f8cc82f1d6c275f84a5a8f2116534"
+        },
+        {
+          "id": "storm08",
+          "kind": "small",
+          "hidden": "storm",
+          "backHash": "1ea91a0bc33b8e2be25cae43700c1ba49c3f8cc82f1d6c275f84a5a8f2116534"
+        },
+        {
+          "id": "storm09",
+          "kind": "small",
+          "hidden": "storm",
+          "backHash": "1ea91a0bc33b8e2be25cae43700c1ba49c3f8cc82f1d6c275f84a5a8f2116534"
+        },
+        {
+          "id": "storm10",
+          "kind": "small",
+          "hidden": "storm",
+          "backHash": "1ea91a0bc33b8e2be25cae43700c1ba49c3f8cc82f1d6c275f84a5a8f2116534"
+        },
+        {
+          "id": "storm11",
+          "kind": "small",
+          "hidden": "storm",
+          "backHash": "1ea91a0bc33b8e2be25cae43700c1ba49c3f8cc82f1d6c275f84a5a8f2116534"
+        },
+        {
+          "id": "storm12",
+          "kind": "small",
+          "hidden": "storm",
+          "backHash": "1ea91a0bc33b8e2be25cae43700c1ba49c3f8cc82f1d6c275f84a5a8f2116534"
+        },
+        {
+          "id": "bone0",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "c3f803f36b848fab34bfb7edbfa150ecc2f39e5bdc008d8be316381ec07f1935"
+        },
+        {
+          "id": "bone1",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "c3f803f36b848fab34bfb7edbfa150ecc2f39e5bdc008d8be316381ec07f1935"
+        },
+        {
+          "id": "bone2",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "c3f803f36b848fab34bfb7edbfa150ecc2f39e5bdc008d8be316381ec07f1935"
+        },
+        {
+          "id": "bone3",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "c3f803f36b848fab34bfb7edbfa150ecc2f39e5bdc008d8be316381ec07f1935"
+        },
+        {
+          "id": "bone4",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "c3f803f36b848fab34bfb7edbfa150ecc2f39e5bdc008d8be316381ec07f1935"
+        },
+        {
+          "id": "bone5",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "c3f803f36b848fab34bfb7edbfa150ecc2f39e5bdc008d8be316381ec07f1935"
+        },
+        {
+          "id": "bone6",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "c3f803f36b848fab34bfb7edbfa150ecc2f39e5bdc008d8be316381ec07f1935"
+        },
+        {
+          "id": "bone7",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "c3f803f36b848fab34bfb7edbfa150ecc2f39e5bdc008d8be316381ec07f1935"
+        },
+        {
+          "id": "bone8",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "c3f803f36b848fab34bfb7edbfa150ecc2f39e5bdc008d8be316381ec07f1935"
+        },
+        {
+          "id": "bone9",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "c3f803f36b848fab34bfb7edbfa150ecc2f39e5bdc008d8be316381ec07f1935"
+        },
+        {
+          "id": "bone10",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "c3f803f36b848fab34bfb7edbfa150ecc2f39e5bdc008d8be316381ec07f1935"
+        },
+        {
+          "id": "bone11",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "c3f803f36b848fab34bfb7edbfa150ecc2f39e5bdc008d8be316381ec07f1935"
+        },
+        {
+          "id": "wind0",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "c3f803f36b848fab34bfb7edbfa150ecc2f39e5bdc008d8be316381ec07f1935"
+        },
+        {
+          "id": "wind1",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "c3f803f36b848fab34bfb7edbfa150ecc2f39e5bdc008d8be316381ec07f1935"
+        },
+        {
+          "id": "wind2",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "c3f803f36b848fab34bfb7edbfa150ecc2f39e5bdc008d8be316381ec07f1935"
+        },
+        {
+          "id": "wind3",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "c3f803f36b848fab34bfb7edbfa150ecc2f39e5bdc008d8be316381ec07f1935"
+        },
+        {
+          "id": "wind4",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "c3f803f36b848fab34bfb7edbfa150ecc2f39e5bdc008d8be316381ec07f1935"
+        },
+        {
+          "id": "wind5",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "c3f803f36b848fab34bfb7edbfa150ecc2f39e5bdc008d8be316381ec07f1935"
+        },
+        {
+          "id": "wind6",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "c3f803f36b848fab34bfb7edbfa150ecc2f39e5bdc008d8be316381ec07f1935"
+        },
+        {
+          "id": "wind7",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "c3f803f36b848fab34bfb7edbfa150ecc2f39e5bdc008d8be316381ec07f1935"
+        },
+        {
+          "id": "wind8",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "c3f803f36b848fab34bfb7edbfa150ecc2f39e5bdc008d8be316381ec07f1935"
+        },
+        {
+          "id": "wind9",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "c3f803f36b848fab34bfb7edbfa150ecc2f39e5bdc008d8be316381ec07f1935"
+        },
+        {
+          "id": "wind10",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "c3f803f36b848fab34bfb7edbfa150ecc2f39e5bdc008d8be316381ec07f1935"
+        },
+        {
+          "id": "wind11",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "c3f803f36b848fab34bfb7edbfa150ecc2f39e5bdc008d8be316381ec07f1935"
+        },
+        {
+          "id": "tide0",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "c3f803f36b848fab34bfb7edbfa150ecc2f39e5bdc008d8be316381ec07f1935"
+        },
+        {
+          "id": "tide1",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "c3f803f36b848fab34bfb7edbfa150ecc2f39e5bdc008d8be316381ec07f1935"
+        },
+        {
+          "id": "tide2",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "c3f803f36b848fab34bfb7edbfa150ecc2f39e5bdc008d8be316381ec07f1935"
+        },
+        {
+          "id": "tide3",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "c3f803f36b848fab34bfb7edbfa150ecc2f39e5bdc008d8be316381ec07f1935"
+        },
+        {
+          "id": "tide4",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "c3f803f36b848fab34bfb7edbfa150ecc2f39e5bdc008d8be316381ec07f1935"
+        },
+        {
+          "id": "tide5",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "c3f803f36b848fab34bfb7edbfa150ecc2f39e5bdc008d8be316381ec07f1935"
+        },
+        {
+          "id": "tide6",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "c3f803f36b848fab34bfb7edbfa150ecc2f39e5bdc008d8be316381ec07f1935"
+        },
+        {
+          "id": "tide7",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "c3f803f36b848fab34bfb7edbfa150ecc2f39e5bdc008d8be316381ec07f1935"
+        },
+        {
+          "id": "tide8",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "c3f803f36b848fab34bfb7edbfa150ecc2f39e5bdc008d8be316381ec07f1935"
+        },
+        {
+          "id": "tide9",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "c3f803f36b848fab34bfb7edbfa150ecc2f39e5bdc008d8be316381ec07f1935"
+        },
+        {
+          "id": "tide10",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "c3f803f36b848fab34bfb7edbfa150ecc2f39e5bdc008d8be316381ec07f1935"
+        },
+        {
+          "id": "tide11",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "c3f803f36b848fab34bfb7edbfa150ecc2f39e5bdc008d8be316381ec07f1935"
+        },
+        {
+          "id": "fire0",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "c3f803f36b848fab34bfb7edbfa150ecc2f39e5bdc008d8be316381ec07f1935"
+        },
+        {
+          "id": "fire1",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "c3f803f36b848fab34bfb7edbfa150ecc2f39e5bdc008d8be316381ec07f1935"
+        },
+        {
+          "id": "fire2",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "c3f803f36b848fab34bfb7edbfa150ecc2f39e5bdc008d8be316381ec07f1935"
+        },
+        {
+          "id": "fire3",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "c3f803f36b848fab34bfb7edbfa150ecc2f39e5bdc008d8be316381ec07f1935"
+        },
+        {
+          "id": "fire4",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "c3f803f36b848fab34bfb7edbfa150ecc2f39e5bdc008d8be316381ec07f1935"
+        },
+        {
+          "id": "fire5",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "c3f803f36b848fab34bfb7edbfa150ecc2f39e5bdc008d8be316381ec07f1935"
+        },
+        {
+          "id": "fire6",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "c3f803f36b848fab34bfb7edbfa150ecc2f39e5bdc008d8be316381ec07f1935"
+        },
+        {
+          "id": "fire7",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "c3f803f36b848fab34bfb7edbfa150ecc2f39e5bdc008d8be316381ec07f1935"
+        },
+        {
+          "id": "fire8",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "c3f803f36b848fab34bfb7edbfa150ecc2f39e5bdc008d8be316381ec07f1935"
+        },
+        {
+          "id": "fire9",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "c3f803f36b848fab34bfb7edbfa150ecc2f39e5bdc008d8be316381ec07f1935"
+        },
+        {
+          "id": "fire10",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "c3f803f36b848fab34bfb7edbfa150ecc2f39e5bdc008d8be316381ec07f1935"
+        },
+        {
+          "id": "fire11",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "c3f803f36b848fab34bfb7edbfa150ecc2f39e5bdc008d8be316381ec07f1935"
+        },
+        {
+          "id": "star0",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "c3f803f36b848fab34bfb7edbfa150ecc2f39e5bdc008d8be316381ec07f1935"
+        },
+        {
+          "id": "star1",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "c3f803f36b848fab34bfb7edbfa150ecc2f39e5bdc008d8be316381ec07f1935"
+        },
+        {
+          "id": "star2",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "c3f803f36b848fab34bfb7edbfa150ecc2f39e5bdc008d8be316381ec07f1935"
+        },
+        {
+          "id": "star3",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "c3f803f36b848fab34bfb7edbfa150ecc2f39e5bdc008d8be316381ec07f1935"
+        },
+        {
+          "id": "star4",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "c3f803f36b848fab34bfb7edbfa150ecc2f39e5bdc008d8be316381ec07f1935"
+        },
+        {
+          "id": "star5",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "c3f803f36b848fab34bfb7edbfa150ecc2f39e5bdc008d8be316381ec07f1935"
+        },
+        {
+          "id": "star6",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "c3f803f36b848fab34bfb7edbfa150ecc2f39e5bdc008d8be316381ec07f1935"
+        },
+        {
+          "id": "star7",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "c3f803f36b848fab34bfb7edbfa150ecc2f39e5bdc008d8be316381ec07f1935"
+        },
+        {
+          "id": "star8",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "c3f803f36b848fab34bfb7edbfa150ecc2f39e5bdc008d8be316381ec07f1935"
+        },
+        {
+          "id": "star9",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "c3f803f36b848fab34bfb7edbfa150ecc2f39e5bdc008d8be316381ec07f1935"
+        },
+        {
+          "id": "star10",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "c3f803f36b848fab34bfb7edbfa150ecc2f39e5bdc008d8be316381ec07f1935"
+        },
+        {
+          "id": "star11",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "c3f803f36b848fab34bfb7edbfa150ecc2f39e5bdc008d8be316381ec07f1935"
+        },
+        {
+          "id": "shaman01",
+          "kind": "panels",
+          "hidden": null,
+          "backHash": "19af27b0e9c38536add6fd82232920ded71723510538844eec376b71268d3247"
+        },
+        {
+          "id": "shaman02",
+          "kind": "panels",
+          "hidden": null,
+          "backHash": "19af27b0e9c38536add6fd82232920ded71723510538844eec376b71268d3247"
+        },
+        {
+          "id": "shaman03",
+          "kind": "panels",
+          "hidden": null,
+          "backHash": "19af27b0e9c38536add6fd82232920ded71723510538844eec376b71268d3247"
+        },
+        {
+          "id": "shaman04",
+          "kind": "panels",
+          "hidden": null,
+          "backHash": "19af27b0e9c38536add6fd82232920ded71723510538844eec376b71268d3247"
+        },
+        {
+          "id": "shaman05",
+          "kind": "panels",
+          "hidden": null,
+          "backHash": "19af27b0e9c38536add6fd82232920ded71723510538844eec376b71268d3247"
+        },
+        {
+          "id": "shaman06",
+          "kind": "panels",
+          "hidden": null,
+          "backHash": "19af27b0e9c38536add6fd82232920ded71723510538844eec376b71268d3247"
+        },
+        {
+          "id": "渡魂人0",
+          "kind": "bits",
+          "hidden": null,
+          "backHash": "770a294f5dbf79103f9812bd9200e861cc9d44e940161a9eb08b770690fa78c8"
+        },
+        {
+          "id": "渡魂人1",
+          "kind": "bits",
+          "hidden": null,
+          "backHash": "770a294f5dbf79103f9812bd9200e861cc9d44e940161a9eb08b770690fa78c8"
+        },
+        {
+          "id": "渡魂人2",
+          "kind": "bits",
+          "hidden": null,
+          "backHash": "770a294f5dbf79103f9812bd9200e861cc9d44e940161a9eb08b770690fa78c8"
+        },
+        {
+          "id": "渡魂人3",
+          "kind": "bits",
+          "hidden": null,
+          "backHash": "770a294f5dbf79103f9812bd9200e861cc9d44e940161a9eb08b770690fa78c8"
+        },
+        {
+          "id": "听冬者0",
+          "kind": "bits",
+          "hidden": null,
+          "backHash": "770a294f5dbf79103f9812bd9200e861cc9d44e940161a9eb08b770690fa78c8"
+        },
+        {
+          "id": "听冬者1",
+          "kind": "bits",
+          "hidden": null,
+          "backHash": "770a294f5dbf79103f9812bd9200e861cc9d44e940161a9eb08b770690fa78c8"
+        },
+        {
+          "id": "听冬者2",
+          "kind": "bits",
+          "hidden": null,
+          "backHash": "770a294f5dbf79103f9812bd9200e861cc9d44e940161a9eb08b770690fa78c8"
+        },
+        {
+          "id": "听冬者3",
+          "kind": "bits",
+          "hidden": null,
+          "backHash": "770a294f5dbf79103f9812bd9200e861cc9d44e940161a9eb08b770690fa78c8"
+        },
+        {
+          "id": "刻骨者0",
+          "kind": "bits",
+          "hidden": null,
+          "backHash": "770a294f5dbf79103f9812bd9200e861cc9d44e940161a9eb08b770690fa78c8"
+        },
+        {
+          "id": "刻骨者1",
+          "kind": "bits",
+          "hidden": null,
+          "backHash": "770a294f5dbf79103f9812bd9200e861cc9d44e940161a9eb08b770690fa78c8"
+        },
+        {
+          "id": "刻骨者2",
+          "kind": "bits",
+          "hidden": null,
+          "backHash": "770a294f5dbf79103f9812bd9200e861cc9d44e940161a9eb08b770690fa78c8"
+        },
+        {
+          "id": "刻骨者3",
+          "kind": "bits",
+          "hidden": null,
+          "backHash": "770a294f5dbf79103f9812bd9200e861cc9d44e940161a9eb08b770690fa78c8"
+        },
+        {
+          "id": "守火人0",
+          "kind": "bits",
+          "hidden": null,
+          "backHash": "770a294f5dbf79103f9812bd9200e861cc9d44e940161a9eb08b770690fa78c8"
+        },
+        {
+          "id": "守火人1",
+          "kind": "bits",
+          "hidden": null,
+          "backHash": "770a294f5dbf79103f9812bd9200e861cc9d44e940161a9eb08b770690fa78c8"
+        },
+        {
+          "id": "守火人2",
+          "kind": "bits",
+          "hidden": null,
+          "backHash": "770a294f5dbf79103f9812bd9200e861cc9d44e940161a9eb08b770690fa78c8"
+        },
+        {
+          "id": "守火人3",
+          "kind": "bits",
+          "hidden": null,
+          "backHash": "770a294f5dbf79103f9812bd9200e861cc9d44e940161a9eb08b770690fa78c8"
+        },
+        {
+          "id": "织名者0",
+          "kind": "bits",
+          "hidden": null,
+          "backHash": "770a294f5dbf79103f9812bd9200e861cc9d44e940161a9eb08b770690fa78c8"
+        },
+        {
+          "id": "织名者1",
+          "kind": "bits",
+          "hidden": null,
+          "backHash": "770a294f5dbf79103f9812bd9200e861cc9d44e940161a9eb08b770690fa78c8"
+        },
+        {
+          "id": "织名者2",
+          "kind": "bits",
+          "hidden": null,
+          "backHash": "770a294f5dbf79103f9812bd9200e861cc9d44e940161a9eb08b770690fa78c8"
+        },
+        {
+          "id": "织名者3",
+          "kind": "bits",
+          "hidden": null,
+          "backHash": "770a294f5dbf79103f9812bd9200e861cc9d44e940161a9eb08b770690fa78c8"
+        },
+        {
+          "id": "问途者0",
+          "kind": "bits",
+          "hidden": null,
+          "backHash": "770a294f5dbf79103f9812bd9200e861cc9d44e940161a9eb08b770690fa78c8"
+        },
+        {
+          "id": "问途者1",
+          "kind": "bits",
+          "hidden": null,
+          "backHash": "770a294f5dbf79103f9812bd9200e861cc9d44e940161a9eb08b770690fa78c8"
+        },
+        {
+          "id": "问途者2",
+          "kind": "bits",
+          "hidden": null,
+          "backHash": "770a294f5dbf79103f9812bd9200e861cc9d44e940161a9eb08b770690fa78c8"
+        },
+        {
+          "id": "问途者3",
+          "kind": "bits",
+          "hidden": null,
+          "backHash": "770a294f5dbf79103f9812bd9200e861cc9d44e940161a9eb08b770690fa78c8"
+        },
+        {
+          "id": "风化0",
+          "kind": "bits",
+          "hidden": null,
+          "backHash": "770a294f5dbf79103f9812bd9200e861cc9d44e940161a9eb08b770690fa78c8"
+        },
+        {
+          "id": "风化1",
+          "kind": "bits",
+          "hidden": null,
+          "backHash": "770a294f5dbf79103f9812bd9200e861cc9d44e940161a9eb08b770690fa78c8"
+        },
+        {
+          "id": "风化2",
+          "kind": "bits",
+          "hidden": null,
+          "backHash": "770a294f5dbf79103f9812bd9200e861cc9d44e940161a9eb08b770690fa78c8"
+        },
+        {
+          "id": "风化3",
+          "kind": "bits",
+          "hidden": null,
+          "backHash": "770a294f5dbf79103f9812bd9200e861cc9d44e940161a9eb08b770690fa78c8"
+        },
+        {
+          "id": "风化4",
+          "kind": "bits",
+          "hidden": null,
+          "backHash": "770a294f5dbf79103f9812bd9200e861cc9d44e940161a9eb08b770690fa78c8"
+        },
+        {
+          "id": "风化5",
+          "kind": "bits",
+          "hidden": null,
+          "backHash": "770a294f5dbf79103f9812bd9200e861cc9d44e940161a9eb08b770690fa78c8"
+        },
+        {
+          "id": "风化6",
+          "kind": "bits",
+          "hidden": null,
+          "backHash": "770a294f5dbf79103f9812bd9200e861cc9d44e940161a9eb08b770690fa78c8"
+        },
+        {
+          "id": "风化7",
+          "kind": "bits",
+          "hidden": null,
+          "backHash": "770a294f5dbf79103f9812bd9200e861cc9d44e940161a9eb08b770690fa78c8"
+        },
+        {
+          "id": "风化8",
+          "kind": "bits",
+          "hidden": null,
+          "backHash": "770a294f5dbf79103f9812bd9200e861cc9d44e940161a9eb08b770690fa78c8"
+        },
+        {
+          "id": "风化9",
+          "kind": "bits",
+          "hidden": null,
+          "backHash": "770a294f5dbf79103f9812bd9200e861cc9d44e940161a9eb08b770690fa78c8"
+        },
+        {
+          "id": "风化10",
+          "kind": "bits",
+          "hidden": null,
+          "backHash": "770a294f5dbf79103f9812bd9200e861cc9d44e940161a9eb08b770690fa78c8"
+        },
+        {
+          "id": "风化11",
+          "kind": "bits",
+          "hidden": null,
+          "backHash": "770a294f5dbf79103f9812bd9200e861cc9d44e940161a9eb08b770690fa78c8"
+        },
+        {
+          "id": "风化12",
+          "kind": "bits",
+          "hidden": null,
+          "backHash": "770a294f5dbf79103f9812bd9200e861cc9d44e940161a9eb08b770690fa78c8"
+        },
+        {
+          "id": "风化13",
+          "kind": "bits",
+          "hidden": null,
+          "backHash": "770a294f5dbf79103f9812bd9200e861cc9d44e940161a9eb08b770690fa78c8"
+        },
+        {
+          "id": "风化14",
+          "kind": "bits",
+          "hidden": null,
+          "backHash": "770a294f5dbf79103f9812bd9200e861cc9d44e940161a9eb08b770690fa78c8"
+        },
+        {
+          "id": "风化15",
+          "kind": "bits",
+          "hidden": null,
+          "backHash": "770a294f5dbf79103f9812bd9200e861cc9d44e940161a9eb08b770690fa78c8"
+        },
+        {
+          "id": "风化16",
+          "kind": "bits",
+          "hidden": null,
+          "backHash": "770a294f5dbf79103f9812bd9200e861cc9d44e940161a9eb08b770690fa78c8"
+        },
+        {
+          "id": "风化17",
+          "kind": "bits",
+          "hidden": null,
+          "backHash": "770a294f5dbf79103f9812bd9200e861cc9d44e940161a9eb08b770690fa78c8"
+        },
+        {
+          "id": "心智0",
+          "kind": "bits",
+          "hidden": null,
+          "backHash": "770a294f5dbf79103f9812bd9200e861cc9d44e940161a9eb08b770690fa78c8"
+        },
+        {
+          "id": "心智1",
+          "kind": "bits",
+          "hidden": null,
+          "backHash": "770a294f5dbf79103f9812bd9200e861cc9d44e940161a9eb08b770690fa78c8"
+        },
+        {
+          "id": "心智2",
+          "kind": "bits",
+          "hidden": null,
+          "backHash": "770a294f5dbf79103f9812bd9200e861cc9d44e940161a9eb08b770690fa78c8"
+        },
+        {
+          "id": "心智3",
+          "kind": "bits",
+          "hidden": null,
+          "backHash": "770a294f5dbf79103f9812bd9200e861cc9d44e940161a9eb08b770690fa78c8"
+        },
+        {
+          "id": "心智4",
+          "kind": "bits",
+          "hidden": null,
+          "backHash": "770a294f5dbf79103f9812bd9200e861cc9d44e940161a9eb08b770690fa78c8"
+        },
+        {
+          "id": "心智5",
+          "kind": "bits",
+          "hidden": null,
+          "backHash": "770a294f5dbf79103f9812bd9200e861cc9d44e940161a9eb08b770690fa78c8"
+        },
+        {
+          "id": "禁忌0",
+          "kind": "bits",
+          "hidden": null,
+          "backHash": "770a294f5dbf79103f9812bd9200e861cc9d44e940161a9eb08b770690fa78c8"
+        },
+        {
+          "id": "禁忌1",
+          "kind": "bits",
+          "hidden": null,
+          "backHash": "770a294f5dbf79103f9812bd9200e861cc9d44e940161a9eb08b770690fa78c8"
+        },
+        {
+          "id": "禁忌2",
+          "kind": "bits",
+          "hidden": null,
+          "backHash": "770a294f5dbf79103f9812bd9200e861cc9d44e940161a9eb08b770690fa78c8"
+        },
+        {
+          "id": "禁忌3",
+          "kind": "bits",
+          "hidden": null,
+          "backHash": "770a294f5dbf79103f9812bd9200e861cc9d44e940161a9eb08b770690fa78c8"
+        },
+        {
+          "id": "seat1",
+          "kind": "bits",
+          "hidden": null,
+          "backHash": "770a294f5dbf79103f9812bd9200e861cc9d44e940161a9eb08b770690fa78c8"
+        },
+        {
+          "id": "seat2",
+          "kind": "bits",
+          "hidden": null,
+          "backHash": "770a294f5dbf79103f9812bd9200e861cc9d44e940161a9eb08b770690fa78c8"
+        },
+        {
+          "id": "seat3",
+          "kind": "bits",
+          "hidden": null,
+          "backHash": "770a294f5dbf79103f9812bd9200e861cc9d44e940161a9eb08b770690fa78c8"
+        },
+        {
+          "id": "seat4",
+          "kind": "bits",
+          "hidden": null,
+          "backHash": "770a294f5dbf79103f9812bd9200e861cc9d44e940161a9eb08b770690fa78c8"
+        }
+      ]
+    },
+    "m04": {
+      "count": 55,
+      "pagesPerSide": 10,
+      "kinds": {
+        "gods": 4,
+        "small": 46,
+        "panels": 5,
+        "bits": 0
+      },
+      "cards": [
+        {
+          "id": "god01",
+          "kind": "gods",
+          "hidden": null,
+          "backHash": "feb0929d6696b72fbd3ada401596d8a3c358685f03c3ca7ecce02bc55f190d6f"
+        },
+        {
+          "id": "god03",
+          "kind": "gods",
+          "hidden": null,
+          "backHash": "a0f10f7b12f544be8974f87aa29bc6e82051490fa8ce38af4a111a73c91c741c"
+        },
+        {
+          "id": "god05",
+          "kind": "gods",
+          "hidden": null,
+          "backHash": "350e4b9e95e494578f0d292b94d689190d46e26d6465f547e5bbc3b8009d914f"
+        },
+        {
+          "id": "god10",
+          "kind": "gods",
+          "hidden": null,
+          "backHash": "1e014649849a07e7a5a2a48396031bb3257cd8686b9341ea7ffa7b64f9b34d37"
+        },
+        {
+          "id": "甲bone0",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "362ee05668bc75e07ec6e5eb02825f3ba60956545eb32f012108baaa90ff5085"
+        },
+        {
+          "id": "甲bone1",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "362ee05668bc75e07ec6e5eb02825f3ba60956545eb32f012108baaa90ff5085"
+        },
+        {
+          "id": "甲wind0",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "362ee05668bc75e07ec6e5eb02825f3ba60956545eb32f012108baaa90ff5085"
+        },
+        {
+          "id": "甲wind1",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "362ee05668bc75e07ec6e5eb02825f3ba60956545eb32f012108baaa90ff5085"
+        },
+        {
+          "id": "甲tide0",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "362ee05668bc75e07ec6e5eb02825f3ba60956545eb32f012108baaa90ff5085"
+        },
+        {
+          "id": "甲tide1",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "362ee05668bc75e07ec6e5eb02825f3ba60956545eb32f012108baaa90ff5085"
+        },
+        {
+          "id": "甲fire0",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "362ee05668bc75e07ec6e5eb02825f3ba60956545eb32f012108baaa90ff5085"
+        },
+        {
+          "id": "甲fire1",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "362ee05668bc75e07ec6e5eb02825f3ba60956545eb32f012108baaa90ff5085"
+        },
+        {
+          "id": "甲star0",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "362ee05668bc75e07ec6e5eb02825f3ba60956545eb32f012108baaa90ff5085"
+        },
+        {
+          "id": "甲star1",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "362ee05668bc75e07ec6e5eb02825f3ba60956545eb32f012108baaa90ff5085"
+        },
+        {
+          "id": "甲gift01",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "362ee05668bc75e07ec6e5eb02825f3ba60956545eb32f012108baaa90ff5085"
+        },
+        {
+          "id": "甲gift03",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "362ee05668bc75e07ec6e5eb02825f3ba60956545eb32f012108baaa90ff5085"
+        },
+        {
+          "id": "甲gift05",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "362ee05668bc75e07ec6e5eb02825f3ba60956545eb32f012108baaa90ff5085"
+        },
+        {
+          "id": "甲gift10",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "362ee05668bc75e07ec6e5eb02825f3ba60956545eb32f012108baaa90ff5085"
+        },
+        {
+          "id": "乙bone0",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "362ee05668bc75e07ec6e5eb02825f3ba60956545eb32f012108baaa90ff5085"
+        },
+        {
+          "id": "乙bone1",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "362ee05668bc75e07ec6e5eb02825f3ba60956545eb32f012108baaa90ff5085"
+        },
+        {
+          "id": "乙wind0",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "362ee05668bc75e07ec6e5eb02825f3ba60956545eb32f012108baaa90ff5085"
+        },
+        {
+          "id": "乙wind1",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "362ee05668bc75e07ec6e5eb02825f3ba60956545eb32f012108baaa90ff5085"
+        },
+        {
+          "id": "乙tide0",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "362ee05668bc75e07ec6e5eb02825f3ba60956545eb32f012108baaa90ff5085"
+        },
+        {
+          "id": "乙tide1",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "362ee05668bc75e07ec6e5eb02825f3ba60956545eb32f012108baaa90ff5085"
+        },
+        {
+          "id": "乙fire0",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "362ee05668bc75e07ec6e5eb02825f3ba60956545eb32f012108baaa90ff5085"
+        },
+        {
+          "id": "乙fire1",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "362ee05668bc75e07ec6e5eb02825f3ba60956545eb32f012108baaa90ff5085"
+        },
+        {
+          "id": "乙star0",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "362ee05668bc75e07ec6e5eb02825f3ba60956545eb32f012108baaa90ff5085"
+        },
+        {
+          "id": "乙star1",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "362ee05668bc75e07ec6e5eb02825f3ba60956545eb32f012108baaa90ff5085"
+        },
+        {
+          "id": "乙gift01",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "362ee05668bc75e07ec6e5eb02825f3ba60956545eb32f012108baaa90ff5085"
+        },
+        {
+          "id": "乙gift03",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "362ee05668bc75e07ec6e5eb02825f3ba60956545eb32f012108baaa90ff5085"
+        },
+        {
+          "id": "乙gift05",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "362ee05668bc75e07ec6e5eb02825f3ba60956545eb32f012108baaa90ff5085"
+        },
+        {
+          "id": "乙gift10",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "362ee05668bc75e07ec6e5eb02825f3ba60956545eb32f012108baaa90ff5085"
+        },
+        {
+          "id": "丙bone0",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "362ee05668bc75e07ec6e5eb02825f3ba60956545eb32f012108baaa90ff5085"
+        },
+        {
+          "id": "丙bone1",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "362ee05668bc75e07ec6e5eb02825f3ba60956545eb32f012108baaa90ff5085"
+        },
+        {
+          "id": "丙wind0",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "362ee05668bc75e07ec6e5eb02825f3ba60956545eb32f012108baaa90ff5085"
+        },
+        {
+          "id": "丙wind1",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "362ee05668bc75e07ec6e5eb02825f3ba60956545eb32f012108baaa90ff5085"
+        },
+        {
+          "id": "丙tide0",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "362ee05668bc75e07ec6e5eb02825f3ba60956545eb32f012108baaa90ff5085"
+        },
+        {
+          "id": "丙tide1",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "362ee05668bc75e07ec6e5eb02825f3ba60956545eb32f012108baaa90ff5085"
+        },
+        {
+          "id": "丙fire0",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "362ee05668bc75e07ec6e5eb02825f3ba60956545eb32f012108baaa90ff5085"
+        },
+        {
+          "id": "丙fire1",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "362ee05668bc75e07ec6e5eb02825f3ba60956545eb32f012108baaa90ff5085"
+        },
+        {
+          "id": "丙star0",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "362ee05668bc75e07ec6e5eb02825f3ba60956545eb32f012108baaa90ff5085"
+        },
+        {
+          "id": "丙star1",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "362ee05668bc75e07ec6e5eb02825f3ba60956545eb32f012108baaa90ff5085"
+        },
+        {
+          "id": "丙gift01",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "362ee05668bc75e07ec6e5eb02825f3ba60956545eb32f012108baaa90ff5085"
+        },
+        {
+          "id": "丙gift03",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "362ee05668bc75e07ec6e5eb02825f3ba60956545eb32f012108baaa90ff5085"
+        },
+        {
+          "id": "丙gift05",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "362ee05668bc75e07ec6e5eb02825f3ba60956545eb32f012108baaa90ff5085"
+        },
+        {
+          "id": "丙gift10",
+          "kind": "small",
+          "hidden": "memory",
+          "backHash": "362ee05668bc75e07ec6e5eb02825f3ba60956545eb32f012108baaa90ff5085"
+        },
+        {
+          "id": "legacy01",
+          "kind": "small",
+          "hidden": null,
+          "backHash": "298b047bec6e2ca0afb89f140d90b7644d317efc2022f23c0012dac058301c92"
+        },
+        {
+          "id": "legacy03",
+          "kind": "small",
+          "hidden": null,
+          "backHash": "298b047bec6e2ca0afb89f140d90b7644d317efc2022f23c0012dac058301c92"
+        },
+        {
+          "id": "legacy05",
+          "kind": "small",
+          "hidden": null,
+          "backHash": "298b047bec6e2ca0afb89f140d90b7644d317efc2022f23c0012dac058301c92"
+        },
+        {
+          "id": "legacy10",
+          "kind": "small",
+          "hidden": null,
+          "backHash": "298b047bec6e2ca0afb89f140d90b7644d317efc2022f23c0012dac058301c92"
+        },
+        {
+          "id": "甲ledger",
+          "kind": "panels",
+          "hidden": null,
+          "backHash": "c5fefbe72689b4b88b05da6182cb0626cfafb1a98570e40bb2d87956147e4c99"
+        },
+        {
+          "id": "乙ledger",
+          "kind": "panels",
+          "hidden": null,
+          "backHash": "c5fefbe72689b4b88b05da6182cb0626cfafb1a98570e40bb2d87956147e4c99"
+        },
+        {
+          "id": "丙ledger",
+          "kind": "panels",
+          "hidden": null,
+          "backHash": "c5fefbe72689b4b88b05da6182cb0626cfafb1a98570e40bb2d87956147e4c99"
+        },
+        {
+          "id": "clock",
+          "kind": "panels",
+          "hidden": null,
+          "backHash": "1dd11167eb98689b8046a18645dacf49ee2c705af6374cea1a982176b83ca124"
+        },
+        {
+          "id": "response",
+          "kind": "panels",
+          "hidden": null,
+          "backHash": "ed611bf5cdcba70094b769871d45ab4a0daf52625ad3d52891a1b5dd4e4825f5"
+        }
+      ]
+    }
+  },
+  "art": [
+    {
+      "file": "god01.png",
+      "sha256": "14415f13d113f6e7a62d3a6096595e0c1f29f3f434a1241f2c0868a011db754a"
+    },
+    {
+      "file": "god02.png",
+      "sha256": "8569995648345d71c1b2437c98c1e98fbe6e3a91cba79895f32cee806f2ff8e9"
+    },
+    {
+      "file": "god03.png",
+      "sha256": "22d05440bd70ff42eb4dc4cb9f1be48c4adf2aafaadd538f82be6f4d9c40d1d0"
+    },
+    {
+      "file": "god04.png",
+      "sha256": "a2bcc9b6989b3038ed49ce71e6e18902a22a602711c9624072a1ec492cfe866c"
+    },
+    {
+      "file": "god05.png",
+      "sha256": "de4e304e6b7a0340fd51deade935bc226f0dbd843c5a2196c724aa6745f7d8f1"
+    },
+    {
+      "file": "god06.png",
+      "sha256": "13a39834a9a8757bf8b15a512ad9c2743246fac79cc2da93546b071031339e8c"
+    },
+    {
+      "file": "god07.png",
+      "sha256": "10f00d770adb23769f63457a5c28db0622e6edd89377cfc884e495639650dd71"
+    },
+    {
+      "file": "god08.png",
+      "sha256": "c016d561f1916424582af99edc593a4263878f4102cb5b14fd4f4aedd2319655"
+    },
+    {
+      "file": "god09.png",
+      "sha256": "3c3157e6a5f70f31b9bc0d599c3ef1f5a808c94260e11274e50f0b737ba658e4"
+    },
+    {
+      "file": "god10.png",
+      "sha256": "0b4ae8a81e9c67640a6485e6f090263f810bc7225f3bab6ad76c1b9cb9af1989"
+    },
+    {
+      "file": "god11.png",
+      "sha256": "c721123f60e9ab5bfa03999cfa635439503b2bef00eef49c4fa10eb3910ba910"
+    },
+    {
+      "file": "god12.png",
+      "sha256": "3a88597f1e7e3a7b1930cae711e49ad1c5e54761ef9a5c610466c5ad12700f5b"
+    },
+    {
+      "file": "storm01.png",
+      "sha256": "4cf0048f1503ce8648f4db58c26527aaf5a23d11e24d8286cad81e4b345151cd"
+    },
+    {
+      "file": "storm02.png",
+      "sha256": "f50ddea727f223c96b5ffb0f403c3cbd302d0ef73605cab7645f2bb639fcb706"
+    },
+    {
+      "file": "storm03.png",
+      "sha256": "2da2b2acb03d92a288b62118caf5914bc7a2a0b7d046d17e23b37a7ca6a139a6"
+    },
+    {
+      "file": "storm04.png",
+      "sha256": "65d3472119217211457d8dc59cfd1977b2cfb40adf1eb99dff56df862679f71e"
+    },
+    {
+      "file": "storm05.png",
+      "sha256": "c5391cab7f54dcf14fb1a883e269272036740deb703479a894d066ef85afd71e"
+    },
+    {
+      "file": "storm06.png",
+      "sha256": "a3014a6b1ecbae3c344ac5bfc67aa7c057ab221865407377cd57cad55c3c4dc5"
+    },
+    {
+      "file": "storm07.png",
+      "sha256": "e5d46cacd4598bb234180fe4f2ecd79ad72a3241ebad82d27cd5d0b78f4cf767"
+    },
+    {
+      "file": "storm08.png",
+      "sha256": "956dd0f3073c818b11aef849bbbbf17dd24d473cd33da6d15c429555f0ef8183"
+    },
+    {
+      "file": "storm09.png",
+      "sha256": "4952ccb89833e65db318582846fab41ffd044ba6f922a753119d279a97465a20"
+    },
+    {
+      "file": "storm10.png",
+      "sha256": "8cd0f8b9194241937d380e1e4d94451163fa6fa3025c4db40eeb0c3a317ffa89"
+    },
+    {
+      "file": "storm11.png",
+      "sha256": "da40290d10d928794fb4901af9b0af221394da98f8c422a3be44aae257801624"
+    },
+    {
+      "file": "storm12.png",
+      "sha256": "c135b4171823800f1e132f6b3579bc7e21db1c7055183213dfdfb095b5dc8317"
+    }
+  ]
+}
