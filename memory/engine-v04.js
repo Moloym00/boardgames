@@ -5,7 +5,7 @@ const MemoryGame = (() => {
     {name:'毛伊', elements:['骨','潮','风'], image:'god01.webp', effect:'将自己一枚供奉移到另一尊神的同语素空槽。'},
     {name:'贝雅薇', elements:['炎','星','风'], image:'god03.webp', effect:'为一尊在场神移除一点风化。'},
     {name:'火姥神', elements:['骨','炎','星'], image:'god05.webp', effect:'取回自己弃牌中的一张记忆，不能取本次发动的专属记忆。'},
-    {name:'查克', title:'雨与风暴之神', elements:['潮','风','星'], image:'god10.webp', effect:'令一尊零或一点风化的神增加一点风化，然后想起一张。'},
+    {name:'查克', elements:['潮','风','星'], image:'god10.webp', effect:'令一尊零或一点风化的神增加一点风化，然后想起一张。'},
   ];
   const STORMS = [[2],[0,3],[1,2],[0,3],[1,2],[0,1,2,3]];
   function random(g) { g.rng = (Math.imul(1664525,g.rng)+1013904223)>>>0; return g.rng/4294967296; }
