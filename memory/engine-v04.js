@@ -60,7 +60,7 @@ function guardian(g,seat,attacker){
   function cardName(c){return c.god===undefined?`「${c.element}」`:`「${GODS[c.god].name}的记忆」`;}
   function effects(g,who,god){const out=[],p=g.players[who];g.seats.forEach((s,id)=>{if(s.state!=='active')return;if(god===1&&s.weather>0)out.push({effect:'cool',seat:id,text:`为${GODS[id].name}减1风化`});if(god===3&&s.weather<2)out.push({effect:'rain',seat:id,text:`令${GODS[id].name}加1风化，再想起1张`});if(god===0)s.offerings.filter(o=>o.player===who).forEach(o=>{g.seats.forEach((t,j)=>{if(j!==id&&t.state==='active'&&GODS[j].elements.includes(o.element)&&!slot(g,j,o.element))out.push({effect:'move',from:id,seat:j,offer:o.card.id,text:`把「${o.element}」从${GODS[id].name}移至${GODS[j].name}`});});});});if(god===2)p.discard.forEach(c=>out.push({effect:'retrieve',retrieve:c.id,text:`取回${cardName(c)}`}));return out;}
   function runEffect(g,p,a){if(a.effect==='cool')g.seats[a.seat].weather--;if(a.effect==='rain'){g.seats[a.seat].weather++;draw(g,g.turn,1);}if(a.effect==='retrieve'){const k=p.discard.findIndex(c=>c.id===a.retrieve);if(k<0)throw Error('遗失的记忆');p.hand.push(p.discard.splice(k,1)[0]);}if(a.effect==='move'){const s=g.seats[a.from];const k=s.offerings.findIndex(o=>o.card.id===a.offer);g.seats[a.seat].offerings.push(s.offerings.splice(k,1)[0]);}}
-  function act(old,who,id){const a=legal(old,who).find(a=>a.id===String(id));if(!a)throw Error('当前没有这个合法行动');const g=structuredClone(old),p=g.players[who];
+  function resolveAction(old,who,id){const a=legal(old,who).find(a=>a.id===String(id));if(!a)throw Error('当前没有这个合法行动');const g=structuredClone(old),p=g.players[who];
     if(g.pending?.kind==='rest'){
       const q=g.pending,s=g.seats[q.seat];
       if(a.type==='keep'){
@@ -82,6 +82,24 @@ function guardian(g,seat,attacker){
     else {g.step='cleanup';if(a.type==='recall'){const n=draw(g,who,2);event(g,'recall',who,null,`${p.name}想起${n}张记忆。`);}if(a.type==='awaken'){event(g,'invoke',who,a.seat,`${p.name}呼唤${GODS[a.seat].name}的真名。`);settle(g,a.seat);}if(a.type==='watch')event(g,'watch',who,null,`${p.name}选择保留手中的记忆。`);if(a.type==='offer'){g.seats[a.seat].offerings.push({player:who,card:take(p,a.card),element:a.element});event(g,'offer',who,a.seat,`${p.name}为${GODS[a.seat].name}留下「${a.element}」。`);}if(a.type==='contest'){p.discard.push(take(p,a.extra));const c=take(p,a.card),defender=slot(g,a.seat,a.element).player;g.pending={attacker:who,defender,seat:a.seat,element:a.element,card:c};event(g,'contest',who,a.seat,`${p.name}要改写${g.players[defender].name}留下的「${a.element}」，等待回应。`);}if(a.type==='rest'){const s=g.seats[a.seat],defender=guardian(g,a.seat,who);a.cards.forEach(id=>p.discard.push(take(p,id)));
       if(defender!==null){g.pending={kind:'rest',attacker:who,defender,seat:a.seat};event(g,'restAttempt',who,a.seat,`${p.name}付出两张记忆，为${GODS[a.seat].name}安魂；等待${g.players[defender].name}回应。`,{defender,cards:a.cards});}
       else{release(g,s);s.state='rest';p.rested.push({god:a.seat,used:false});event(g,'rest',who,a.seat,`${p.name}为${GODS[a.seat].name}安魂，得到2分与最后馈赠。`);}}}
+    return g;
+  }
+  // 记录已实际支付的神明记忆；不改变合法行动、费用、随机数或时序。
+  function act(old,who,id){
+    const a=legal(old,who).find(a=>a.id===String(id));
+    const g=resolveAction(old,who,id);
+    const paid=[a.card,a.extra,...(a.cards??[])].filter(Boolean);
+    const memories=paid.map(id=>old.players[who].hand.find(c=>c.id===id)).filter(c=>c?.god!==undefined).map(c=>({card:c.id,god:c.god,role:a.extra===c.id?'contestCost':a.type}));
+    if(memories.length){
+      const e=g.events.slice(old.events.length).find(e=>e.who===who);
+      if(e){
+        e.memories=memories;
+        if(['offer','contest','defend','rest'].includes(a.type)){
+          const detail=memories.map(m=>`${cardName({god:m.god})}${m.role==='contestCost'?'作为改写的额外费用暂时放下':a.type==='offer'?`成为${GODS[a.seat].name}的「${a.element}」供奉`:a.type==='contest'?'已付入这次改写尝试':a.type==='defend'?'被暂时放下以守住供奉':'作为安魂费用暂时放下'}`).join('；');
+          e.text+=detail+'。';
+        }
+      }
+    }
     return g;
   }
   function chooseClassic(g,who,policy='balanced'){const p=g.players[who];function value(a){const s=g.seats[a.seat];const own=s?.offerings.filter(o=>o.player===who).length??0;switch(a.type){case 'awaken':return policy==='rest'?55:65;case 'defend':return policy==='peaceful'?0:35;case 'yield':return 10;case 'offer':return 25+own*9+(s.offerings.length===2?12:0);case 'rest':return (policy==='rest'?65:25)+(g.round>=5?12:0)-(own>=2?25:0);case 'contest':return policy==='peaceful'?-5:(policy==='contest'?42:18)+own*12+(s.offerings.length===3?10:0);case 'recall':return p.hand.length<3?40:5;case 'watch':return 0;case 'power':return 20;case 'legacy':return g.round>=3?18:5;case 'burn':return a.effect==='cool'&&s.weather===2&&own>=1?18:-10;case 'skip':return 0;case 'trim':return p.hand.find(c=>c.id===a.card).god===undefined?10:0;default:return 1;}}
@@ -136,16 +154,24 @@ function guardian(g,seat,attacker){
       const struggle=before.filter(e=>['displace','defend'].includes(e.type)).at(-1);
       const call=before.filter(e=>e.type==='invoke').at(-1);
       const weather=fate?.type==='ruin'?before.filter(e=>e.type==='weather').at(-1):null;
-      const after=fate?events.find(e=>e.seq>fate.seq&&['power','legacy'].includes(e.type)):null;
+      const continuations=fate?g.events.filter(e=>e.seq>fate.seq&&((e.god===id&&['power','legacy'].includes(e.type))||e.memories?.some(m=>m.god===id))):[];
+      // 每位持有者的第一次用途、第一次回想与最终永久牺牲，避免只看到能力发动。
+      const later=new Map();
+      for(const e of continuations){
+        const first='first:'+e.who;if(!later.has(first))later.set(first,e);
+        if(['power','legacy'].includes(e.type)){const power='power:'+e.who;if(!later.has(power))later.set(power,e);}
+        if(['burn','restStopped'].includes(e.type))later.set('loss:'+e.who,e);
+      }
+      const after=[...new Map([...later.values()].map(e=>[e.seq,e])).values()].sort((a,b)=>a.seq-b.seq);
       const firstByPlayer=[...new Map(before.filter(e=>e.type==='offer').slice().reverse().map(e=>[e.who,e])).values()];
-      const chosen=[...firstByPlayer,sacrifice,struggle,...farewells,call,weather,fate,after].filter(Boolean);
+      const chosen=[...firstByPlayer,sacrifice,struggle,...farewells,call,weather,fate,...after].filter(Boolean);
       const moments=[...new Map(chosen.map(e=>[e.seq,e])).values()].sort((a,b)=>a.seq-b.seq).map(e=>({seq:e.seq,round:e.round,text:e.text}));
       const title=!fate?`${god.name} · 未被呼出的名字`:fate.type==='communal'?`${god.name} · 众人共同记住`:fate.type==='awake'?`${god.name} · 留在${g.players[fate.who].name}的记忆里`:fate.type==='rest'?`${god.name} · 被送别的神`:`${god.name} · 没能留到天明`;
       const contributors=[...new Set(before.filter(e=>e.type==='offer').map(e=>g.players[e.who].name))];
       const opening=contributors.length?`${contributors.join('、')}曾为${god.name}留下供奉。`:`这一夜，没有人向${god.name}留下供奉。`;
       const resolution=!fate?'直到天明，这个名字仍未被呼出。':fate.type==='awake'&&call&&call.who!==fate.who?`${g.players[call.who].name}呼出了这个名字，${g.players[fate.who].name}得到了神的记忆。`:fate.text;
       const turns=[sacrifice,struggle,...farewells].filter(Boolean).sort((a,b)=>a.seq-b.seq).map(e=>e.text);
-      const narrative=[opening,...turns,resolution,after?.text].filter(Boolean).join('');
+      const narrative=[opening,...turns,resolution,...after.map(e=>e.text)].filter(Boolean).join('');
       return {god:id,title,narrative,moments,unresolved:!fate};
     });
   }
