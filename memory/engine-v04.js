@@ -20,7 +20,7 @@ const MemoryGame = (() => {
   function end(g) { g.phase='ended'; g.failed=!g.seats.some(s=>s.state==='awake'); event(g,'end',null,null,g.failed?'无人唤醒，名字没有传到天明；这一夜无人胜出。':'这一夜已经落定。'); }
   function release(g,s) { for(const o of s.offerings) g.players[o.player].discard.push(o.card); s.offerings=[]; }
   function storm(g) { for(const id of STORMS[g.round-1]) { const s=g.seats[id]; if(s.state!=='active')continue; s.weather++; event(g,'weather',null,id,`${GODS[id].name}的风化升至${s.weather}。`); if(s.weather>=3) { release(g,s);s.state='ruin';event(g,'ruin',null,id,`${GODS[id].name}被世界遗忘，这座神座不再开放。`); } } if(!g.seats.some(s=>s.state==='active'))end(g); }
-  function create(seed=1) { const g={version:'M0.4',rng:seed>>>0,round:1,starter:0,turn:0,acted:0,phase:'turn',step:'aux',pending:null,failed:false,events:[],players:[],seats:GODS.map(()=>({state:'active',weather:0,offerings:[]}))};
+  function create(seed=1) { const g={version:'M0.4',nightSeed:seed>>>0,rng:seed>>>0,round:1,starter:0,turn:0,acted:0,phase:'turn',step:'aux',pending:null,failed:false,events:[],players:[],seats:GODS.map(()=>({state:'active',weather:0,offerings:[]}))};
     for(let i=0;i<3;i++) { const deck=E.flatMap((element,j)=>[0,1].map(n=>({id:`p${i}-${j}-${n}`,element,owner:i})));g.players.push({name:['你','听冬','渡魂'][i],deck:shuffle(g,deck),hand:[],discard:[],forgotten:[],awake:[],rested:[],echo:0,scars:0});draw(g,i,4); }
     storm(g);draw(g,0,1);return g;
   }
@@ -143,7 +143,10 @@ function guardian(g,seat,attacker){
         default:return 1;
       }
     }
-    return all.sort((a,b)=>value(b)-value(a)||Number(a.id)-Number(b.id))[0];
+    // 每夜只轮换同分目标；收益、共同存续与回应优先级仍先比较。
+    const priority=((g.nightSeed??1)+3)%GODS.length;
+    const tie=a=>a.seat===undefined?GODS.length:(a.seat+GODS.length-priority)%GODS.length;
+    return all.sort((a,b)=>value(b)-value(a)||tie(a)-tie(b)||Number(a.id)-Number(b.id))[0];
   }
   function story(g){
     return GODS.map((god,id)=>{
