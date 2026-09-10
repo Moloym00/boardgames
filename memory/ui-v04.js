@@ -12,6 +12,7 @@ function render(){clearTimeout(timer);const ended=g.phase==='ended',who=M.actor(
  let forecast=$('forecast');if(!forecast){forecast=node('p',undefined,'note');forecast.id='forecast';$('gods').before(forecast);}
  const nextStorm=g.round<6?M.STORMS[g.round].filter(id=>g.seats[id].state==='active'):[];
  forecast.textContent=ended?'这一夜的风停了。':!g.seats.some(s=>s.state==='active')?'神已全部离场，本更结束后结算余火。':g.round===6?'最后一更 · 本更结束即天明；未呼名的供奉不计分。':nextStorm.length?'下一更的风 · '+nextStorm.map(id=>`${M.GODS[id].name} ${g.seats[id].weather}→${g.seats[id].weather+1}${g.seats[id].weather===2?'（若不干预，将毁座）':''}`).join('；')+'。按当前状态预告。':'下一更的风不会吹向仍在场的神。';
+ const openedLore=new Set(Array.from($('gods').children||[]).flatMap((c,i)=>c.querySelector?.('details[open]')?[i]:[]));
  const remembered=g.seats.filter(s=>s.state==='awake').length;
  $('mission').textContent=ended?(g.failed?'没有名字传到天明，这一夜共同失败。':`共同守住了${remembered}个名字。`):remembered?`已有${remembered}个名字留下 · 共同目标达成，继续争取余火。`:'共同目标 0/1 · 天明前至少唤醒一尊神；安魂不能替代唤醒。';
  const turning=g.events.filter(e=>['burn','awake','communal','rest','ruin','displace','defend','restStopped','restAllowed'].includes(e.type)).at(-1);
@@ -19,7 +20,15 @@ function render(){clearTimeout(timer);const ended=g.phase==='ended',who=M.actor(
  $('title').textContent=ended?'天将明，名字留下了什么':`第${g.round}更 · ${g.pending?(g.pending.kind==='rest'?'有人要送别神明':'有人要改写供奉'):who===0?'轮到你守夜':g.players[who].name+'正在守夜'}`;
  $('hint').textContent=ended?'火塘已落定，下面记录着这一夜真正发生的事。':g.pending?.kind==='rest'?restHint(who):g.pending?(who===0?'你的供奉正被争夺。付出一张相应记忆守住它，或带着余音让出。':'等待对方回应。'):'名字凑齐之后，仍待一声呼唤。迟疑之间，风还在吹。';
  $('players').replaceChildren(...g.players.map((p,i)=>{const n=node('div',`${p.name} · ${M.score(p)}分 · 手牌${p.hand.length}`, 'player');n.style.setProperty('--ink',colors[i]);n.title=`唤醒 ${p.awake.length}×5 + 安魂 ${p.rested.length}×2 + 余音 ${p.echo} − 伤痕 ${p.scars}`;return n;}));
- $('gods').replaceChildren(...g.seats.map((s,i)=>{const d=M.GODS[i],n=node('article',undefined,'god '+(s.state==='active'?'':s.state==='awake'?'awake':'retired'));n.style.setProperty('--fade',s.state==='ruin'?1:s.state==='awake'?0:s.weather/3);const img=node('img');img.src='./art/'+d.image;img.alt=d.name;const body=node('div',undefined,'body');body.append(node('h2',s.state==='ruin'?'□□□':d.name),node('p',({active:`侵蚀 ${s.weather}/3${s.offerings.length===3?' · 真名齐备，等待呼名':''}`,awake:'名字重新完整',rest:'已送别',ruin:'已被遗忘'})[s.state]));const slots=node('div',undefined,'slots');for(const e of d.elements){const o=s.offerings.find(o=>o.element===e),slot=node('div',e,'slot');slot.append(node('span',o?g.players[o.player].name:s.state==='active'?'空缺':'已归还'));if(o)slot.style.setProperty('--ink',colors[o.player]);slots.append(slot);}body.append(slots,node('p',d.effect));n.append(img,body);return n;}));
+ $('gods').replaceChildren(...g.seats.map((s,i)=>{const d=M.GODS[i],n=node('article',undefined,'god '+(s.state==='active'?'':s.state==='awake'?'awake':'retired'));n.style.setProperty('--fade',s.state==='ruin'?1:s.state==='awake'?0:s.weather/3);const img=node('img');img.src='./art/'+d.image;img.alt=d.name;const body=node('div',undefined,'body');body.append(node('h2',s.state==='ruin'?'□□□':d.name),node('p',({active:`侵蚀 ${s.weather}/3${s.offerings.length===3?' · 真名齐备，等待呼名':''}`,awake:'名字重新完整',rest:'已送别',ruin:'已被遗忘'})[s.state]));const slots=node('div',undefined,'slots');for(const e of d.elements){const o=s.offerings.find(o=>o.element===e),slot=node('div',e,'slot');slot.append(node('span',o?g.players[o.player].name:s.state==='active'?'空缺':'已归还'));if(o)slot.style.setProperty('--ink',colors[o.player]);slots.append(slot);}body.append(slots,node('p',d.effect));
+ if(typeof HearthLore!=='undefined'){
+  const lore=HearthLore.gods[i];
+  // 旧闻始终与操作、当前状态分开，不把静态故事当作本局结果。
+  if(s.state!=='ruin')body.append(node('p',lore.verse,'lore-verse'));
+  const tale=node('details',undefined,'lore-fragment');tale.open=openedLore.has(i);tale.append(node('summary','火塘旧闻'));
+  tale.append(node('small','游戏世界中的残章 · 与本局结局无关'));
+  for(const line of lore.fragments)tale.append(node('p',line));body.append(tale);
+ }n.append(img,body);return n;}));
  if(!p.hand.some(c=>c.id===selected))selected=null;
  $('hand').replaceChildren(...p.hand.map(c=>{const n=node('button',c.god===undefined?c.element:M.GODS[c.god].name+'的记忆','card'+(c.god===undefined?'':' gift')+(selected===c.id?' lifted':''));n.setAttribute('aria-pressed',String(selected===c.id));n.disabled=ended||who!==0||spectate;n.onclick=()=>{selected=selected===c.id?null:c.id;if(typeof HearthAudio!=='undefined'){try{HearthAudio.pick();}catch{}}render();};return n;}));
  $('memory').textContent=`未想起 ${p.deck.length} · 暂时放下 ${p.discard.length} · 真正遗忘 ${p.forgotten.length} ｜ 唤醒 ${p.awake.length}×5 + 安魂 ${p.rested.length}×2 + 余音 ${p.echo} − 伤痕 ${p.scars} = ${M.score(p)}分`;
@@ -28,7 +37,7 @@ function render(){clearTimeout(timer);const ended=g.phase==='ended',who=M.actor(
  const jump=$('turnJump');if(jump){jump.hidden=ended||who!==0||spectate;jump.textContent=g.pending?(g.pending.kind==='rest'?'回应安魂 ↓':'回应争夺 ↓'):g.step==='cleanup'?'整理与交棒 ↓':'前往行动 ↓';}
  const actions=ended||who!==0||spectate?[]:M.legal(g),types=[...new Set(actions.map(a=>a.type))];if(!types.includes(filter))filter=types.includes('offer')?'offer':types.includes('skip')?'skip':types[0];
  $('filters').replaceChildren(...(types.length>1?types:[]).map(t=>{const b=node('button',names[t],t===filter?'selected':'');b.setAttribute('aria-pressed',String(t===filter));b.onclick=()=>{filter=t;render();};return b;}));
- $('selection').replaceChildren();if(selected){const b=node('button','放回手中');b.onclick=()=>{selected=null;render();};$('selection').append(b);}
+ $('selection').replaceChildren();if(selected){const b=node('button','放回手中');b.onclick=()=>{selected=null;render();};$('selection').append(b);if(typeof HearthLore!=='undefined'){const card=p.hand.find(c=>c.id===selected);const line=card?.god===undefined?HearthLore.memory[card?.element]:HearthLore.gods[card.god].verse;if(line)$('selection').append(node('p',line,'lore-verse'));}}
  // 先按具体手牌筛选，再合并相同文案；保留该实体牌对应的合法行动ID。
  const matching=actions.filter(a=>a.type===filter&&(!selected||a.card===selected||a.extra===selected||a.cards?.includes(selected)||!['power','burn','offer','contest','rest','trim','defend','keep'].includes(a.type)));
  const seen=new Set(),visible=matching.filter(a=>{if(seen.has(a.label))return false;seen.add(a.label);return true;});
