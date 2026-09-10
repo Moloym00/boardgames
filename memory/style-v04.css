@@ -14,5 +14,6 @@
 .ritual-still,.ritual-still .ritual-caption{animation:none!important}.ritual-still{background:none!important}
 @media(prefers-reduced-motion:reduce){.ritual-fx,.ritual-caption,.ritual-spark{animation:none!important}.ritual-spark{display:none}}
 @media(max-width:600px){.ritual-caption{top:12%;padding:14px 20px}.ritual-caption small{font-size:12px;letter-spacing:.04em}}
-
 .soundscape{max-width:1180px;margin:0 auto;padding:0 24px 12px;color:var(--muted,#aaa99d)}.sound-row{display:flex;align-items:flex-start;gap:16px;flex-wrap:wrap}.sound-row>button{border-color:#9f7d4c}.soundscape details{padding-top:8px}.soundscape summary{cursor:pointer;font-size:13px}.sound-settings{display:flex;align-items:center;flex-wrap:wrap;gap:10px;padding:12px 0}.sound-settings label{font-size:13px}.sound-settings input{width:140px;accent-color:#d0a768}.sound-settings small{flex-basis:100%;font-size:11px;line-height:1.6}.sound-settings a{color:inherit}.soundscape p{margin:7px 0 0;font-size:12px}.soundscape button{font-size:13px;min-height:38px}@media(max-width:600px){.soundscape{padding:0 16px 12px}.sound-settings{max-width:290px}}
+
+.sound-preview{display:flex;flex-basis:100%;align-items:center;gap:10px;flex-wrap:wrap}.sound-preview select{background:#17252b;color:#e7ddc7;border:1px solid #536165;border-radius:6px;padding:8px;min-height:38px}.sound-preview small{flex-basis:100%}.soundscape button:disabled{opacity:.4;cursor:default}

@@ -1,6 +1,7 @@
 const M=MemoryGame,$=id=>document.getElementById(id),colors=['#e7b66f','#8fc2ca','#c8a1d1'];
 const saved=MemorySession.restore(M);
 let seed=saved.seed,g=saved.game,spectate=false,filter='',selected=null,timer;
+if(typeof HearthAudio!=='undefined'){try{HearthAudio.sync(g);}catch{}}
 const names={awaken:'呼名',skip:'守住记忆',power:'回想神明',legacy:'最后馈赠',burn:'燃忆',recall:'寻忆',watch:'守望',offer:'供奉',contest:'改写',rest:'安魂',trim:'放下',end:'交棒',yield:'让出',defend:'守住',keep:'燃忆留名'};
 function node(tag,text,cls){const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(cls)n.className=cls;return n;}
 function restPreview(seat){const keeper=M.guardian(g,seat,M.actor(g));return (keeper===null?'':` · ${g.players[keeper].name}可回应；被阻止也不退费用`)+(!g.seats.some(s=>s.state==='awake')&&g.seats.filter(s=>s.state==='active').length===1?' · 最后一尊神：安魂成功后将共同失败':'');}
