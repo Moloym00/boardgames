@@ -1,0 +1,13 @@
+{
+  "date": "2026-09-11",
+  "edition": "M0.4",
+  "browser": "Codex 内置 Chromium",
+  "decodedDurationSeconds": 103.97,
+  "contextAfterEnable": "running",
+  "measuredOutputPeakSample": 0.0161,
+  "contextAfterMute": "suspended",
+  "offerEventVerified": true,
+  "completeNightVerified": true,
+  "automatedChecks": ["用户手势启动", "同一事件不重复播放", "音乐与音效独立开关", "后台暂停且不补播旧事件", "静音与音量边界", "重开清理", "循环交叉淡入淡出", "音乐缓存", "音乐下载失败时保留音效"],
+  "scope": "验证实际音频解码、信号输出、浏览器交互与整局运行；没有将代码检查表述为人工耳机试听。"
+}
