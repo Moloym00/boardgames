@@ -6,7 +6,7 @@ function node(tag,text,cls){const n=document.createElement(tag);if(text!==undefi
 function restPreview(seat){const keeper=M.guardian(g,seat,M.actor(g));return (keeper===null?'':` · ${g.players[keeper].name}可回应；被阻止也不退费用`)+(!g.seats.some(s=>s.state==='awake')&&g.seats.filter(s=>s.state==='active').length===1?' · 最后一尊神：安魂成功后将共同失败':'');}
 function restHint(who){const q=g.pending,canKeep=M.legal(g,who).some(a=>a.type==='keep');return `${g.players[q.attacker].name}已付两张记忆与主行动。${g.players[who].name}是其他贡献者中供奉最多的一位，由其唯一回应（同数按安魂者之后的顺序）。`+(who===0?'你可永久燃掉一张匹配记忆或神明记忆，留下1伤痕（−1分），阻止安魂并降1风化，供奉不动；也可让祂安息。':'等待其选择留名或送别。')+(who===0&&!canKeep?(M.living(g,who)<=6?'存续记忆已到六张底线，不能再燃。':'手中没有匹配记忆，此刻只能送别。'):'')+(!M.hasTimeToName(g,q.seat)?'剩余主行动已不足以填满并呼名；留名不会增加行动。':'')+'无论回应如何，都回到安魂者整理，不额外获得主行动。';}
 function awakeningPreview(seat){const counts=g.players.map((_,i)=>g.seats[seat].offerings.filter(o=>o.player===i).length),winner=counts.findIndex(n=>n>=2);return winner<0?'众声觉醒：每人得1余音与一张记忆':`${g.players[winner].name}得5分与记忆`+counts.map((n,i)=>i!==winner&&n?`；${g.players[i].name}得${n}余音`:'').join('');}
-function apply(id){try{const who=M.actor(g);g=M.act(g,who,id);M.check(g);MemorySession.record(seed,who,id);selected=null;render();}catch(e){$('hint').textContent='火塘暂歇：'+e.message;clearTimeout(timer);}}
+function apply(id){try{const eventStart=g.events.length;const who=M.actor(g);g=M.act(g,who,id);M.check(g);MemorySession.record(seed,who,id);selected=null;render();playRitual(g.events.slice(eventStart));}catch(e){$('hint').textContent='火塘暂歇：'+e.message;clearTimeout(timer);}}
 function render(){clearTimeout(timer);const ended=g.phase==='ended',who=M.actor(g),p=g.players[0];
  let forecast=$('forecast');if(!forecast){forecast=node('p',undefined,'note');forecast.id='forecast';$('gods').before(forecast);}
  const nextStorm=g.round<6?M.STORMS[g.round].filter(id=>g.seats[id].state==='active'):[];
@@ -53,4 +53,28 @@ function render(){clearTimeout(timer);const ended=g.phase==='ended',who=M.actor(
  $('saveStatus').textContent=MemorySession.status();
  $('auto').textContent=spectate?'回到我的席位':'旁观一夜';if(!ended&&(who!==0||spectate))timer=setTimeout(()=>{const a=M.choose(g,M.actor(g));apply(a.id);},spectate?120:650);
 }
-$('auto').onclick=()=>{spectate=!spectate;render();};$('restart').onclick=()=>{if(!confirm('熄灭当前实验火塘，重新开始？'))return;g=M.create(++seed);MemorySession.reset(seed);filter='';selected=null;spectate=false;render();};render();
+$('auto').onclick=()=>{spectate=!spectate;render();};$('restart').onclick=()=>{if(!confirm('熄灭当前实验火塘，重新开始？'))return;clearRitual();g=M.create(++seed);MemorySession.reset(seed);filter='';selected=null;spectate=false;render();};render();
+
+// 仅在新行动结算后播放；刷新恢复和选牌重绘不会重演过去的事件。
+let ritualEnabled=true,ritualTimer;
+const ritualKinds={offer:['offer','一段记忆，被留下',380],burn:['burn','这段记忆，不会回来了',1100],restStopped:['burn','燃去自己的记忆，留下祂的名字',1200],awake:['awake','祂听见了自己的名字',1500],communal:['awake','众声之中，祂被记住',1500],rest:['rest','最后的馈赠，留给守夜的人',1300],ruin:['ruin','这个名字，被世界遗忘',1500],contest:['contest','有人要改写这段记忆',650],restAttempt:['rest','送别之前，还有一次选择',850],defend:['offer','这段记忆，被守住了',650],power:['offer','祂的记忆，再次回应',650],legacy:['rest','最后一次回应',850]};
+function clearRitual(){clearTimeout(ritualTimer);const layer=$('ritualFx');if(layer){layer.replaceChildren();layer.className='ritual-fx';}}
+function playRitual(events){
+ if(!ritualEnabled)return;
+ const reduced=typeof matchMedia==='function'&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+ const marked=events.filter(e=>ritualKinds[e.type]);if(!marked.length)return;
+ const rank=e=>['awake','communal','ruin'].includes(e.type)?3:['burn','restStopped','rest'].includes(e.type)?2:1;
+ const event=marked.slice().sort((a,b)=>rank(b)-rank(a)||b.seq-a.seq)[0];
+ const [kind,title,duration]=ritualKinds[event.type],layer=$('ritualFx');if(!layer)return;
+ clearRitual();layer.className='ritual-fx ritual-'+kind+(reduced?' ritual-still':'');
+ const caption=node('div',undefined,'ritual-caption');caption.append(node('small',title),node('strong',event.god===null||event.god===undefined?'余火未熄':M.GODS[event.god].name));layer.append(caption);
+ if(!reduced){for(let i=0;i<12;i++){const spark=node('i',undefined,'ritual-spark');spark.style.setProperty('--n',i);spark.style.setProperty('--x',((i*37)%100)+'%');layer.append(spark);}}
+ // 同次风化毁掉多座时，每座都有局部反馈；字幕只保留最重要的一次。
+ for(const e of marked){if(e.god===null||e.god===undefined)continue;const card=$('gods').children[e.god];if(card&&typeof card.animate==='function'&&!reduced){const color=['awake','communal'].includes(e.type)?'#f3ce86':e.type==='ruin'?'#657571':'#b78c64';card.animate([{boxShadow:'0 0 0 transparent'},{boxShadow:'0 0 32px '+color,offset:.35},{boxShadow:'0 0 0 transparent'}],{duration,easing:'ease-out'});}}
+ ritualTimer=setTimeout(clearRitual,reduced?700:duration);
+ // 重要时刻留一口呼吸；真人可立即继续，特效不拦截点击。
+ if(g.phase!=='ended'&&(M.actor(g)!==0||spectate)){
+  clearTimeout(timer);timer=setTimeout(()=>{const a=M.choose(g,M.actor(g));apply(a.id);},reduced?650:Math.max(spectate?380:650,duration));
+ }
+}
+const ritualToggle=$('ritualToggle');if(ritualToggle)ritualToggle.onclick=()=>{ritualEnabled=!ritualEnabled;ritualToggle.textContent=ritualEnabled?'特效：开':'特效：关';ritualToggle.setAttribute('aria-pressed',String(ritualEnabled));clearRitual();};

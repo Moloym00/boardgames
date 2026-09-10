@@ -1,1 +1,16 @@
 @import url("style-v03.css");
+.ritual-fx{position:fixed;inset:0;z-index:30;pointer-events:none;overflow:hidden;--ritual-color:211,166,100}
+.ritual-fx:empty{display:none}
+.ritual-fx:not(:empty){background:radial-gradient(ellipse at 50% 100%,rgba(var(--ritual-color),.15),transparent 68%);animation:ritual-breath 1.5s ease-out both}
+.ritual-caption{position:absolute;left:50%;top:20%;transform:translateX(-50%);width:max-content;max-width:85vw;text-align:center;padding:18px 28px;background:linear-gradient(90deg,transparent,rgba(14,23,22,.94) 18%,rgba(14,23,22,.94) 82%,transparent);text-shadow:0 2px 12px #000;animation:ritual-name .8s ease-out both}
+.ritual-caption small{display:block;color:#d2c7ad;letter-spacing:.12em;font-size:14px;line-height:1.8}.ritual-caption strong{display:block;color:#f4d6a0;font-size:clamp(24px,5vw,42px);letter-spacing:.24em;font-weight:400;line-height:1.6}
+.ritual-spark{position:absolute;left:var(--x);bottom:10%;width:3px;height:3px;border-radius:50%;background:rgb(var(--ritual-color));box-shadow:0 0 9px rgba(var(--ritual-color),.65);animation:ritual-embers 1.2s ease-out both;animation-delay:calc(var(--n)*18ms)}
+.ritual-burn{--ritual-color:219,111,58}.ritual-awake{--ritual-color:245,213,148}.ritual-rest{--ritual-color:145,186,191}.ritual-ruin{--ritual-color:125,145,139}.ritual-contest{--ritual-color:192,136,163}
+.ritual-rest .ritual-spark{width:2px;height:12px}.ritual-ruin .ritual-spark{border-radius:0;animation-name:ritual-ash}.ritual-ruin strong{color:#b8c6c0}.ritual-offer .ritual-caption{top:auto;bottom:18%;padding:8px 24px}.ritual-offer .ritual-caption strong{font-size:22px}
+@keyframes ritual-breath{0%{opacity:0}18%{opacity:1}75%{opacity:1}100%{opacity:0}}
+@keyframes ritual-name{from{opacity:0;filter:blur(5px);transform:translate(-50%,8px)}to{opacity:1;filter:blur(0);transform:translate(-50%,0)}}
+@keyframes ritual-embers{from{opacity:0;transform:translateY(18px)}25%{opacity:.85}to{opacity:0;transform:translateY(-220px)}}
+@keyframes ritual-ash{from{opacity:0;transform:translateY(-180px)}30%{opacity:.6}to{opacity:0;transform:translate(35px,45px)}}
+.ritual-still,.ritual-still .ritual-caption{animation:none!important}.ritual-still{background:none!important}
+@media(prefers-reduced-motion:reduce){.ritual-fx,.ritual-caption,.ritual-spark{animation:none!important}.ritual-spark{display:none}}
+@media(max-width:600px){.ritual-caption{top:12%;padding:14px 20px}.ritual-caption small{font-size:12px;letter-spacing:.04em}}
