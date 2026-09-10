@@ -3,9 +3,9 @@ const MemoryGame = (() => {
   const E = ['骨','风','潮','炎','星'];
   const GODS = [
     {name:'毛伊', elements:['骨','潮','风'], image:'god01.webp', effect:'将自己一枚供奉移到另一尊神的同语素空槽。'},
-    {name:'贝雅薇', elements:['炎','星','风'], image:'god03.webp', effect:'为一尊在场神移除一点风化。'},
+    {name:'贝雅薇', elements:['炎','星','风'], image:'god03.webp', effect:'为一尊在场神移除一点侵蚀。'},
     {name:'火姥神', elements:['骨','炎','星'], image:'god05.webp', effect:'取回自己弃牌中的一张记忆，不能取本次发动的专属记忆。'},
-    {name:'查克', elements:['潮','风','星'], image:'god10.webp', effect:'令一尊零或一点风化的神增加一点风化，然后想起一张。'},
+    {name:'查克', elements:['潮','风','星'], image:'god10.webp', effect:'令一尊零或一点侵蚀的神增加一点侵蚀，然后想起一张。'},
   ];
   const STORMS = [[2],[0,3],[1,2],[0,3],[1,2],[0,1,2,3]];
   function random(g) { g.rng = (Math.imul(1664525,g.rng)+1013904223)>>>0; return g.rng/4294967296; }
@@ -19,7 +19,7 @@ const MemoryGame = (() => {
   const score=p=>p.awake.length*5+p.rested.length*2+p.echo-p.scars;
   function end(g) { g.phase='ended'; g.failed=!g.seats.some(s=>s.state==='awake'); event(g,'end',null,null,g.failed?'无人唤醒，名字没有传到天明；这一夜无人胜出。':'这一夜已经落定。'); }
   function release(g,s) { for(const o of s.offerings) g.players[o.player].discard.push(o.card); s.offerings=[]; }
-  function storm(g) { for(const id of STORMS[g.round-1]) { const s=g.seats[id]; if(s.state!=='active')continue; s.weather++; event(g,'weather',null,id,`${GODS[id].name}的风化升至${s.weather}。`); if(s.weather>=3) { release(g,s);s.state='ruin';event(g,'ruin',null,id,`${GODS[id].name}被世界遗忘，这座神座不再开放。`); } } if(!g.seats.some(s=>s.state==='active'))end(g); }
+  function storm(g) { for(const id of STORMS[g.round-1]) { const s=g.seats[id]; if(s.state!=='active')continue; s.weather++; event(g,'weather',null,id,`${GODS[id].name}的侵蚀升至${s.weather}。`); if(s.weather>=3) { release(g,s);s.state='ruin';event(g,'ruin',null,id,`${GODS[id].name}被世界遗忘，这座神座不再开放。`); } } if(!g.seats.some(s=>s.state==='active'))end(g); }
   function create(seed=1) { const g={version:'M0.4',nightSeed:seed>>>0,rng:seed>>>0,round:1,starter:0,turn:0,acted:0,phase:'turn',step:'aux',pending:null,failed:false,events:[],players:[],seats:GODS.map(()=>({state:'active',weather:0,offerings:[]}))};
     for(let i=0;i<3;i++) { const deck=E.flatMap((element,j)=>[0,1].map(n=>({id:`p${i}-${j}-${n}`,element,owner:i})));g.players.push({name:['你','听冬','渡魂'][i],deck:shuffle(g,deck),hand:[],discard:[],forgotten:[],awake:[],rested:[],echo:0,scars:0});draw(g,i,4); }
     storm(g);draw(g,0,1);return g;
@@ -48,7 +48,7 @@ function guardian(g,seat,attacker){
       p.hand.filter(c=>c.god!==undefined).forEach(c=>effects(g,who,c.god).forEach(effect=>add({type:'power',card:c.id,god:c.god,...effect},`回想${GODS[c.god].name} · ${effect.text}`)));
       p.rested.filter(r=>!r.used).forEach(r=>effects(g,who,r.god).forEach(effect=>add({type:'legacy',god:r.god,...effect},`${GODS[r.god].name}的最后馈赠 · ${effect.text}`)));
       const living=p.deck.length+p.hand.length+p.discard.length+placed(g,who);
-      if(living>6)p.hand.forEach(c=>{add({type:'burn',card:c.id,effect:'draw'},`永久燃掉${cardName(c)} · 想起2张，伤痕＋1`);g.seats.forEach((s,id)=>{if(s.state==='active'&&s.weather>0)add({type:'burn',card:c.id,effect:'cool',seat:id},`永久燃掉${cardName(c)} · 为${GODS[id].name}抵挡1风化，伤痕＋1`);});});return out;
+      if(living>6)p.hand.forEach(c=>{add({type:'burn',card:c.id,effect:'draw'},`永久燃掉${cardName(c)} · 想起2张，伤痕＋1`);g.seats.forEach((s,id)=>{if(s.state==='active'&&s.weather>0)add({type:'burn',card:c.id,effect:'cool',seat:id},`永久燃掉${cardName(c)} · 为${GODS[id].name}抵挡1侵蚀，伤痕＋1`);});});return out;
     }
     add({type:'recall'},'寻忆 · 想起2张');add({type:'watch'},'守望 · 保留手中的记忆');
     g.seats.forEach((s,id)=>{if(s.state!=='active')return;
@@ -58,14 +58,14 @@ function guardian(g,seat,attacker){
     });return out;
   }
   function cardName(c){return c.god===undefined?`「${c.element}」`:`「${GODS[c.god].name}的记忆」`;}
-  function effects(g,who,god){const out=[],p=g.players[who];g.seats.forEach((s,id)=>{if(s.state!=='active')return;if(god===1&&s.weather>0)out.push({effect:'cool',seat:id,text:`为${GODS[id].name}减1风化`});if(god===3&&s.weather<2)out.push({effect:'rain',seat:id,text:`令${GODS[id].name}加1风化，再想起1张`});if(god===0)s.offerings.filter(o=>o.player===who).forEach(o=>{g.seats.forEach((t,j)=>{if(j!==id&&t.state==='active'&&GODS[j].elements.includes(o.element)&&!slot(g,j,o.element))out.push({effect:'move',from:id,seat:j,offer:o.card.id,text:`把「${o.element}」从${GODS[id].name}移至${GODS[j].name}`});});});});if(god===2)p.discard.forEach(c=>out.push({effect:'retrieve',retrieve:c.id,text:`取回${cardName(c)}`}));return out;}
+  function effects(g,who,god){const out=[],p=g.players[who];g.seats.forEach((s,id)=>{if(s.state!=='active')return;if(god===1&&s.weather>0)out.push({effect:'cool',seat:id,text:`为${GODS[id].name}减1侵蚀`});if(god===3&&s.weather<2)out.push({effect:'rain',seat:id,text:`令${GODS[id].name}加1侵蚀，再想起1张`});if(god===0)s.offerings.filter(o=>o.player===who).forEach(o=>{g.seats.forEach((t,j)=>{if(j!==id&&t.state==='active'&&GODS[j].elements.includes(o.element)&&!slot(g,j,o.element))out.push({effect:'move',from:id,seat:j,offer:o.card.id,text:`把「${o.element}」从${GODS[id].name}移至${GODS[j].name}`});});});});if(god===2)p.discard.forEach(c=>out.push({effect:'retrieve',retrieve:c.id,text:`取回${cardName(c)}`}));return out;}
   function runEffect(g,p,a){if(a.effect==='cool')g.seats[a.seat].weather--;if(a.effect==='rain'){g.seats[a.seat].weather++;draw(g,g.turn,1);}if(a.effect==='retrieve'){const k=p.discard.findIndex(c=>c.id===a.retrieve);if(k<0)throw Error('遗失的记忆');p.hand.push(p.discard.splice(k,1)[0]);}if(a.effect==='move'){const s=g.seats[a.from];const k=s.offerings.findIndex(o=>o.card.id===a.offer);g.seats[a.seat].offerings.push(s.offerings.splice(k,1)[0]);}}
   function resolveAction(old,who,id){const a=legal(old,who).find(a=>a.id===String(id));if(!a)throw Error('当前没有这个合法行动');const g=structuredClone(old),p=g.players[who];
     if(g.pending?.kind==='rest'){
       const q=g.pending,s=g.seats[q.seat];
       if(a.type==='keep'){
         const c=take(p,a.card);p.forgotten.push(c);p.scars++;s.weather--;
-        event(g,'restStopped',who,q.seat,`${p.name}永久燃掉${cardName(c)}，阻止${g.players[q.attacker].name}的安魂，留下1伤痕；${GODS[q.seat].name}的风化降至${s.weather}，供奉仍在。`,{attacker:q.attacker,card:c.id,memoryGod:c.god??null});
+        event(g,'restStopped',who,q.seat,`${p.name}永久燃掉${cardName(c)}，阻止${g.players[q.attacker].name}的安魂，留下1伤痕；${GODS[q.seat].name}的侵蚀降至${s.weather}，供奉仍在。`,{attacker:q.attacker,card:c.id,memoryGod:c.god??null});
       }else{
         event(g,'restAllowed',who,q.seat,`${p.name}让${GODS[q.seat].name}安息。`);
         release(g,s);s.state='rest';g.players[q.attacker].rested.push({god:q.seat,used:false});
@@ -78,7 +78,7 @@ function guardian(g,seat,attacker){
     else if(a.type==='end')finishTurn(g);
     else if(a.type==='trim'){p.discard.push(take(p,a.card));}
     else if(a.type==='power'||a.type==='legacy'){if(a.type==='power')p.discard.push(take(p,a.card));else p.rested.find(r=>r.god===a.god).used=true;runEffect(g,p,a);event(g,a.type,who,a.god,`${p.name}${a.type==='power'?'回想起':'用尽了'}${GODS[a.god].name}：${a.text}。`);g.step='main';}
-    else if(a.type==='burn'){const c=take(p,a.card);p.forgotten.push(c);p.scars++;if(a.effect==='draw')draw(g,who,2);else g.seats[a.seat].weather--;event(g,'burn',who,a.seat??null,`${p.name}永久失去${cardName(c)}，${a.effect==='draw'?'换来两次回想':`替${GODS[a.seat].name}挡下风化`}。`,{memoryGod:c.god??null,card:c.id});g.step='main';}
+    else if(a.type==='burn'){const c=take(p,a.card);p.forgotten.push(c);p.scars++;if(a.effect==='draw')draw(g,who,2);else g.seats[a.seat].weather--;event(g,'burn',who,a.seat??null,`${p.name}永久失去${cardName(c)}，${a.effect==='draw'?'换来两次回想':`替${GODS[a.seat].name}挡下侵蚀`}。`,{memoryGod:c.god??null,card:c.id});g.step='main';}
     else {g.step='cleanup';if(a.type==='recall'){const n=draw(g,who,2);event(g,'recall',who,null,`${p.name}想起${n}张记忆。`);}if(a.type==='awaken'){event(g,'invoke',who,a.seat,`${p.name}呼唤${GODS[a.seat].name}的真名。`);settle(g,a.seat);}if(a.type==='watch')event(g,'watch',who,null,`${p.name}选择保留手中的记忆。`);if(a.type==='offer'){g.seats[a.seat].offerings.push({player:who,card:take(p,a.card),element:a.element});event(g,'offer',who,a.seat,`${p.name}为${GODS[a.seat].name}留下「${a.element}」。`);}if(a.type==='contest'){p.discard.push(take(p,a.extra));const c=take(p,a.card),defender=slot(g,a.seat,a.element).player;g.pending={attacker:who,defender,seat:a.seat,element:a.element,card:c};event(g,'contest',who,a.seat,`${p.name}要改写${g.players[defender].name}留下的「${a.element}」，等待回应。`);}if(a.type==='rest'){const s=g.seats[a.seat],defender=guardian(g,a.seat,who);a.cards.forEach(id=>p.discard.push(take(p,id)));
       if(defender!==null){g.pending={kind:'rest',attacker:who,defender,seat:a.seat};event(g,'restAttempt',who,a.seat,`${p.name}付出两张记忆，为${GODS[a.seat].name}安魂；等待${g.players[defender].name}回应。`,{defender,cards:a.cards});}
       else{release(g,s);s.state='rest';p.rested.push({god:a.seat,used:false});event(g,'rest',who,a.seat,`${p.name}为${GODS[a.seat].name}安魂，得到2分与最后馈赠。`);}}}
