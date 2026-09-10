@@ -1,0 +1,374 @@
+{
+  "seed": 1,
+  "rotation": 0,
+  "players": [
+    {
+      "name": "你",
+      "score": 4
+    },
+    {
+      "name": "听冬",
+      "score": 9
+    },
+    {
+      "name": "渡魂",
+      "score": 3
+    }
+  ],
+  "failed": false,
+  "story": [
+    {
+      "god": 0,
+      "title": "毛伊 · 留在听冬的记忆里",
+      "narrative": "你、听冬曾为毛伊留下供奉。渡魂改写了你的供奉；你留下1余音。渡魂呼出了这个名字，听冬得到了神的记忆。",
+      "moments": [
+        {
+          "seq": 2,
+          "round": 1,
+          "text": "你为毛伊留下「骨」。"
+        },
+        {
+          "seq": 3,
+          "round": 1,
+          "text": "听冬为毛伊留下「潮」。"
+        },
+        {
+          "seq": 5,
+          "round": 1,
+          "text": "渡魂改写了你的供奉；你留下1余音。"
+        },
+        {
+          "seq": 9,
+          "round": 2,
+          "text": "渡魂呼唤毛伊的真名。"
+        },
+        {
+          "seq": 10,
+          "round": 2,
+          "text": "听冬唤醒毛伊，祂的记忆来到手中。"
+        }
+      ],
+      "unresolved": false
+    },
+    {
+      "god": 1,
+      "title": "贝雅薇 · 众人共同记住",
+      "narrative": "你曾为贝雅薇留下供奉。渡魂改写了你的供奉；你留下1余音。听冬永久失去「潮」，替贝雅薇挡下风化。贝雅薇众声觉醒，三人各自记住祂。",
+      "moments": [
+        {
+          "seq": 11,
+          "round": 2,
+          "text": "你为贝雅薇留下「炎」。"
+        },
+        {
+          "seq": 24,
+          "round": 4,
+          "text": "渡魂改写了你的供奉；你留下1余音。"
+        },
+        {
+          "seq": 26,
+          "round": 5,
+          "text": "听冬永久失去「潮」，替贝雅薇挡下风化。"
+        },
+        {
+          "seq": 28,
+          "round": 5,
+          "text": "渡魂呼唤贝雅薇的真名。"
+        },
+        {
+          "seq": 29,
+          "round": 5,
+          "text": "贝雅薇众声觉醒，三人各自记住祂。"
+        }
+      ],
+      "unresolved": false
+    },
+    {
+      "god": 2,
+      "title": "火姥神 · 被送别的神",
+      "narrative": "这一夜，没有人向火姥神留下供奉。听冬为火姥神安魂，得到2分与最后馈赠。听冬用尽了火姥神：取回「潮」。",
+      "moments": [
+        {
+          "seq": 17,
+          "round": 3,
+          "text": "听冬为火姥神安魂，得到2分与最后馈赠。"
+        },
+        {
+          "seq": 20,
+          "round": 4,
+          "text": "听冬用尽了火姥神：取回「潮」。"
+        }
+      ],
+      "unresolved": false
+    },
+    {
+      "god": 3,
+      "title": "雨神 · 被送别的神",
+      "narrative": "这一夜，没有人向雨神留下供奉。听冬为雨神安魂，得到2分与最后馈赠。",
+      "moments": [
+        {
+          "seq": 27,
+          "round": 5,
+          "text": "听冬为雨神安魂，得到2分与最后馈赠。"
+        }
+      ],
+      "unresolved": false
+    }
+  ],
+  "events": [
+    {
+      "seq": 1,
+      "round": 1,
+      "type": "weather",
+      "who": null,
+      "god": 2,
+      "text": "火姥神的风化升至1。"
+    },
+    {
+      "seq": 2,
+      "round": 1,
+      "type": "offer",
+      "who": 0,
+      "god": 0,
+      "text": "你为毛伊留下「骨」。"
+    },
+    {
+      "seq": 3,
+      "round": 1,
+      "type": "offer",
+      "who": 1,
+      "god": 0,
+      "text": "听冬为毛伊留下「潮」。"
+    },
+    {
+      "seq": 4,
+      "round": 1,
+      "type": "contest",
+      "who": 2,
+      "god": 0,
+      "text": "渡魂要改写你留下的「骨」，等待回应。"
+    },
+    {
+      "seq": 5,
+      "round": 1,
+      "type": "displace",
+      "who": 2,
+      "god": 0,
+      "text": "渡魂改写了你的供奉；你留下1余音。",
+      "defender": 0
+    },
+    {
+      "seq": 6,
+      "round": 2,
+      "type": "weather",
+      "who": null,
+      "god": 0,
+      "text": "毛伊的风化升至1。"
+    },
+    {
+      "seq": 7,
+      "round": 2,
+      "type": "weather",
+      "who": null,
+      "god": 3,
+      "text": "雨神的风化升至1。"
+    },
+    {
+      "seq": 8,
+      "round": 2,
+      "type": "offer",
+      "who": 1,
+      "god": 0,
+      "text": "听冬为毛伊留下「风」。"
+    },
+    {
+      "seq": 9,
+      "round": 2,
+      "type": "invoke",
+      "who": 2,
+      "god": 0,
+      "text": "渡魂呼唤毛伊的真名。"
+    },
+    {
+      "seq": 10,
+      "round": 2,
+      "type": "awake",
+      "who": 1,
+      "god": 0,
+      "text": "听冬唤醒毛伊，祂的记忆来到手中。"
+    },
+    {
+      "seq": 11,
+      "round": 2,
+      "type": "offer",
+      "who": 0,
+      "god": 1,
+      "text": "你为贝雅薇留下「炎」。"
+    },
+    {
+      "seq": 12,
+      "round": 3,
+      "type": "weather",
+      "who": null,
+      "god": 1,
+      "text": "贝雅薇的风化升至1。"
+    },
+    {
+      "seq": 13,
+      "round": 3,
+      "type": "weather",
+      "who": null,
+      "god": 2,
+      "text": "火姥神的风化升至2。"
+    },
+    {
+      "seq": 14,
+      "round": 3,
+      "type": "contest",
+      "who": 2,
+      "god": 1,
+      "text": "渡魂要改写你留下的「炎」，等待回应。"
+    },
+    {
+      "seq": 15,
+      "round": 3,
+      "type": "displace",
+      "who": 2,
+      "god": 1,
+      "text": "渡魂改写了你的供奉；你留下1余音。",
+      "defender": 0
+    },
+    {
+      "seq": 16,
+      "round": 3,
+      "type": "offer",
+      "who": 0,
+      "god": 1,
+      "text": "你为贝雅薇留下「星」。"
+    },
+    {
+      "seq": 17,
+      "round": 3,
+      "type": "rest",
+      "who": 1,
+      "god": 2,
+      "text": "听冬为火姥神安魂，得到2分与最后馈赠。"
+    },
+    {
+      "seq": 18,
+      "round": 4,
+      "type": "weather",
+      "who": null,
+      "god": 3,
+      "text": "雨神的风化升至2。"
+    },
+    {
+      "seq": 19,
+      "round": 4,
+      "type": "offer",
+      "who": 0,
+      "god": 1,
+      "text": "你为贝雅薇留下「风」。"
+    },
+    {
+      "seq": 20,
+      "round": 4,
+      "type": "legacy",
+      "who": 1,
+      "god": 2,
+      "text": "听冬用尽了火姥神：取回「潮」。"
+    },
+    {
+      "seq": 21,
+      "round": 4,
+      "type": "contest",
+      "who": 1,
+      "god": 1,
+      "text": "听冬要改写渡魂留下的「炎」，等待回应。"
+    },
+    {
+      "seq": 22,
+      "round": 4,
+      "type": "displace",
+      "who": 1,
+      "god": 1,
+      "text": "听冬改写了渡魂的供奉；渡魂留下1余音。",
+      "defender": 2
+    },
+    {
+      "seq": 23,
+      "round": 4,
+      "type": "contest",
+      "who": 2,
+      "god": 1,
+      "text": "渡魂要改写你留下的「星」，等待回应。"
+    },
+    {
+      "seq": 24,
+      "round": 4,
+      "type": "displace",
+      "who": 2,
+      "god": 1,
+      "text": "渡魂改写了你的供奉；你留下1余音。",
+      "defender": 0
+    },
+    {
+      "seq": 25,
+      "round": 5,
+      "type": "weather",
+      "who": null,
+      "god": 1,
+      "text": "贝雅薇的风化升至2。"
+    },
+    {
+      "seq": 26,
+      "round": 5,
+      "type": "burn",
+      "who": 1,
+      "god": 1,
+      "text": "听冬永久失去「潮」，替贝雅薇挡下风化。",
+      "memoryGod": null,
+      "card": "p1-2-1"
+    },
+    {
+      "seq": 27,
+      "round": 5,
+      "type": "rest",
+      "who": 1,
+      "god": 3,
+      "text": "听冬为雨神安魂，得到2分与最后馈赠。"
+    },
+    {
+      "seq": 28,
+      "round": 5,
+      "type": "invoke",
+      "who": 2,
+      "god": 1,
+      "text": "渡魂呼唤贝雅薇的真名。"
+    },
+    {
+      "seq": 29,
+      "round": 5,
+      "type": "communal",
+      "who": null,
+      "god": 1,
+      "text": "贝雅薇众声觉醒，三人各自记住祂。"
+    },
+    {
+      "seq": 30,
+      "round": 5,
+      "type": "recall",
+      "who": 0,
+      "god": null,
+      "text": "你想起2张记忆。"
+    },
+    {
+      "seq": 31,
+      "round": 5,
+      "type": "end",
+      "who": null,
+      "god": null,
+      "text": "这一夜已经落定。"
+    }
+  ]
+}

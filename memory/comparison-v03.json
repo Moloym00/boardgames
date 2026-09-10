@@ -1,0 +1,44 @@
+{
+  "scope": "每组60种子×3策略轮座=180局，共540局。只比较规则判定与启发式策略的程序现象，不证明真人乐趣或平衡。",
+  "results": [
+    {
+      "mode": "M0.2",
+      "games": 180,
+      "failures": 0,
+      "rounds": 975,
+      "awake": 211,
+      "communal": 152,
+      "rest": 273,
+      "ruin": 63,
+      "power": 170,
+      "contest": 684,
+      "burn": 173
+    },
+    {
+      "mode": "M0.3旧策略",
+      "games": 180,
+      "failures": 0,
+      "rounds": 975,
+      "awake": 211,
+      "communal": 152,
+      "rest": 273,
+      "ruin": 63,
+      "power": 170,
+      "contest": 684,
+      "burn": 173
+    },
+    {
+      "mode": "M0.3新策略",
+      "games": 180,
+      "failures": 0,
+      "rounds": 989,
+      "awake": 195,
+      "communal": 161,
+      "rest": 265,
+      "ruin": 72,
+      "power": 169,
+      "contest": 749,
+      "burn": 200
+    }
+  ]
+}
