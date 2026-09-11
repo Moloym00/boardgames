@@ -9,6 +9,7 @@
  let settings={music:true,effects:true,volume:.35};
  try{const saved=JSON.parse(root.localStorage.getItem(KEY)||'null');if(saved){settings={music:saved.music!==false,effects:saved.effects!==false,volume:clamp(saved.volume??.35)};}}catch{}
  let ctx,master,musicBus,fxBus,windGain,windSource,noiseBuffer,analyser,meter;
+ const materials={};
  let enabled=false,loading=false,loadFailed=false,musicBuffer,loadPromise,ticker;
  let nextMusic=0,nextCrackle=0,lastSeq=0,lastEffect=-10,lastPick=-10,lastPreview=-10,duckUntil=0,round=1,ended=false;
  const voices=new Set(),musicVoices=new Set();
@@ -44,43 +45,67 @@
   // 将循环接缝缓慢接回起点，避免风底每轮出现断口。
   const seam=Math.floor(ctx.sampleRate*.2);
   for(let i=0;i<seam;i++){const k=data.length-seam+i,w=i/(seam-1);data[k]=data[k]*(1-w)+data[0]*w;}
+  // 不同材质用不同的频谱与颗粒，避免每个动作只是同一阵风的长短变化。
+  for(const name of ['air','cloth','ember']){
+   const buffer=ctx.createBuffer(1,ctx.sampleRate*12,ctx.sampleRate),samples=buffer.getChannelData(0);
+   let soft=0,rough=0;
+   for(let i=0;i<samples.length;i++){
+    const white=Math.random()*2-1;soft=.97*soft+.03*white;rough=.75*rough+.25*white;
+    samples[i]=name==='air'?soft*2.4:name==='cloth'?(white-rough)*.35:(rough*.6+soft)*(.55+.25*Math.sin(i/ctx.sampleRate*7.3)+.2*Math.sin(i/ctx.sampleRate*12.7));
+   }
+   materials[name]=buffer;
+  }
   ctx.onstatechange=status;
  }
  function track(source,gain,set=voices,tail=[]){
   source.fadeGain=gain;set.add(source);source.onended=()=>{source.disconnect();gain.disconnect();for(const n of tail)n.disconnect();set.delete(source);};
  }
- function stopVoices(set,fade=false){for(const source of set){try{if(fade&&source.fadeGain)smooth(source.fadeGain.gain,0,.015);source.stop(ctx.currentTime+(fade?.08:0));}catch{}}set.clear();}
+ function stopVoices(set,fade=false){for(const source of set){try{if(fade&&source.fadeGain)smooth(source.fadeGain.gain,0,.15);source.stop(ctx.currentTime+(fade?.65:0));}catch{}}set.clear();}
  // 无振荡器、钟声或音阶。滤波噪声是程序材质声，不冒充实录。
- function rustle(at,duration=.2,level=.06,frequency=900,attack=.025){
+ function rustle(at,duration=.2,level=.06,frequency=900,attack=.025,material='wood',pan=0,endFrequency=frequency){
   if(voices.size>=14)return;
-  const source=ctx.createBufferSource(),filter=ctx.createBiquadFilter(),gain=ctx.createGain();source.buffer=noiseBuffer;
-  filter.type='bandpass';filter.frequency.value=frequency;filter.Q.value=.45;
+  const source=ctx.createBufferSource(),filter=ctx.createBiquadFilter(),gain=ctx.createGain();source.buffer=materials[material]||noiseBuffer;
+  filter.type='bandpass';filter.frequency.setValueAtTime(frequency,at);filter.frequency.exponentialRampToValueAtTime(endFrequency,at+duration);filter.Q.value=.45;
   gain.gain.setValueAtTime(0,at);gain.gain.linearRampToValueAtTime(level,at+Math.min(attack,duration*.45));
   gain.gain.exponentialRampToValueAtTime(.0001,at+duration);
-  source.connect(filter);filter.connect(gain);gain.connect(fxBus);track(source,gain,voices,[filter]);
-  source.start(at,Math.random()*8);source.stop(at+duration+.03);
+  source.connect(filter);filter.connect(gain);
+  const tails=[filter];
+  if(ctx.createStereoPanner){const space=ctx.createStereoPanner();space.pan.value=pan;gain.connect(space);space.connect(fxBus);tails.push(space);}else gain.connect(fxBus);
+  track(source,gain,voices,tails);
+  source.start(at,Math.random()*Math.max(.1,11-duration));source.stop(at+duration+.03);
  }
  function effect(kind,god){
-  const now=ctx.currentTime+.01;
-  // 一次事件只留下少量细节。重要事件先让正在响的细节退下。
-  if((priorities[kind]||0)>=6)stopVoices(voices,true);
+  const now=ctx.currentTime+.01,vary=.88+Math.random()*.24;
+  // 正常连续行动保留尾音；密集叠加时才让旧层缓慢退下。
+  if(voices.size>9)stopVoices(voices,true);
   if(['awake','communal'].includes(kind)){
-   rustle(now+.12,2.4,.075,350,.6);rustle(now+.38,1.3,.025,1050,.28);
+   rustle(now+.08,4.8,.13,310*vary,.9,'air',-.2,740);
+   rustle(now+.85,3.6,.055,1300,.85,'air',.25,600);
+   rustle(now+.3,.55,.045,680,.08,'cloth',0,410);
   }else if(kind==='ruin'){
-   rustle(now,.9,.11,190,.045);rustle(now+.23,1.8,.05,740,.28);
+   rustle(now,1.5,.14,170,.08,'wood',0,100);
+   rustle(now+.35,3.3,.085,1800,.35,'cloth',-.25,460);
+   rustle(now+1.2,2.5,.055,700,.4,'air',.25,260);
   }else if(['burn','restStopped'].includes(kind)){
-   rustle(now,.65,.13,780,.09);
-   for(let i=0;i<3;i++)rustle(now+.12+i*.11+Math.random()*.06,.025+Math.random()*.04,.03,1100+Math.random()*600,.006);
+   rustle(now,2.6,.19,750*vary,.24,'ember',-.12,430);
+   rustle(now+.45,2.2,.065,1600,.32,'air',.18,900);
+   for(let i=0;i<5;i++)rustle(now+.25+i*.34+Math.random()*.15,.06+Math.random()*.10,.04,1300+Math.random()*1100,.009,'ember',(Math.random()-.5)*.5);
   }else if(['rest','legacy'].includes(kind)){
-   rustle(now,1.9,.065,430,.28);
+   rustle(now,3.7,.105,620*vary,.6,'air',.18,190);
+   rustle(now+.6,2.8,.045,270,.75,'wood',-.2,120);
+   rustle(now+.12,.7,.03,1450,.15,'cloth',0,850);
   }else if(['contest','restAttempt','defend'].includes(kind)){
-   rustle(now,.19,.05,620,.03);
+   rustle(now,.65,.07,920,.05,'cloth',-.15,510);rustle(now+.23,.35,.07,240,.03);
   }else if(kind==='power'){
-   rustle(now,.55,.045,[650,420,260,1000][god]||650,.12);
+   const texture=['cloth','air','ember','air'][god]||'air';
+   rustle(now,1.8,.085,([650,420,260,1500][god]||650)*vary,.25,texture,-.15,420);
+   rustle(now+.45,1.4,.035,800,.3,texture,.2,330);
   }else if(kind==='offer'){
-   rustle(now,.13,.055,1050,.018);rustle(now+.08,.10,.065,180,.012);
+   rustle(now,.45,.07,1500*vary,.035,'cloth',-.1,850);
+   rustle(now+.16,.32,.09,180,.018);
+   rustle(now+.28,.4,.025,650,.09,'cloth',.1,360);
   }
-  if((priorities[kind]||0)>=6&&settings.music){duckUntil=now+2.8;updateMix();}
+  if((priorities[kind]||0)>=6&&settings.music){duckUntil=now+4.8;updateMix();}
  }
  function startWind(){
   if(windSource||!enabled||!settings.effects||ctx.state!=='running')return;
