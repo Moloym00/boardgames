@@ -1,7 +1,7 @@
 {
-  "title": "灰下的名字",
-  "description": "为《真名之火》制作的采样编排与专用仪式音效；框鼓、葫芦摇器、低音长笛与炉火。不是任何文化传统仪式的复刻。",
-  "license": "衍生编排 CC BY 4.0；原始素材许可见各条来源",
+  "title": "Ritual",
+  "description": "配乐直接选用 Kevin MacLeod 的完整曲目 Ritual；行动音效沿用独立采样成品。",
+  "license": "配乐及行动音效署名分别见 music 与 sources。",
   "sources": [
     {
       "key": "drum",
@@ -112,18 +112,28 @@
       "sha256": "f7bb09c21da6aff55526cd238d55e46f33979a1b3f01bef2d653a3d48ac62f09"
     },
     {
-      "file": "hearth-score.mp3",
-      "seconds": 120.0,
-      "peakDb": -11.85,
-      "sha256": "e729a7db45ee46ab1bdb4ab75f813791d7aa50a1c2c19127485b930e7680e4e1"
-    },
-    {
       "file": "hearth-bed.mp3",
       "seconds": 24.49675,
       "peakDb": -10.46,
       "sha256": "e9e218796d705abce00b71017cfeb0225420315a3dc26b608f662c96b40300bb"
+    },
+    {
+      "file": "ritual-kevin-macleod.mp3",
+      "seconds": 264.07184375,
+      "sha256": "191ba0f13718ac8f150d0e35c63dab0deb1274215266e4ae27616f60dcb871d4"
     }
   ],
   "sampleRate": 32000,
-  "humanListeningVerified": false
+  "humanListeningVerified": false,
+  "revision": "existing-ritual-1",
+  "music": {
+    "title": "Ritual",
+    "artist": "Kevin MacLeod",
+    "source": "https://incompetech.com/music/royalty-free/index.html?Search=Search&isrc=USUAN1100466",
+    "download": "https://incompetech.com/music/royalty-free/mp3-royaltyfree/Ritual.mp3",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "changes": "完整曲目，仅转码160kbps用于网页传输；游戏播放时调整音量和循环衔接，不重新编曲。",
+    "originalSha256": "2dfdfede2f491f3991f8264577f250dc6abf63dd7c7dd3cd751d41b57b995283"
+  }
 }

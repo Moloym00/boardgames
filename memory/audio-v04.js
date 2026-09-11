@@ -14,7 +14,7 @@
  let nextMusic=0,nextCrackle=0,lastSeq=0,lastEffect=-10,lastPick=-10,lastPreview=-10,duckUntil=0,round=1,ended=false;
  const voices=new Set(),musicVoices=new Set();
  const audioRevision=new URL(doc.currentScript.src).search;
- const src=new URL('audio/ritual/hearth-score.mp3'+audioRevision,doc.currentScript.src).href;
+ const src=new URL('audio/ritual/ritual-kevin-macleod.mp3'+audioRevision,doc.currentScript.src).href;
  function save(){try{root.localStorage.setItem(KEY,JSON.stringify(settings));}catch{}}
  function smooth(param,value,seconds=.1){if(!ctx)return;param.cancelScheduledValues(ctx.currentTime);param.setTargetAtTime(value,ctx.currentTime,seconds);}
  function status(){
@@ -40,7 +40,7 @@
   const limiter=ctx.createDynamicsCompressor();limiter.threshold.value=-12;limiter.knee.value=12;limiter.ratio.value=6;limiter.attack.value=.005;limiter.release.value=.2;
   analyser=ctx.createAnalyser();analyser.fftSize=256;meter=new Float32Array(256);
   musicBus.connect(master);fxBus.connect(master);master.connect(limiter);limiter.connect(analyser);analyser.connect(ctx.destination);
-  master.gain.value=0;musicBus.gain.value=.38;fxBus.gain.value=.65;
+  master.gain.value=0;musicBus.gain.value=.6;fxBus.gain.value=.45;
   ctx.onstatechange=status;
  }
  function track(source,gain,set=voices,tail=[]){
@@ -67,7 +67,7 @@
  function effect(kind,god){
   const name=['awake','communal'].includes(kind)?'awake':['burn','restStopped'].includes(kind)?'burn':['rest','legacy'].includes(kind)?'rest':['contest','restAttempt','defend'].includes(kind)?'contest':kind==='power'?'power-'+(god??0):kind;
   sample(name,['offer','contest'].includes(name)?.6:.85);
-  if((priorities[kind]||0)>=6&&settings.music){duckUntil=ctx.currentTime+6;updateMix();}
+  if((priorities[kind]||0)>=6&&settings.music){duckUntil=ctx.currentTime+3;updateMix();}
  }
  function startWind(){
   if(windSource||!enabled||!settings.effects||ctx.state!=='running')return;
@@ -78,7 +78,7 @@
   });
  }
  function stopWind(){if(windSource){windSource.stop();windSource.disconnect();windGain.disconnect();windSource=null;windGain=null;}}
- function updateMix(){if(!ctx)return;const base=ended?.18:.38;smooth(master.gain,enabled?settings.volume:0,.05);smooth(fxBus.gain,settings.effects?.65:0,.04);smooth(musicBus.gain,settings.music?base*(ctx.currentTime<duckUntil?.22:1):0,.12);if(settings.music&&duckUntil>ctx.currentTime)musicBus.gain.setTargetAtTime(base,duckUntil,.5);if(windGain)smooth(windGain.gain,ended?.025:.055+round*.003,.8);}
+ function updateMix(){if(!ctx)return;const base=ended?.4:.6;smooth(master.gain,enabled?settings.volume:0,.05);smooth(fxBus.gain,settings.effects?.45:0,.04);smooth(musicBus.gain,settings.music?base*(ctx.currentTime<duckUntil?.6:1):0,.12);if(settings.music&&duckUntil>ctx.currentTime)musicBus.gain.setTargetAtTime(base,duckUntil,.5);if(windGain)smooth(windGain.gain,ended?.006:.01,.8);}
  async function loadMusic(){
   if(musicBuffer)return musicBuffer;if(loadPromise)return loadPromise;
   loading=true;loadFailed=false;status();
