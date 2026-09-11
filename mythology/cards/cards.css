@@ -2,3 +2,6 @@
 .proof-group{margin:20px auto;width:800px;height:340px;scroll-margin-top:8px}.proof-group>h2{font-size:18px}.proof-row{display:flex;gap:10px}.proof-page{width:188px;height:268px;overflow:hidden}.proof-page .sheet{margin:0;transform:scale(.235);transform-origin:top left}.piece:before{inset:0;border:0;outline:.1mm solid #b5a58a}.token{border-radius:0}
 .back h2{writing-mode:horizontal-tb;white-space:nowrap;letter-spacing:.12em;margin:4mm 0;flex-shrink:0}.token{border-radius:50%}
 .panel .sigil{top:7mm;right:8mm;width:23mm;height:23mm}.panel .sigil svg{width:22mm;height:22mm}.grid.small{gap:2mm}.pair{writing-mode:vertical-rl;top:2mm;bottom:auto;right:-1.8mm;line-height:1}.foot{bottom:10mm}
+
+/* 长规则神牌为底部安全区让出5mm，插画保持完整比例，正文不缩小。 */
+.card.long-rule > .art{height:63mm}
