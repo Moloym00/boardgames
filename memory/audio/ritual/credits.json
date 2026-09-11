@@ -1,0 +1,129 @@
+{
+  "title": "灰下的名字",
+  "description": "为《真名之火》制作的采样编排与专用仪式音效；框鼓、葫芦摇器、低音长笛与炉火。不是任何文化传统仪式的复刻。",
+  "license": "衍生编排 CC BY 4.0；原始素材许可见各条来源",
+  "sources": [
+    {
+      "key": "drum",
+      "title": "Drum1",
+      "author": "Asha555",
+      "source": "https://freesound.org/people/Asha555/sounds/818538/",
+      "download": "https://cdn.freesound.org/previews/818/818538_17624255-hq.mp3",
+      "license": "CC BY 4.0",
+      "changes": "截取、调音、EQ、混响与重新编排；非原录音整段直接配乐",
+      "sha256": "49ebf5fddcde928e88b66787125342bb0199ffdb22d0d49345989505b0b86475"
+    },
+    {
+      "key": "shaker",
+      "title": "Small Gourd Shakers",
+      "author": "TA-AT",
+      "source": "https://freesound.org/people/TA-AT/sounds/434881/",
+      "download": "https://cdn.freesound.org/previews/434/434881_7894615-hq.mp3",
+      "license": "CC0",
+      "changes": "截取、调音、EQ、混响与重新编排；非原录音整段直接配乐",
+      "sha256": "1b9f22b7e8a4d04c7714ff1511ee3df58b1a8bf0f6b072dbf0c95b5a74445d1e"
+    },
+    {
+      "key": "flute",
+      "title": "Flute C4 — Linda Dallimore / VSCO 2 CE",
+      "author": "sgossner",
+      "source": "https://freesound.org/people/sgossner/sounds/373273/",
+      "download": "https://cdn.freesound.org/previews/373/373273_2475994-hq.mp3",
+      "license": "CC0",
+      "changes": "截取、调音、EQ、混响与重新编排；非原录音整段直接配乐",
+      "sha256": "4350070f0b268f383bd54431bf8cd89e192eb61e059236a21da22a6c5923db82"
+    },
+    {
+      "key": "fire",
+      "title": "fire-crackling.wav",
+      "author": "jmehlferber",
+      "source": "https://freesound.org/people/jmehlferber/sounds/370938/",
+      "download": "https://cdn.freesound.org/previews/370/370938_6621799-hq.mp3",
+      "license": "CC0",
+      "changes": "截取、调音、EQ、混响与重新编排；非原录音整段直接配乐",
+      "sha256": "1618ec3144c17b6772ae047f531f0a19eee1333ad7e613e86acbab7b33e6d767"
+    }
+  ],
+  "files": [
+    {
+      "file": "offer.mp3",
+      "seconds": 2.2,
+      "peakDb": -8.59,
+      "sha256": "980e1b11ec1ac5328db4ff7a34892f31ec7e2c4a5c9f0ef700a0d556cd672e29"
+    },
+    {
+      "file": "burn.mp3",
+      "seconds": 6.5,
+      "peakDb": -9.99,
+      "sha256": "031c1963258b5eae4d1f4e670313b93b2fa60246bfb95c70ef08072640788493"
+    },
+    {
+      "file": "awake.mp3",
+      "seconds": 10.0,
+      "peakDb": -3.68,
+      "sha256": "9eef3f0876c733cd63bd0d0c454304e7a2d26e53583a01d945dffb25a3983311"
+    },
+    {
+      "file": "rest.mp3",
+      "seconds": 8.5,
+      "peakDb": -7.53,
+      "sha256": "285cf9570baaf71ca4a9b97a0474d4ff156edec1cec9d4e3ccf5d33ebca56263"
+    },
+    {
+      "file": "ruin.mp3",
+      "seconds": 7.0,
+      "peakDb": -4.1,
+      "sha256": "2ac2bf299cd2840f3da6876381b4f7e20582e6e3881776aecf1beea57c80f531"
+    },
+    {
+      "file": "contest.mp3",
+      "seconds": 3.0,
+      "peakDb": -7.68,
+      "sha256": "7d1eb3bfdb73ca82cefa2650831c6a635f09976cc3a056b0d0ff5c0aecde97a7"
+    },
+    {
+      "file": "pick.mp3",
+      "seconds": 1.2,
+      "peakDb": -26.11,
+      "sha256": "c796429ae81531d0de4e2f85d8160f3891bd03c53d5094b684fcaa5f8616331d"
+    },
+    {
+      "file": "power-0.mp3",
+      "seconds": 5.0,
+      "peakDb": -9.41,
+      "sha256": "d784d3e6b21ff50f3c454618893a6057621749c784d173211d9dba7b47d84472"
+    },
+    {
+      "file": "power-1.mp3",
+      "seconds": 5.0,
+      "peakDb": -9.41,
+      "sha256": "c43593da9e728a8a12e3c5879af592150218e28bf7d72f7660c79317c557fdcd"
+    },
+    {
+      "file": "power-2.mp3",
+      "seconds": 5.0,
+      "peakDb": -9.41,
+      "sha256": "7b344bcabde3e53e3f83be4021b73d256a4f0b758069e3ab53e9bd2144410158"
+    },
+    {
+      "file": "power-3.mp3",
+      "seconds": 5.0,
+      "peakDb": -9.41,
+      "sha256": "f7bb09c21da6aff55526cd238d55e46f33979a1b3f01bef2d653a3d48ac62f09"
+    },
+    {
+      "file": "hearth-score.mp3",
+      "seconds": 120.0,
+      "peakDb": -11.85,
+      "sha256": "e729a7db45ee46ab1bdb4ab75f813791d7aa50a1c2c19127485b930e7680e4e1"
+    },
+    {
+      "file": "hearth-bed.mp3",
+      "seconds": 24.49675,
+      "peakDb": -10.46,
+      "sha256": "e9e218796d705abce00b71017cfeb0225420315a3dc26b608f662c96b40300bb"
+    }
+  ],
+  "sampleRate": 32000,
+  "humanListeningVerified": false
+}
