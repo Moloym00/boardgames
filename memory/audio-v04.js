@@ -108,7 +108,7 @@
   if(ctx.currentTime-lastEffect<.8&&(priorities[chosen.type]||0)<6)return;
   lastEffect=ctx.currentTime;effect(chosen.type,chosen.god);$('soundStatus').dataset.lastEffect=chosen.type;
  }
- function reset(){playbackEpoch++;lastSeq=0;lastEffect=-10;lastPick=-10;duckUntil=0;round=1;ended=false;if(ctx){stopVoices(voices);stopVoices(musicVoices);nextMusic=ctx.currentTime+.12;updateMix();tick();}status();}
+ function reset(){playbackEpoch++;lastSeq=0;lastEffect=-10;lastPick=-10;duckUntil=0;round=1;ended=false;if(ctx){stopVoices(voices);stopVoices(musicVoices);nextMusic=ctx.currentTime+.12;updateMix();startWind();tick();}status();}
  function sync(state){round=state.round;ended=state.phase==='ended';updateMix();status();}
  function pick(){if(!enabled||!settings.effects||ctx?.state!=='running'||doc.hidden||ctx.currentTime-lastPick<.7)return;lastPick=ctx.currentTime;sample('pick',.35);}
  function preview(){const kind=$('previewEffect').value;if(!['offer','burn','awake','rest','ruin'].includes(kind)||!enabled||!settings.effects||ctx?.state!=='running'||doc.hidden||ctx.currentTime-lastPreview<.4)return;lastPreview=ctx.currentTime;stopVoices(voices,true);effect(kind);$('soundStatus').dataset.preview=kind;}
@@ -117,7 +117,7 @@
  $('sfxToggle').onclick=()=>{settings.effects=!settings.effects;save();updateMix();if(ctx){if(settings.effects)startWind();else{playbackEpoch++;stopWind();stopVoices(voices);}}status();};
  $('soundVolume').oninput=e=>{settings.volume=clamp(e.target.value/100);save();updateMix();status();};
   if($('previewSound'))$('previewSound').onclick=preview;
- doc.addEventListener('visibilitychange',()=>{if(!ctx||!enabled)return;if(doc.hidden){playbackEpoch++;clearInterval(ticker);stopVoices(voices);ctx.suspend().catch(()=>{});}else{ctx.resume().then(()=>{schedule();status();}).catch(status);}status();});
+ doc.addEventListener('visibilitychange',()=>{if(!ctx||!enabled)return;if(doc.hidden){playbackEpoch++;clearInterval(ticker);stopVoices(voices);ctx.suspend().catch(()=>{});}else{ctx.resume().then(()=>{if(!enabled||doc.hidden){return ctx.suspend();}startWind();schedule();status();}).catch(status);}status();});
  root.addEventListener('pagehide',silence);
  root.HearthAudio={events,reset,pick,sync};status();
 })(typeof window==='object'?window:globalThis);
