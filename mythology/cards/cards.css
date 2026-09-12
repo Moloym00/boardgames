@@ -14,3 +14,18 @@
 .card-fate{display:block;margin-top:1.2mm;padding-top:1mm;border-top:.2mm dotted var(--line)}
 .legacy-card .card-fate{border-top-style:double;color:#744b32;font-weight:600}
 .small .god-memory .art,.small .legacy-card .art{height:34mm}
+/* 手机阅览重新排文字；A4打印仍使用原毫米尺寸。 */
+@media screen and (max-width:760px){
+ .gallery{padding:12px}.gallery .exhibits{gap:24px;justify-content:center}
+ .gallery .exhibit{overflow:visible;min-width:0}
+ .gallery .display-card{max-width:100%;height:auto!important}
+ .gallery .face,.gallery .reverse{height:auto}
+ .gallery .card{height:auto;min-height:90mm}
+ .gallery .gods .card{min-height:130mm}
+ .gallery .panels .card{min-height:131mm;padding:6mm}
+ .gallery .panel .sigil{position:static;align-self:flex-end}
+ .gallery .panel h2{font-size:22pt;max-width:100%}
+ .gallery .ledger{grid-template-columns:1fr;gap:4mm}
+ .gallery .rule{margin-top:4mm!important}
+ .gallery .exhibit>button{min-height:44px}
+}
