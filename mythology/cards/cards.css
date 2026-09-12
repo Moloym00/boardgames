@@ -15,6 +15,12 @@
 .legacy-card .card-fate{border-top-style:double;color:#744b32;font-weight:600}
 .small .god-memory .art,.small .legacy-card .art{height:34mm}
 /* 手机阅览重新排文字；A4打印仍使用原毫米尺寸。 */
+.card-directory{margin:20px 0;padding:16px;border:1px solid var(--line);background:var(--paper)}
+.card-directory summary{cursor:pointer;min-height:28px;line-height:1.6}
+.card-directory nav{gap:8px 20px}.card-directory a{padding:8px 0;line-height:1.6}
+.gallery section,.gallery .exhibit{scroll-margin-top:20px}
+.gallery .exhibit:target{outline:2px solid var(--copper);outline-offset:6px}
+.gallery a:focus-visible,.gallery button:focus-visible,.gallery summary:focus-visible{outline:2px solid var(--copper);outline-offset:3px}
 @media screen and (max-width:760px){
  .gallery{padding:12px}.gallery .exhibits{gap:24px;justify-content:center}
  .gallery .exhibit{overflow:visible;min-width:0}
