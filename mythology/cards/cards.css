@@ -5,3 +5,12 @@
 
 /* 长规则神牌为底部安全区让出5mm，插画保持完整比例，正文不缩小。 */
 .card.long-rule > .art{height:63mm}
+
+/* 同神两种卡面以形状和操作标签区分；隐藏记忆背面不使用这些样式。 */
+.god-memory .meta,.legacy-card .meta{align-items:center;gap:2mm}
+.god-memory .meta span:last-child,.legacy-card .meta span:last-child{font-size:9pt;letter-spacing:0;white-space:nowrap;font-weight:600}
+.god-memory .meta span:last-child{border-bottom:.3mm solid #526a60;padding-bottom:.5mm}
+.legacy-card .meta span:last-child{border-bottom:.8mm double #8a5737;padding-bottom:.5mm;color:#744b32}
+.card-fate{display:block;margin-top:1.2mm;padding-top:1mm;border-top:.2mm dotted var(--line)}
+.legacy-card .card-fate{border-top-style:double;color:#744b32;font-weight:600}
+.small .god-memory .art,.small .legacy-card .art{height:34mm}
