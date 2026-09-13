@@ -35,3 +35,7 @@
  .gallery .rule{margin-top:4mm!important}
  .gallery .exhibit>button{min-height:44px}
 }
+
+/* 三段残章收紧段间距，保留10pt正文与裁切安全区。 */
+.ruin.three-paragraphs .fragment{margin:1.5mm 0}
+.ruin.three-paragraphs .art{height:20mm}
