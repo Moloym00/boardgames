@@ -1,0 +1,26 @@
+{
+  "date": "2026-09-12",
+  "surface": "线上GitHub Pages / Codex内置浏览器 / DOM只读几何",
+  "scope": "两版全部背面在流直接子元素的四边padding安全区，1px容差",
+  "m04": {
+    "faces": 55,
+    "unsafe": [],
+    "allArtLoaded": true,
+    "allArtContain": true
+  },
+  "v12": {
+    "faces": 146,
+    "unsafe": [],
+    "allArtLoaded": true,
+    "fragmentFontPx": [
+      13.3333
+    ],
+    "pairLabelsInsideCard": 0
+  },
+  "notVerified": [
+    "佳能G3812实体打印",
+    "手机阅览",
+    "逐张视觉品质主观判断"
+  ],
+  "changes": "只读审查，无重新生成或发布"
+}

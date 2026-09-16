@@ -11,8 +11,8 @@
 | 展品项目 | 在线图文说明书 | A4 喷墨卡牌打印排版 |
 | :--- | :--- | :--- |
 | 🏛️ **展馆总门户入口** | [👉 点击进入展馆主页](https://moloym00.github.io/boardgames/) | — |
-| 👑 **《今晚必须有个预言成真》** (3~5人) | [📖 翻开图文玩法说明书](https://moloym00.github.io/boardgames/prophecy/index.html) | [🖨️ A4 卡牌打印排版](https://moloym00.github.io/boardgames/prophecy/cards.html) |
-| ⚓ **《劫走黎明》** (4~8人) | [📖 翻开全彩玩法说明书](https://moloym00.github.io/boardgames/dawn/index.html) | [🖨️ A4 卡牌打印工坊](https://moloym00.github.io/boardgames/dawn/cards.html) |
+| 👑 **《今晚必须有个预言成真》** (3~5人) | [📖 翻开图文玩法说明书](https://moloym00.github.io/boardgames/prophecy/index.html) | [🖨️ A4 卡牌打印排版](https://moloym00.github.io/boardgames/prophecy/cards.html) · [📦 专属折叠卡盒](https://moloym00.github.io/boardgames/prophecy/box.html) |
+| ⚓ **《劫走黎明》** (4~8人) | [📖 翻开全彩玩法说明书](https://moloym00.github.io/boardgames/dawn/index.html) | [🖨️ A4 卡牌打印工坊](https://moloym00.github.io/boardgames/dawn/cards.html) · [📦 专属折叠卡盒](https://moloym00.github.io/boardgames/dawn/box.html) |
 | 🕯️ **《真名之火 · 最后的火塘》** (3~6人) | [📖 沉浸版玩法书(含计分器)](https://moloym00.github.io/boardgames/mythology/index.html) · [📜 简洁版玩法书](https://moloym00.github.io/boardgames/mythology/rules_compact.html) | [🎨 规则与开发仓库](https://github.com/Moloym00/mythology) |
 
 ---

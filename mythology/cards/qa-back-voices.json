@@ -1,0 +1,20 @@
+{
+  "publishedFiles": [
+    "mythology/cards/cards.css",
+    "mythology/cards/index.html",
+    "mythology/cards/v12-front.html",
+    "mythology/cards/v12-back.html",
+    "mythology/cards/m04-front.html",
+    "mythology/cards/m04-back.html",
+    "mythology/cards/proof.html",
+    "mythology/cards/specimens.html",
+    "mythology/cards/guide.html",
+    "mythology/cards/copy-sources.html",
+    "memory/lore-v04.js",
+    "memory/m04.html"
+  ],
+  "deities": 12,
+  "unsafeBacks": 0,
+  "frontContentUnchanged": true,
+  "physicalPrintTested": false
+}

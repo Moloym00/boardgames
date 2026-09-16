@@ -1,16 +1,48 @@
 {
   "date": "2026-09-10",
-  "surface": "Codex 内置 Chromium 浏览器",
+  "surface": "Microsoft Edge 无头浏览器（本机 headless=new），仅作页面几何测量",
   "pages": 50,
-  "cardFaces": 402,
+  "cardFaces": 346,
   "overflowCount": 0,
-  "brokenImages": 0,
-  "nonContainArt": 0,
-  "minimumRuleFontPt": 9,
-  "fragmentFontPt": 10,
-  "minimumContentMarginMm": 10,
-  "geometryToleranceMm": 0.01,
-  "visualReview": "全套分页缩略总览；代表神牌、残章、面板另作可读尺寸检查；翻面按钮验证成功。",
-  "physicalCanonG3812Print": "尚未进行",
-  "printDialogPagination": "依据固定 A4 CSS 与浏览器页面几何检查，未以实体打印或自动双面套准替代验收。"
+  "overflowThresholdMm": 0.5,
+  "measureScope": "逐面：overBorder=末个在流内子元素底边相对卡片边框盒底边（正数即越过边框，算缺陷）；gap=最后两个在流内子元素之间的弹性留白；overlap=在流内相邻兄弟块最大重叠。绝对定位子元素（.sigil）不参与 gap/overlap。",
+  "worstOffsetMm": {
+    "v12-front": 4.23,
+    "v12-back": 0,
+    "m04-front": 0,
+    "m04-back": 0
+  },
+  "changeNote": "第三轮文案改版（无人称代词·谜语体）后复测，脚本固化为 qa-layout.py。① verse 支持断行（.verse 加 white-space:pre-line）；② 神牌 verse 由一行改两行，故 .art 72→68mm、.card padding 4→3.6mm、.art margin 1→0.8mm；③ 术语改名 风化→蚀、心智→心火、废墟→熄座；④ 12 尊神 verse 与 24 段残章重写为「最后一位记录者」口吻的谜语体，通篇去人称代词。行数与字数与改版前基本持平，本轮最紧面仍为 v12 正面 0.37mm。",
+  "notVerified": [
+    "实体打印",
+    "自动双面套准",
+    "位图完整加载（headless 未等待全部艺术图）"
+  ],
+  "printDialogPagination": "依据固定 A4 CSS 与页面几何测量，未以实体打印或自动双面套准替代验收。",
+  "overflowDetail": [],
+  "minGapThresholdMm": 1.0,
+  "toolsUnderGap": [],
+  "overlapDetail": [],
+  "thresholds": {
+    "overBorderMm": 0.0,
+    "minGapMm": 1.0,
+    "overlapMm": 0.2
+  },
+  "overBorderDetail": [
+    {
+      "side": "v12-front",
+      "name": "奥贡",
+      "overBorder": 0.37,
+      "gap": 1,
+      "overlap": 0,
+      "blocks": 8,
+      "inFlow": 8
+    }
+  ],
+  "worstOverBorderMm": {
+    "v12-front": 0.37,
+    "v12-back": -7.26,
+    "m04-front": -3.34,
+    "m04-back": -7.26
+  }
 }

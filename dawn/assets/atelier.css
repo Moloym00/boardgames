@@ -431,23 +431,61 @@ select {
   box-shadow: 
     inset 0 0 12mm rgba(80, 48, 12, 0.4),
     inset 0 0 1.5mm rgba(40, 20, 5, 0.5) !important;
+  padding: 3.2mm 3.5mm !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  overflow: hidden !important;
 }
 .back-card:before {
+  content: '';
+  position: absolute;
   inset: 1.8mm !important;
   border-radius: 2.2mm !important;
   border: 0.35mm double #8c6731 !important;
+  pointer-events: none;
+  z-index: 1;
 }
 .back-caption {
+  text-align: center !important;
   font-family: var(--font-title) !important;
+  font-size: 11.5pt !important;
+  font-weight: 900 !important;
+  line-height: 1.15 !important;
   color: #2b1706 !important;
-  letter-spacing: 1.5mm !important;
+  letter-spacing: 1.2mm !important;
   text-shadow: 0 0.25mm 0 rgba(255,255,255,0.85);
+  margin: 0 !important;
+  z-index: 2;
+  white-space: nowrap !important;
 }
 .back-caption small {
+  display: block !important;
   font-family: var(--font-display-en) !important;
-  letter-spacing: 1.2mm !important;
+  font-size: 5.5pt !important;
+  letter-spacing: 0.7mm !important;
   color: #634316 !important;
   font-weight: 700 !important;
+  line-height: 1.2 !important;
+  margin-top: 0.6mm !important;
+  white-space: nowrap !important;
+}
+.back-card .back-art {
+  width: 48mm !important;
+  height: 48mm !important;
+  min-height: 48mm !important;
+  max-height: 48mm !important;
+  object-fit: contain !important;
+  margin: auto !important;
+  display: block !important;
+  border-radius: 50% !important;
+  z-index: 2;
+}
+.back-reverse {
+  transform: rotate(180deg) !important;
+  margin-top: auto !important;
+  z-index: 2;
 }
 
 /* 插画外框：微阴影与黄铜包边 */

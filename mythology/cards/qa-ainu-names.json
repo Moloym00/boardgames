@@ -1,0 +1,36 @@
+{
+  "names": [
+    "阿佩·胡琪·卡姆伊",
+    "科坦·科尔·卡姆伊"
+  ],
+  "publishedFiles": [
+    "memory/engine-v02.js",
+    "memory/engine-v03.js",
+    "memory/engine-v04.js",
+    "memory/index.html",
+    "memory/m03.html",
+    "memory/m04.html",
+    "memory/rules-v02.html",
+    "memory/rules-v03.html",
+    "memory/rules-v04.html",
+    "memory/story-sample-v03.json",
+    "mythology/cards/copy-sources.html",
+    "mythology/cards/index.html",
+    "mythology/cards/m04-back.html",
+    "mythology/cards/m04-front.html",
+    "mythology/cards/proof.html",
+    "mythology/cards/v12-back.html",
+    "mythology/cards/v12-front.html",
+    "mythology/index.html",
+    "mythology/rules_compact.html"
+  ],
+  "engineOnlyNamesChanged": true,
+  "browserSafety": {
+    "v12-front": 146,
+    "v12-back": 146,
+    "m04-front": 55,
+    "m04-back": 55,
+    "unsafe": 0
+  },
+  "physicalPrintTested": false
+}

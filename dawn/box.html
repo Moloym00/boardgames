@@ -1,0 +1,1053 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>劫走黎明 · 船长卡盒工坊 (创意翻盖档案匣 & 经典牌盒)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@600;700;800;900&family=Noto+Serif+SC:wght@600;700;800;900&family=Special+Elite&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #1a1005;
+      --muted: #5e462a;
+      --brass: #785319;
+      --gold: #d4af37;
+      --gold-light: #f7e8a9;
+      --teal-deep: #14272c;
+      --teal-mid: #1a4f4b;
+      --parchment: #f6f0df;
+      --parchment-deep: #e7dcbf;
+      --line-brass: #c4a977;
+      --cut-line: #111111;
+      --fold-line: #d9432f;
+      --font-title: 'Noto Serif SC', 'Source Han Serif SC', 'STZhongsong', 'Songti SC', serif;
+      --font-display-en: 'Cinzel Decorative', 'Cinzel', Georgia, serif;
+      --font-mono: 'Special Elite', 'Courier New', monospace;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: #dfd8c7;
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+      line-height: 1.6;
+    }
+
+    /* 顶部控制栏 */
+    .workbench-header {
+      background: #183339;
+      color: #f7eedb;
+      padding: 22px 30px;
+      border-bottom: 4px solid #b39255;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+    }
+    .workbench-header .inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .eyebrow {
+      font-size: 11px;
+      letter-spacing: 3px;
+      color: #cead74;
+      margin: 0 0 4px;
+      text-transform: uppercase;
+    }
+    h1 {
+      font: 700 30px/1.3 var(--font-title);
+      letter-spacing: 2px;
+      margin: 0 0 8px;
+      color: #fff;
+    }
+    .header-links {
+      font-size: 14px;
+      margin: 8px 0 0;
+    }
+    .header-links a {
+      color: #ecd5a7;
+      text-decoration: none;
+      margin-right: 18px;
+      transition: color 0.2s;
+    }
+    .header-links a:hover {
+      color: #ffffff;
+      text-decoration: underline;
+    }
+
+    /* 控制面板 */
+    .controls-panel {
+      max-width: 1200px;
+      margin: 18px auto 10px;
+      padding: 0 20px;
+    }
+    .control-card {
+      background: #fdfbf7;
+      border: 1px solid #c9b48c;
+      border-radius: 8px;
+      padding: 16px 22px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .control-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+    .btn-group-label {
+      font-weight: 700;
+      color: #523812;
+      margin-right: 6px;
+      font-size: 14px;
+    }
+    .btn-group {
+      display: inline-flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+    .mode-btn, .size-btn {
+      background: #efe7d3;
+      border: 1.5px solid #bda376;
+      padding: 7px 14px;
+      border-radius: 4px;
+      font-size: 13.5px;
+      font-weight: 600;
+      color: #3d290c;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .mode-btn:hover, .size-btn:hover {
+      background: #e4d7bd;
+    }
+    .mode-btn.active, .size-btn.active {
+      background: #183339;
+      color: #f7eedb;
+      border-color: #183339;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+    .mode-btn.star {
+      border-color: #b84318;
+    }
+    .mode-btn.star.active {
+      background: #852d18;
+      border-color: #852d18;
+    }
+
+    .actions {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+    }
+    .btn-print {
+      background: #9b282c;
+      color: #fff;
+      border: none;
+      padding: 9px 20px;
+      border-radius: 5px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 3px 10px rgba(155, 40, 44, 0.35);
+      transition: all 0.2s;
+    }
+    .btn-print:hover {
+      background: #b53237;
+      transform: translateY(-1px);
+    }
+    .toggle-guides {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13.5px;
+      color: #55442f;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    /* 方案对比指引卡 */
+    .guide-accordion {
+      max-width: 1200px;
+      margin: 10px auto;
+      padding: 0 20px;
+    }
+    .guide-box {
+      background: linear-gradient(135deg, #f7f1df, #ece0c1);
+      border: 1px solid #bfa77b;
+      border-left: 5px solid #852d18;
+      padding: 14px 18px;
+      border-radius: 6px;
+      font-size: 13.5px;
+    }
+    .guide-box h3 {
+      margin: 0 0 8px;
+      font-size: 15px;
+      color: #63200f;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .feature-list {
+      margin: 6px 0 0;
+      padding-left: 20px;
+      color: #3f2a14;
+    }
+    .feature-list li {
+      margin-bottom: 4px;
+    }
+
+    /* A4 画布预览舞台 */
+    .workbench-stage {
+      display: flex;
+      justify-content: center;
+      padding: 15px 20px 60px;
+      overflow-x: auto;
+    }
+
+    /* A4 动态纸张 (纵向或横向自动由样式驱动) */
+    .a4-sheet {
+      background: #fff;
+      box-shadow: 0 10px 35px rgba(0,0,0,0.25);
+      position: relative;
+      margin: 0 auto;
+      box-sizing: border-box;
+      overflow: hidden;
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+    .a4-sheet.portrait {
+      width: 210mm;
+      height: 297mm;
+    }
+    .a4-sheet.landscape {
+      width: 297mm;
+      height: 210mm;
+    }
+
+    .box-svg-canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    /* 动态打印规则由 JS 插入或媒体查询支持 */
+    @media print {
+      body {
+        background: #fff !important;
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+      .no-print {
+        display: none !important;
+      }
+      .workbench-stage {
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+      .a4-sheet {
+        box-shadow: none !important;
+        margin: 0 !important;
+        page-break-after: always;
+        break-after: page;
+      }
+      .portal-floating-nav {
+        display: none !important;
+      }
+    }
+  </style>
+  <style id="page-orientation-style">
+    @page { size: A4 portrait; margin: 0; }
+  </style>
+</head>
+<body>
+
+<header class="workbench-header no-print">
+  <div class="inner">
+    <p class="eyebrow">THE DAWN RAID / CARD CHEST WORKBENCH</p>
+    <h1>船长卡盒工坊 · 创意收纳与打印模板</h1>
+    <p style="margin: 4px 0; color: #dfcfaf; font-size: 14.5px;">
+      为佳能 G3812 打印机与手工实测调优 · 解决传统扑克盒难剪、难折、难插、容易鼓包卡牌等痛点
+    </p>
+    <div class="header-links">
+      <a href="卡牌打印.html">🖨️ 卡牌打印工坊</a>
+      <a href="玩法书.html">📖 图文玩法书</a>
+      <a href="打印与塑封指南.html">📋 G3812 打印指南</a>
+      <a href="聊天长图.html">💬 发朋友长图</a>
+    </div>
+  </div>
+</header>
+
+<main class="controls-panel no-print">
+  <div class="control-card">
+    <div class="control-row">
+      <div class="btn-group">
+        <span class="btn-group-label">卡盒设计结构：</span>
+        <button type="button" class="mode-btn star active" data-structure="folio">
+          🗂️ 推荐：船长翻盖战备档案匣（大开口平躺秒取 · 直刀零难度 · 超大容错绝不翘边）
+        </button>
+        <button type="button" class="mode-btn" data-structure="classic">
+          📦 传统：立式抽插盒（经典扑克盒造型）
+        </button>
+      </div>
+
+      <div class="actions">
+        <label class="toggle-guides">
+          <input type="checkbox" id="chk-guides" checked>
+          显示折痕与剪切标线
+        </label>
+        <button type="button" class="btn-print" onclick="window.print()">
+          <span>🖨️</span> 打印卡盒展开图
+        </button>
+      </div>
+    </div>
+
+    <div class="control-row" style="border-top: 1px dashed #d5cbba; padding-top: 12px;">
+      <div class="btn-group">
+        <span class="btn-group-label">卡牌厚度与收纳容积：</span>
+        <button type="button" class="size-btn active" data-mode="standard">
+          ① 标准裸卡 / 极薄套 (净深 22mm)
+        </button>
+        <button type="button" class="size-btn" data-mode="sleeved">
+          ② 标准桌游卡套 / 夹心牌 (净深 26mm)
+        </button>
+        <button type="button" class="size-btn" data-mode="laminated">
+          ③ 塑封封边版 (净深 28mm · 宽71×高96)
+        </button>
+      </div>
+      <span id="dimension-tip" style="font-size: 13px; color: #785319; font-weight: 600;"></span>
+    </div>
+  </div>
+</main>
+
+<section class="guide-accordion no-print">
+  <div class="guide-box" id="guide-box-content">
+    <!-- 动态更新制作说明 -->
+  </div>
+</section>
+
+<!-- A4 画布 -->
+<div class="workbench-stage">
+  <div class="a4-sheet portrait" id="print-sheet">
+    <svg id="box-svg" class="box-svg-canvas" xmlns="http://www.w3.org/2000/svg">
+      <!-- 动态渲染 SVG 展开图内容 -->
+    </svg>
+  </div>
+</div>
+
+<script>
+(() => {
+  'use strict';
+
+  // 两套盒型结构：folio (翻盖档案匣), classic (经典立式插舌盒)
+  let currentStructure = 'folio';
+  let currentMode = 'standard';
+  let showGuides = true;
+
+  // 尺寸配置
+  const SIZES = {
+    standard: {
+      name: '标准裸卡 / 薄套版',
+      desc: '内净容 66 × 90 × 22 mm · 适合 63 张裸卡或薄卡套，紧实贴合',
+      W: 66, H: 90, D: 22, G: 14, T: 16, B: 14, F: 14
+    },
+    sleeved: {
+      name: '桌游卡套 / 夹心牌版',
+      desc: '内净容 67 × 92 × 26 mm · 适合 63 张加厚卡套或普通扑克夹心打底牌',
+      W: 67, H: 92, D: 26, G: 14, T: 17, B: 14, F: 14
+    },
+    laminated: {
+      name: '塑封封边版',
+      desc: '内净容 71 × 96 × 28 mm · 适合四周留约 3.2mm 封边的塑封成品卡牌',
+      W: 71, H: 96, D: 28, G: 14, T: 18, B: 15, F: 15
+    }
+  };
+
+  const svgElem = document.getElementById('box-svg');
+  const sheetElem = document.getElementById('print-sheet');
+  const pageStyleElem = document.getElementById('page-orientation-style');
+  const modeBtns = document.querySelectorAll('.mode-btn');
+  const sizeBtns = document.querySelectorAll('.size-btn');
+  const chkGuides = document.getElementById('chk-guides');
+  const dimTip = document.getElementById('dimension-tip');
+  const guideBoxContent = document.getElementById('guide-box-content');
+
+  // 更新使用与制作提示
+  function updateGuideText() {
+    if (currentStructure === 'folio') {
+      guideBoxContent.innerHTML = `
+        <h3>🗂️ 为什么强烈推荐「船长翻盖战备档案匣」？</h3>
+        <ul class="feature-list">
+          <li><b>平躺敞口，秒取秒收：</b>不再是从 20mm 的狭窄顶缝里死命抠牌！大翻盖一掀，卡牌上半部 50mm 彻底敞开，单手拇指食指轻松捏出整叠卡牌，绝不伤牌角。</li>
+          <li><b>超大容错，绝不翘边：</b>采用机密公文大翻盖设计（重叠包覆 25mm），即使手工折叠偏了 1~2 毫米，大翻盖插入口袋依然顺滑平整，绝无传统插舌盒“盒角鼓包、插舌皱烂”的丑态。</li>
+          <li><b>直刀极速制作（仅 6 刀）：</b>彻底抛弃 8 个难剪易撕的细碎小耳朵！全是直平切线，折出托袋后贴两条双面胶，40 秒即可极速成型。</li>
+        </ul>
+      `;
+    } else {
+      guideBoxContent.innerHTML = `
+        <h3>📦 「传统立式插舌盒」制作提醒</h3>
+        <ul class="feature-list">
+          <li><b>必须先压痕、后剪切：</b>切忌先剪下来再折！用没有墨水的圆珠笔配合钢尺，沿着所有红色虚线用力划出深深的凹痕，再剪下轮廓。</li>
+          <li><b>插舌已完全修复：</b>顶盖文字已采用正向优雅排版，不再溢出到侧耳；背面小传采用纯矢量逐行排版，彻底解决文字巨大重叠问题。</li>
+          <li><b>适合喜好传统外观的玩家：</b>经典扑克盒外观，建议选用 250g–300g 哑粉白卡纸打印。</li>
+        </ul>
+      `;
+    }
+    dimTip.textContent = SIZES[currentMode].desc;
+  }
+
+  // ==========================================
+  // 1. 渲染「船长翻盖战备档案匣」(A4 Portrait 210 x 297 mm)
+  // ==========================================
+  function renderFolio(cfg) {
+    const { W, D } = cfg;
+    // 针对翻盖托袋优化高度比例
+    const H_back = 88;       // 背板高
+    const H_pocket = 38;     // 前托袋高 (卡牌露出 50mm，极易抓取)
+    const D_bottom = D;      // 底板深度
+    const D_top = D + 1.5;   // 顶盖深度 (微加 1.5mm 确保翻盖顺滑扣合)
+    const H_front = 72;      // 主翻盖高 (下垂覆盖至托袋 22mm 处，严密封闭)
+    const T = 18;            // 插入舌长度 (带斜切倒角)
+    const G = 12;            // 侧边贴合耳宽
+
+    // 总高 = 38 + D_bottom + 88 + D_top + 72 + 18
+    const totalH = H_pocket + D_bottom + H_back + D_top + H_front + T;
+    const Y0 = Number(((297 - totalH) / 2).toFixed(1)); // 居中
+
+    const Y_tongue = Y0;
+    const Y1 = Number((Y_tongue + T).toFixed(1));
+    const Y2 = Number((Y1 + H_front).toFixed(1));
+    const Y3 = Number((Y2 + D_top).toFixed(1));
+    const Y4 = Number((Y3 + H_back).toFixed(1));
+    const Y5 = Number((Y4 + D_bottom).toFixed(1));
+    const Y6 = Number((Y5 + H_pocket).toFixed(1));
+
+    // 水平居中
+    const X_left = Number(((210 - W) / 2).toFixed(1));
+    const X_right = Number((X_left + W).toFixed(1));
+    const X_mid = Number(((X_left + X_right) / 2).toFixed(1));
+
+    // 左右侧翼（连在前置托袋两侧）
+    const X_wing_l = Number((X_left - D).toFixed(1));
+    const X_glue_l = Number((X_wing_l - G).toFixed(1));
+
+    const X_wing_r = Number((X_right + D).toFixed(1));
+    const X_glue_r = Number((X_wing_r + G).toFixed(1));
+
+    // 外轮廓剪切路径 (全部平直直角/倒角，极度易剪)
+    const cutPath = [
+      `M ${X_left + 4} ${Y_tongue}`,
+      `L ${X_right - 4} ${Y_tongue}`,
+      `L ${X_right} ${Y_tongue + 4}`,
+      `L ${X_right} ${Y5}`,
+      `L ${X_glue_r - 3} ${Y5}`,
+      `L ${X_glue_r} ${Y5 + 3}`,
+      `L ${X_glue_r} ${Y6 - 3}`,
+      `L ${X_glue_r - 3} ${Y6}`,
+      `L ${X_left} ${Y6}`,
+      `L ${X_glue_l + 3} ${Y6}`,
+      `L ${X_glue_l} ${Y6 - 3}`,
+      `L ${X_glue_l} ${Y5 + 3}`,
+      `L ${X_glue_l + 3} ${Y5}`,
+      `L ${X_left} ${Y5}`,
+      `L ${X_left} ${Y_tongue + 4}`,
+      'Z'
+    ].join(' ');
+
+    // 内部折痕线
+    const foldLines = [
+      // 横向折痕 (大翻盖、顶盖、背板、底板、前托袋)
+      { x1: X_left, y1: Y1, x2: X_right, y2: Y1, desc: '插舌/主翻盖' },
+      { x1: X_left, y1: Y2, x2: X_right, y2: Y2, desc: '主翻盖/顶盖' },
+      { x1: X_left, y1: Y3, x2: X_right, y2: Y3, desc: '顶盖/背板' },
+      { x1: X_left, y1: Y4, x2: X_right, y2: Y4, desc: '背板/底板' },
+      { x1: X_left, y1: Y5, x2: X_right, y2: Y5, desc: '底板/前托袋' },
+      // 竖向折痕 (侧壁与粘合耳)
+      { x1: X_left, y1: Y5, x2: X_left, y2: Y6, desc: '左侧壁/前袋' },
+      { x1: X_wing_l, y1: Y5, x2: X_wing_l, y2: Y6, desc: '左涂胶耳' },
+      { x1: X_right, y1: Y5, x2: X_right, y2: Y6, desc: '右侧壁/前袋' },
+      { x1: X_wing_r, y1: Y5, x2: X_wing_r, y2: Y6, desc: '右涂胶耳' }
+    ];
+
+    let svg = `
+      <defs>
+        <pattern id="glue-hatch" width="4" height="4" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
+          <line x1="0" y1="0" x2="0" y2="4" stroke="#c4a977" stroke-width="1.2" />
+        </pattern>
+        <linearGradient id="gold-title-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#faeec8" />
+          <stop offset="50%" stop-color="#d4af37" />
+          <stop offset="100%" stop-color="#8a6729" />
+        </linearGradient>
+      </defs>
+
+      <!-- 页面装饰与标尺 (位于左侧空白区 37mm 内，绝不干扰卡盒) -->
+      <g id="sheet-tools" font-family="'Noto Serif SC', serif" font-size="2.4" fill="#685541">
+        <!-- 顶部标题 -->
+        <text x="14" y="10" font-weight="900">《劫走黎明》船长翻盖战备档案匣 · A4 纵向 1:1</text>
+        <text x="14" y="13.5" font-size="2.1">【${cfg.name}】实际大小 100% 打印 · 净深 ${D} mm · 平躺大开口 · 极速直刀制作</text>
+
+        <!-- 50mm 比例核对标尺 (位于左侧 14mm) -->
+        <g transform="translate(14, 26)">
+          <rect x="0" y="0" width="12" height="50" fill="#f8f2e4" stroke="#785319" stroke-width="0.3" />
+          <line x1="0" y1="0" x2="12" y2="0" stroke="#785319" stroke-width="0.5" />
+          <line x1="6" y1="10" x2="12" y2="10" stroke="#785319" stroke-width="0.2" />
+          <line x1="6" y1="20" x2="12" y2="20" stroke="#785319" stroke-width="0.2" />
+          <line x1="6" y1="30" x2="12" y2="30" stroke="#785319" stroke-width="0.2" />
+          <line x1="6" y1="40" x2="12" y2="40" stroke="#785319" stroke-width="0.2" />
+          <line x1="0" y1="50" x2="12" y2="50" stroke="#785319" stroke-width="0.5" />
+          <text x="6" y="27" transform="rotate(-90 6 27)" text-anchor="middle" font-size="1.9" font-weight="700">50 mm 核对标尺</text>
+        </g>
+
+        <!-- 30 秒极简制作图解 (位于右侧 178mm 处) -->
+        <g transform="translate(180, 26)">
+          <text x="0" y="0" font-weight="900" font-size="2.3" fill="#852d18">🗂️ 极速制作步骤：</text>
+          <text x="0" y="5" font-size="2">• 沿红虚线压出折痕</text>
+          <text x="0" y="9" font-size="2">• 沿外圈黑实线剪下</text>
+          <text x="0" y="13" font-size="2">• 折起前托袋与侧翼</text>
+          <text x="0" y="17" font-size="2">• 侧翼贴双面胶固定</text>
+          <text x="0" y="21" font-size="2">• 卡牌放入，翻盖插入</text>
+          <text x="0" y="27" font-weight="700" fill="#143e3b">✔️ 秒级大开口收纳！</text>
+        </g>
+
+        <!-- 图例 (底部) -->
+        <g transform="translate(14, 288)">
+          <line x1="0" y1="-1" x2="10" y2="-1" stroke="#111" stroke-width="0.4" />
+          <text x="12" y="0">黑色实线：剪切</text>
+          <line x1="50" y1="-1" x2="60" y2="-1" stroke="#d9432f" stroke-width="0.4" stroke-dasharray="1.5,1" />
+          <text x="62" y="0">红色虚线：压痕折线</text>
+          <rect x="105" y="-3" width="7" height="3" fill="url(#glue-hatch)" stroke="#c4a977" stroke-width="0.2" />
+          <text x="114" y="0">斜纹：涂胶粘于背板内侧</text>
+        </g>
+      </g>
+
+      <!-- ================= 盒体各面板绘制 ================= -->
+
+      <!-- 1. 顶部插舌 (Tuck Tongue) -->
+      <path d="M ${X_left} ${Y1} L ${X_left + 4} ${Y_tongue} L ${X_right - 4} ${Y_tongue} L ${X_right} ${Y1} Z" fill="#102126" />
+      <text x="${X_mid}" y="${(Y_tongue + Y1) / 2 + 1.2}" text-anchor="middle" font-family="'Cinzel', serif" font-weight="700" font-size="2.1" fill="#c4a977" letter-spacing="1">
+        ⚓ PULL TO OPEN · 翻开档案 ⚓
+      </text>
+
+      <!-- 2. 主翻盖 (Front Full Cover) -->
+      <rect x="${X_left}" y="${Y1}" width="${W}" height="${H_front}" fill="#14262c" />
+      <rect x="${X_left + 1.5}" y="${Y1 + 1.5}" width="${W - 3}" height="${H_front - 3}" fill="none" stroke="#785319" stroke-width="0.4" />
+      <rect x="${X_left + 2.5}" y="${Y1 + 2.5}" width="${W - 5}" height="${H_front - 5}" fill="none" stroke="#c4a977" stroke-width="0.25" />
+      <!-- 四角铆钉 -->
+      <circle cx="${X_left + 3.2}" cy="${Y1 + 3.2}" r="0.7" fill="#d4af37" stroke="#3a2505" stroke-width="0.2" />
+      <circle cx="${X_right - 3.2}" cy="${Y1 + 3.2}" r="0.7" fill="#d4af37" stroke="#3a2505" stroke-width="0.2" />
+      <circle cx="${X_left + 3.2}" cy="${Y2 - 3.2}" r="0.7" fill="#d4af37" stroke="#3a2505" stroke-width="0.2" />
+      <circle cx="${X_right - 3.2}" cy="${Y2 - 3.2}" r="0.7" fill="#d4af37" stroke="#3a2505" stroke-width="0.2" />
+
+      <!-- 翻盖顶端金属标牌 -->
+      <rect x="${X_left + 5}" y="${Y1 + 3.5}" width="${W - 10}" height="4.5" fill="#1c353c" stroke="#c4a977" stroke-width="0.3" rx="0.5" />
+      <text x="${X_mid}" y="${Y1 + 6.6}" text-anchor="middle" font-family="'Cinzel', serif" font-weight="700" font-size="2" fill="#e8cca0" letter-spacing="1.2">
+        THE DAWN RAID · TACTICAL FOLIO
+      </text>
+
+      <!-- 核心原画插图 (不落号_封面.png) -->
+      <image href="assets/不落号_封面.png" x="${X_left + 4}" y="${Y1 + 9.5}" width="${W - 8}" height="35" preserveAspectRatio="xMidYMid slice" />
+      <rect x="${X_left + 4}" y="${Y1 + 9.5}" width="${W - 8}" height="35" fill="none" stroke="#c4a977" stroke-width="0.4" />
+
+      <!-- 主标题 -->
+      <g transform="translate(${X_mid}, ${Y1 + 50.5})">
+        <text x="0" y="0" text-anchor="middle" font-family="'Noto Serif SC', serif" font-weight="900" font-size="6.8" fill="url(#gold-title-grad)" letter-spacing="2">
+          劫走黎明
+        </text>
+        <text x="0" y="3.8" text-anchor="middle" font-family="'Cinzel Decorative', serif" font-weight="900" font-size="2.4" fill="#fff" letter-spacing="1.8">
+          THE DAWN RAID
+        </text>
+        <text x="0" y="7.2" text-anchor="middle" font-family="'Noto Serif SC', serif" font-weight="600" font-size="2.0" fill="#d5cbba">
+          蒸汽空战 · 飞艇夺宝桌面卡牌游戏
+        </text>
+      </g>
+
+      <!-- 人数/时长/年龄底栏 -->
+      <g transform="translate(${X_mid}, ${Y1 + 63.5})">
+        <rect x="${-(W - 8)/2}" y="0" width="${W - 8}" height="5" fill="#1b3238" stroke="#785319" stroke-width="0.3" rx="0.5" />
+        <text x="${-(W - 8)/3}" y="3.4" text-anchor="middle" font-family="'Noto Serif SC', serif" font-size="1.9" fill="#f7eedb">👤 4–8 人</text>
+        <text x="0" y="3.4" text-anchor="middle" font-family="'Noto Serif SC', serif" font-size="1.9" fill="#f7eedb">⏱️ 20–30 分</text>
+        <text x="${(W - 8)/3}" y="3.4" text-anchor="middle" font-family="'Noto Serif SC', serif" font-size="1.9" fill="#f7eedb">⚓ 10+ 岁</text>
+      </g>
+
+      <!-- 3. 顶盖面板 (Top Lid) -->
+      <rect x="${X_left}" y="${Y2}" width="${W}" height="${D_top}" fill="#102024" />
+      <rect x="${X_left + 1.5}" y="${Y2 + 1.5}" width="${W - 3}" height="${D_top - 3}" fill="none" stroke="#c4a977" stroke-width="0.3" />
+      <text x="${X_mid}" y="${(Y2 + Y3) / 2 - 1.2}" text-anchor="middle" font-family="'Noto Serif SC', serif" font-weight="900" font-size="3.2" fill="#f7eedb" letter-spacing="1">
+        劫走黎明 · 船长战备匣
+      </text>
+      <text x="${X_mid}" y="${(Y2 + Y3) / 2 + 2.5}" text-anchor="middle" font-family="'Cinzel', serif" font-weight="700" font-size="1.8" fill="#d4af37" letter-spacing="1.2">
+        CAPTAIN'S DECK CHEST
+      </text>
+
+      <!-- 4. 背面主面板 (Back Panel) -->
+      <rect x="${X_left}" y="${Y3}" width="${W}" height="${H_back}" fill="#f6f1e3" />
+      <rect x="${X_left + 1.5}" y="${Y3 + 1.5}" width="${W - 3}" height="${H_back - 3}" fill="none" stroke="#bfa77b" stroke-width="0.4" />
+      <rect x="${X_left + 2.5}" y="${Y3 + 2.5}" width="${W - 5}" height="${H_back - 5}" fill="none" stroke="#785319" stroke-width="0.25" />
+
+      <!-- 战情简报铭牌 -->
+      <rect x="${X_left + 5}" y="${Y3 + 4}" width="${W - 10}" height="4.5" fill="#785319" rx="0.5" />
+      <text x="${X_mid}" y="${Y3 + 7.1}" text-anchor="middle" font-family="'Noto Serif SC', serif" font-weight="700" font-size="2.1" fill="#fff" letter-spacing="1">
+        战情简报 · MISSION BRIEFING
+      </text>
+
+      <!-- 故事小传 (纯矢量优雅三行引言) -->
+      <g transform="translate(${X_mid}, ${Y3 + 10.5})">
+        <rect x="${-(W - 11)/2}" y="0" width="${W - 11}" height="14.5" fill="#eee5ce" stroke="#cfc0a2" stroke-width="0.25" rx="0.8" />
+        <text x="${-(W - 11)/2 + 2.5}" y="3.8" font-family="Georgia, serif" font-size="4" fill="#852d18">“</text>
+        <text x="0" y="3.8" text-anchor="middle" font-family="'Noto Serif SC', serif" font-weight="700" font-size="2.1" fill="#2d1e0f">
+          不落号正在坠落，货舱四分五裂。
+        </text>
+        <text x="0" y="7.5" text-anchor="middle" font-family="'Noto Serif SC', serif" font-size="1.95" fill="#523a1a">
+          炮火、绞索与俯冲，在破晓天亮之前，
+        </text>
+        <text x="0" y="11.2" text-anchor="middle" font-family="'Noto Serif SC', serif" font-weight="700" font-size="1.95" fill="#852d18">
+          把属于旧城的天路彻底夺回来！
+        </text>
+        <text x="${(W - 11)/2 - 3}" y="12.5" font-family="Georgia, serif" font-size="4" fill="#852d18">”</text>
+      </g>
+
+      <!-- 三元战术克制图示 -->
+      <g transform="translate(${X_mid}, ${Y3 + 27.5})">
+        <rect x="${-(W - 11)/2}" y="0" width="${W - 11}" height="8.5" fill="#e5dbc1" stroke="#bfa77b" stroke-width="0.3" rx="0.8" />
+        <text x="0" y="3.2" text-anchor="middle" font-family="'Noto Serif SC', serif" font-weight="900" font-size="2.1" fill="#852d18">
+          三元战术克制循环
+        </text>
+        <text x="0" y="6.6" text-anchor="middle" font-family="'Noto Serif SC', serif" font-size="1.8" fill="#143e3b">
+          炮击 ➔ 压制 钩索 ➔ 锁住 俯冲 ➔ 避开 炮击
+        </text>
+      </g>
+
+      <!-- 盒内配件清单 -->
+      <g transform="translate(${X_left + 5.5}, ${Y3 + 38.5})">
+        <rect x="0" y="0" width="${W - 11}" height="23" fill="#fffdfa" stroke="#d5c8ae" stroke-width="0.3" rx="0.8" />
+        <rect x="0" y="0" width="${W - 11}" height="4.5" fill="#ece1c8" stroke="#d5c8ae" stroke-width="0.3" rx="0.8" />
+        <text x="3" y="3.2" font-family="'Noto Serif SC', serif" font-weight="900" font-size="2.0" fill="#6d4812">
+          📦 全套 63 张专用卡牌清点：
+        </text>
+        <text x="3.5" y="7.8" font-family="'Noto Serif SC', serif" font-size="1.85" fill="#2d2214">• 24 张 指令牌（8位船长专属战术公文）</text>
+        <text x="3.5" y="11.8" font-family="'Noto Serif SC', serif" font-size="1.85" fill="#2d2214">• 24 张 货物牌（炉机 · 航图 · 物资）</text>
+        <text x="3.5" y="15.8" font-family="'Noto Serif SC', serif" font-size="1.85" fill="#2d2214">• 10 张 私人委托（极密封函 · 手绘插画）</text>
+        <text x="3.5" y="19.8" font-family="'Noto Serif SC', serif" font-size="1.85" fill="#2d2214">• 1 张 领航标记卡 ＋ 4 张 桌边对决速查卡</text>
+      </g>
+
+      <!-- 条形码与注脚 (预留 12mm 边距) -->
+      <g transform="translate(${X_mid}, ${Y3 + 65.5})">
+        <g stroke="#1a1005" stroke-width="0.35" fill="none">
+          <line x1="-16" y1="0" x2="-16" y2="4.5" stroke-width="0.7" />
+          <line x1="-14" y1="0" x2="-14" y2="4.5" stroke-width="0.3" />
+          <line x1="-12" y1="0" x2="-12" y2="4.5" stroke-width="0.8" />
+          <line x1="-10" y1="0" x2="-10" y2="4.5" stroke-width="0.3" />
+          <line x1="-8" y1="0" x2="-8" y2="4.5" stroke-width="0.5" />
+          <line x1="-5" y1="0" x2="-5" y2="4.5" stroke-width="0.7" />
+          <line x1="-3" y1="0" x2="-3" y2="4.5" stroke-width="0.3" />
+          <line x1="0" y1="0" x2="0" y2="4.5" stroke-width="0.6" />
+          <line x1="2" y1="0" x2="2" y2="4.5" stroke-width="0.3" />
+          <line x1="5" y1="0" x2="5" y2="4.5" stroke-width="0.8" />
+          <line x1="7" y1="0" x2="7" y2="4.5" stroke-width="0.4" />
+          <line x1="10" y1="0" x2="10" y2="4.5" stroke-width="0.6" />
+          <line x1="12" y1="0" x2="12" y2="4.5" stroke-width="0.3" />
+          <line x1="14" y1="0" x2="14" y2="4.5" stroke-width="0.7" />
+          <line x1="16" y1="0" x2="16" y2="4.5" stroke-width="0.5" />
+        </g>
+        <text x="0" y="7.5" text-anchor="middle" font-family="'Special Elite', monospace" font-size="1.75" fill="#4a3b2b" letter-spacing="1">
+          1904 - 0916 - 2026 - DAWN
+        </text>
+        <text x="0" y="10.8" text-anchor="middle" font-family="'Noto Serif SC', serif" font-size="1.6" fill="#685641">
+          船长的桌面工坊 · 原创桌面游戏 · CANON G3812
+        </text>
+      </g>
+
+      <!-- 5. 底部面板 (Bottom Panel) -->
+      <rect x="${X_left}" y="${Y4}" width="${W}" height="${D_bottom}" fill="#14262c" />
+      <rect x="${X_left + 1.5}" y="${Y4 + 1.5}" width="${W - 3}" height="${D_bottom - 3}" fill="none" stroke="#785319" stroke-width="0.3" />
+      <text x="${X_mid}" y="${(Y4 + Y5) / 2 + 0.8}" text-anchor="middle" font-family="'Special Elite', monospace" font-size="1.8" fill="#a4b3ae" letter-spacing="1">
+        № 1904 AIR-NAVY CARGO CHEST
+      </text>
+
+      <!-- 6. 前置托袋面 (Front Pocket Face - 掀开大盖后看到的收纳内面) -->
+      <rect x="${X_left}" y="${Y5}" width="${W}" height="${H_pocket}" fill="#f6f1e3" />
+      <rect x="${X_left + 1.5}" y="${Y5 + 1.5}" width="${W - 3}" height="${H_pocket - 3}" fill="none" stroke="#bfa77b" stroke-width="0.4" />
+      <!-- 托袋正面黄铜扣带与收纳指示 -->
+      <rect x="${X_left + 4}" y="${Y5 + 4}" width="${W - 8}" height="5.5" fill="#785319" rx="0.5" />
+      <text x="${X_mid}" y="${Y5 + 7.8}" text-anchor="middle" font-family="'Noto Serif SC', serif" font-weight="900" font-size="2.2" fill="#fff" letter-spacing="1">
+        📦 货舱已装载 · 63 张专用卡牌
+      </text>
+      <!-- 插扣引导带 (大翻盖可直接滑入口袋内，亦可沿此线切一道缝作为外扣带) -->
+      <g transform="translate(${X_mid}, ${Y5 + 20})">
+        <rect x="${-(W - 12)/2}" y="-4" width="${W - 12}" height="8" fill="#e8deca" stroke="#bfa77b" stroke-width="0.3" rx="0.5" />
+        <text x="0" y="-0.5" text-anchor="middle" font-family="'Noto Serif SC', serif" font-weight="700" font-size="1.8" fill="#852d18">
+          ▼ 翻盖插舌直接插入口袋内侧 ▼
+        </text>
+        <text x="0" y="2.5" text-anchor="middle" font-family="'Cinzel', serif" font-size="1.4" fill="#4d3b26">
+          [ FLIGHT FOLIO CLOSURE SLOT ]
+        </text>
+      </g>
+      <text x="${X_mid}" y="${Y6 - 3}" text-anchor="middle" font-family="'Special Elite', monospace" font-size="1.6" fill="#88735c">
+        AIRSHIP DAWN RAID · TABLETOP ARCHIVE
+      </text>
+
+      <!-- 左右侧壁与涂胶翼 (连在前托袋两侧) -->
+      <!-- 左侧壁 -->
+      <rect x="${X_wing_l}" y="${Y5}" width="${D}" height="${H_pocket}" fill="#14262c" />
+      <g transform="rotate(-90 ${(X_wing_l + X_left)/2} ${(Y5 + Y6)/2})">
+        <text x="${(X_wing_l + X_left)/2}" y="${(Y5 + Y6)/2 + 1}" text-anchor="middle" font-family="'Cinzel', serif" font-weight="700" font-size="1.8" fill="#dfd5c1">
+          4–8 CAPTAINS
+        </text>
+      </g>
+      <!-- 左涂胶耳 -->
+      <path d="M ${X_glue_l} ${Y5 + 3} L ${X_glue_l + 3} ${Y5} L ${X_wing_l} ${Y5} L ${X_wing_l} ${Y6} L ${X_glue_l + 3} ${Y6} L ${X_glue_l} ${Y6 - 3} Z" fill="url(#glue-hatch)" />
+      <text x="${(X_glue_l + X_wing_l)/2}" y="${(Y5 + Y6)/2}" transform="rotate(-90 ${(X_glue_l + X_wing_l)/2} ${(Y5 + Y6)/2})" text-anchor="middle" font-family="'Noto Serif SC', serif" font-size="1.6" font-weight="700" fill="#785319">
+        ▨ 粘于背板 ▨
+      </text>
+
+      <!-- 右侧壁 -->
+      <rect x="${X_right}" y="${Y5}" width="${D}" height="${H_pocket}" fill="#14262c" />
+      <g transform="rotate(90 ${(X_right + X_wing_r)/2} ${(Y5 + Y6)/2})">
+        <text x="${(X_right + X_wing_r)/2}" y="${(Y5 + Y6)/2 + 1}" text-anchor="middle" font-family="'Cinzel', serif" font-weight="700" font-size="1.8" fill="#dfd5c1">
+          STEAM & BRASS
+        </text>
+      </g>
+      <!-- 右涂胶耳 -->
+      <path d="M ${X_wing_r} ${Y5} L ${X_glue_r - 3} ${Y5} L ${X_glue_r} ${Y5 + 3} L ${X_glue_r} ${Y6 - 3} L ${X_glue_r - 3} ${Y6} L ${X_wing_r} ${Y6} Z" fill="url(#glue-hatch)" />
+      <text x="${(X_wing_r + X_glue_r)/2}" y="${(Y5 + Y6)/2}" transform="rotate(90 ${(X_wing_r + X_glue_r)/2} ${(Y5 + Y6)/2})" text-anchor="middle" font-family="'Noto Serif SC', serif" font-size="1.6" font-weight="700" fill="#785319">
+        ▨ 粘于背板 ▨
+      </text>
+
+      <!-- 标线层 -->
+      ${showGuides ? `
+        <!-- 折痕线 (红虚线) -->
+        <g stroke="#d9432f" stroke-width="0.32" stroke-dasharray="1.8,1.2" fill="none">
+          ${foldLines.map(l => `<line x1="${l.x1}" y1="${l.y1}" x2="${l.x2}" y2="${l.y2}" />`).join('')}
+        </g>
+        <!-- 剪切线 (高对比实黑线) -->
+        <path d="${cutPath}" fill="none" stroke="#111111" stroke-width="0.38" />
+      ` : ''}
+    `;
+
+    // 更新画布与页面属性
+    sheetElem.className = 'a4-sheet portrait';
+    pageStyleElem.textContent = '@page { size: A4 portrait; margin: 0; }';
+    svgElem.setAttribute('viewBox', '0 0 210 297');
+    svgElem.innerHTML = svg;
+  }
+
+  // ==========================================
+  // 2. 渲染「传统立式插舌盒」(A4 Landscape 297 x 210 mm)
+  // ==========================================
+  function renderClassic(cfg) {
+    const { W, H, D, G, T, B, F } = cfg;
+    const totalW = G + D + W + D + W;
+    const totalH = T + D + H + D + B;
+
+    const x0 = Number(((297 - totalW) / 2).toFixed(2));
+    const y0 = Number(((210 - totalH) / 2).toFixed(2));
+
+    const x1 = Number((x0 + G).toFixed(2));
+    const x2 = Number((x1 + D).toFixed(2));
+    const x3 = Number((x2 + W).toFixed(2));
+    const x4 = Number((x3 + D).toFixed(2));
+    const x5 = Number((x4 + W).toFixed(2));
+
+    const y1 = Number((y0 + T).toFixed(2));
+    const y2 = Number((y1 + D).toFixed(2));
+    const y3 = Number((y2 + H).toFixed(2));
+    const y4 = Number((y3 + D).toFixed(2));
+    const y5 = Number((y4 + B).toFixed(2));
+
+    const xMid = Number(((x2 + x3) / 2).toFixed(2));
+    const rThumb = 8;
+
+    const cutPathD = [
+      `M ${x1} ${y2}`,
+      `L ${x0} ${y2 + 5}`,
+      `L ${x0} ${y3 - 5}`,
+      `L ${x1} ${y3}`,
+      `L ${x1} ${y3 + 4}`,
+      `L ${x1 + 4} ${y3 + F}`,
+      `L ${x2} ${y3 + F}`,
+      `L ${x2} ${y3}`,
+      `L ${x2} ${y4}`,
+      `L ${x2 + 0.8} ${y5 - 4}`,
+      `A 4 4 0 0 0 ${x2 + 4.8} ${y5}`,
+      `L ${x3 - 4.8} ${y5}`,
+      `A 4 4 0 0 0 ${x3 - 0.8} ${y5 - 4}`,
+      `L ${x3} ${y4}`,
+      `L ${x3} ${y3}`,
+      `L ${x3} ${y3 + F}`,
+      `L ${x4 - 4} ${y3 + F}`,
+      `L ${x4} ${y3 + 4}`,
+      `L ${x4} ${y3}`,
+      `L ${x5} ${y3}`,
+      `L ${x5} ${y2}`,
+      `L ${x5} ${y1}`,
+      `L ${x5 - 0.8} ${y0 + 5}`,
+      `A 5 5 0 0 0 ${x5 - 5.8} ${y0}`,
+      `L ${x4 + 5.8} ${y0}`,
+      `A 5 5 0 0 0 ${x4 + 0.8} ${y0 + 5}`,
+      `L ${x4} ${y1}`,
+      `L ${x4} ${y2}`,
+      `L ${x4} ${y2 - 4}`,
+      `L ${x4 - 4} ${y2 - F}`,
+      `L ${x3} ${y2 - F}`,
+      `L ${x3} ${y2}`,
+      `L ${xMid + rThumb} ${y2}`,
+      `A ${rThumb} ${rThumb} 0 0 1 ${xMid - rThumb} ${y2}`,
+      `L ${x2} ${y2}`,
+      `L ${x2} ${y2 - F}`,
+      `L ${x1 + 4} ${y2 - F}`,
+      `L ${x1} ${y2 - 4}`,
+      `L ${x1} ${y2}`,
+      'Z'
+    ].join(' ');
+
+    const foldLines = [
+      { x1: x1, y1: y2, x2: x1, y2: y3 },
+      { x1: x2, y1: y2, x2: x2, y2: y3 },
+      { x1: x3, y1: y2, x2: x3, y2: y3 },
+      { x1: x4, y1: y2, x2: x4, y2: y3 },
+      { x1: x1, y1: y2, x2: x2, y2: y2 },
+      { x1: x1, y1: y3, x2: x2, y2: y3 },
+      { x1: x3, y1: y2, x2: x4, y2: y2 },
+      { x1: x3, y1: y3, x2: x4, y2: y3 },
+      { x1: x4, y1: y2, x2: x5, y2: y2 },
+      { x1: x4, y1: y1, x2: x5, y2: y1 },
+      { x1: x2, y1: y3, x2: x3, y2: y3 },
+      { x1: x2, y1: y4, x2: x3, y2: y4 }
+    ];
+
+    let svg = `
+      <defs>
+        <pattern id="glue-hatch-c" width="4" height="4" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
+          <line x1="0" y1="0" x2="0" y2="4" stroke="#c4a977" stroke-width="1.2" />
+        </pattern>
+        <pattern id="dust-hatch-c" width="6" height="6" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
+          <line x1="0" y1="0" x2="0" y2="6" stroke="#e0d6be" stroke-width="0.8" />
+        </pattern>
+      </defs>
+
+      <g font-family="'Noto Serif SC', serif" font-size="2.6" fill="#6a5d4d">
+        <text x="14" y="9" font-weight="700">《劫走黎明》立式插舌卡盒 · 展开图【${cfg.name}】</text>
+        <text x="14" y="13" font-size="2.2">A4 横向 · 实际大小 100% · 净容 ${W} × ${H} × ${D} mm · 传统扑克盒造型</text>
+
+        <!-- 50mm 标尺 -->
+        <g transform="translate(225, 6)">
+          <rect x="0" y="0" width="50" height="4" fill="#f6eedd" stroke="#785319" stroke-width="0.3" />
+          <line x1="0" y1="0" x2="0" y2="4" stroke="#785319" stroke-width="0.5" />
+          <line x1="10" y1="2" x2="10" y2="4" stroke="#785319" stroke-width="0.2" />
+          <line x1="20" y1="2" x2="20" y2="4" stroke="#785319" stroke-width="0.2" />
+          <line x1="30" y1="2" x2="30" y2="4" stroke="#785319" stroke-width="0.2" />
+          <line x1="40" y1="2" x2="40" y2="4" stroke="#785319" stroke-width="0.2" />
+          <line x1="50" y1="0" x2="50" y2="4" stroke="#785319" stroke-width="0.5" />
+          <text x="25" y="7.2" text-anchor="middle" font-size="2" font-weight="700">50 mm 比例核对标尺</text>
+        </g>
+      </g>
+
+      <!-- 侧边糊口 -->
+      <path d="M ${x1} ${y2} L ${x0} ${y2 + 5} L ${x0} ${y3 - 5} L ${x1} ${y3} Z" fill="url(#glue-hatch-c)" />
+      <text x="${(x0 + x1) / 2}" y="${(y2 + y3) / 2}" transform="rotate(-90 ${(x0 + x1) / 2} ${(y2 + y3) / 2})"
+            text-anchor="middle" font-family="'Special Elite', monospace" font-size="2.4" font-weight="700" fill="#785319" letter-spacing="1">
+        ▨ GLUE HERE · 在此涂胶 ▨
+      </text>
+
+      <!-- 4 个防尘耳 -->
+      <path d="M ${x1} ${y2} L ${x1} ${y2 - 4} L ${x1 + 4} ${y2 - F} L ${x2} ${y2 - F} L ${x2} ${y2} Z" fill="url(#dust-hatch-c)" />
+      <path d="M ${x1} ${y3} L ${x1} ${y3 + 4} L ${x1 + 4} ${y3 + F} L ${x2} ${y3 + F} L ${x2} ${y3} Z" fill="url(#dust-hatch-c)" />
+      <path d="M ${x3} ${y2} L ${x3} ${y2 - F} L ${x4 - 4} ${y2 - F} L ${x4} ${y2 - 4} L ${x4} ${y2} Z" fill="url(#dust-hatch-c)" />
+      <path d="M ${x3} ${y3} L ${x3} ${y3 + F} L ${x4 - 4} ${y3 + F} L ${x4} ${y3 + 4} L ${x4} ${y3} Z" fill="url(#dust-hatch-c)" />
+
+      <!-- 左脊 -->
+      <rect x="${x1}" y="${y2}" width="${D}" height="${H}" fill="#183339" />
+      <g transform="rotate(90 ${(x1 + x2)/2} ${(y2 + y3)/2})">
+        <text x="${(x1 + x2)/2}" y="${(y2 + y3)/2 + 1}" text-anchor="middle" font-family="'Noto Serif SC', serif" font-weight="900" font-size="3.6" fill="#f7eedb">
+          劫走黎明 · THE DAWN RAID ⚓
+        </text>
+      </g>
+
+      <!-- 正面 -->
+      <rect x="${x2}" y="${y2}" width="${W}" height="${H}" fill="#14262c" />
+      <rect x="${x2 + 1.5}" y="${y2 + 1.5}" width="${W - 3}" height="${H - 3}" fill="none" stroke="#785319" stroke-width="0.4" />
+      <rect x="${x2 + 2.5}" y="${y2 + 2.5}" width="${W - 5}" height="${H - 5}" fill="none" stroke="#c4a977" stroke-width="0.25" />
+      <rect x="${x2 + 5}" y="${y2 + 4}" width="${W - 10}" height="4.8" fill="#1c353c" stroke="#c4a977" stroke-width="0.3" rx="0.5" />
+      <text x="${xMid}" y="${y2 + 7.3}" text-anchor="middle" font-family="'Cinzel', serif" font-weight="700" font-size="2" fill="#e8cca0">
+        THE DAWN RAID · CARDS CHEST
+      </text>
+      <image href="assets/不落号_封面.png" x="${x2 + 4.5}" y="${y2 + 10.5}" width="${W - 9}" height="40" preserveAspectRatio="xMidYMid slice" />
+      <rect x="${x2 + 4.5}" y="${y2 + 10.5}" width="${W - 9}" height="40" fill="none" stroke="#c4a977" stroke-width="0.4" />
+      <g transform="translate(${X_mid || xMid}, ${y2 + 57.5})">
+        <text x="0" y="0" text-anchor="middle" font-family="'Noto Serif SC', serif" font-weight="900" font-size="7.5" fill="#d4af37">
+          劫走黎明
+        </text>
+        <text x="0" y="4.2" text-anchor="middle" font-family="'Cinzel Decorative', serif" font-weight="900" font-size="2.6" fill="#fff">
+          THE DAWN RAID
+        </text>
+      </g>
+      <text x="${xMid}" y="${y3 - 4.5}" text-anchor="middle" font-family="'Special Elite', monospace" font-size="1.6" fill="#8d9b97">
+        № 1904 AIR-FLAGSHIP RECOVERY GEAR
+      </text>
+
+      <!-- 右脊 -->
+      <rect x="${x3}" y="${y2}" width="${D}" height="${H}" fill="#183339" />
+      <g transform="rotate(90 ${(x3 + x4)/2} ${(y2 + y3)/2})">
+        <text x="${(x3 + x4)/2}" y="${(y2 + y3)/2 + 1}" text-anchor="middle" font-family="'Noto Serif SC', serif" font-weight="900" font-size="3.6" fill="#f7eedb">
+          劫走黎明 · 不落号货舱装备匣 ⚙️
+        </text>
+      </g>
+
+      <!-- 背面 (已修复排版错位) -->
+      <rect x="${x4}" y="${y2}" width="${W}" height="${H}" fill="#f6f1e3" />
+      <rect x="${x4 + 1.5}" y="${y2 + 1.5}" width="${W - 3}" height="${H - 3}" fill="none" stroke="#bfa77b" stroke-width="0.4" />
+      <rect x="${x4 + 5}" y="${y2 + 4}" width="${W - 10}" height="4.5" fill="#785319" rx="0.6" />
+      <text x="${(x4 + x5)/2}" y="${y2 + 7.1}" text-anchor="middle" font-family="'Noto Serif SC', serif" font-weight="700" font-size="2.1" fill="#fff">
+        战情简报 · MISSION BRIEFING
+      </text>
+
+      <g transform="translate(${(x4 + x5)/2}, ${y2 + 10.5})">
+        <rect x="${-(W - 11)/2}" y="0" width="${W - 11}" height="14.5" fill="#eee5ce" stroke="#cfc0a2" stroke-width="0.25" rx="0.8" />
+        <text x="${-(W - 11)/2 + 2.5}" y="3.8" font-family="Georgia, serif" font-size="4" fill="#852d18">“</text>
+        <text x="0" y="3.8" text-anchor="middle" font-family="'Noto Serif SC', serif" font-weight="700" font-size="2.1" fill="#2d1e0f">
+          不落号正在坠落，货舱四分五裂。
+        </text>
+        <text x="0" y="7.5" text-anchor="middle" font-family="'Noto Serif SC', serif" font-size="1.95" fill="#523a1a">
+          炮火、绞索与俯冲，在破晓天亮之前，
+        </text>
+        <text x="0" y="11.2" text-anchor="middle" font-family="'Noto Serif SC', serif" font-weight="700" font-size="1.95" fill="#852d18">
+          把属于旧城的天路彻底夺回来！
+        </text>
+        <text x="${(W - 11)/2 - 3}" y="12.5" font-family="Georgia, serif" font-size="4" fill="#852d18">”</text>
+      </g>
+
+      <g transform="translate(${(x4 + x5)/2}, ${y2 + 27.5})">
+        <rect x="${-(W - 11)/2}" y="0" width="${W - 11}" height="8.5" fill="#e5dbc1" stroke="#bfa77b" stroke-width="0.3" rx="0.8" />
+        <text x="0" y="3.2" text-anchor="middle" font-family="'Noto Serif SC', serif" font-weight="900" font-size="2.1" fill="#852d18">
+          三元战术克制循环
+        </text>
+        <text x="0" y="6.6" text-anchor="middle" font-family="'Noto Serif SC', serif" font-size="1.8" fill="#143e3b">
+          炮击 ➔ 压制 钩索 ➔ 锁住 俯冲 ➔ 避开 炮击
+        </text>
+      </g>
+
+      <g transform="translate(${x4 + 5.5}, ${y2 + 38.5})">
+        <rect x="0" y="0" width="${W - 11}" height="23.5" fill="#fffdfa" stroke="#d5c8ae" stroke-width="0.3" rx="0.8" />
+        <rect x="0" y="0" width="${W - 11}" height="4.5" fill="#ece1c8" stroke="#d5c8ae" stroke-width="0.3" rx="0.8" />
+        <text x="3" y="3.2" font-family="'Noto Serif SC', serif" font-weight="900" font-size="2.0" fill="#6d4812">
+          📦 全套 63 张专用卡牌清点：
+        </text>
+        <text x="3.5" y="7.8" font-family="'Noto Serif SC', serif" font-size="1.85" fill="#2d2214">• 24 张 指令牌（8位船长专属战术公文）</text>
+        <text x="3.5" y="11.8" font-family="'Noto Serif SC', serif" font-size="1.85" fill="#2d2214">• 24 张 货物牌（炉机 · 航图 · 物资）</text>
+        <text x="3.5" y="15.8" font-family="'Noto Serif SC', serif" font-size="1.85" fill="#2d2214">• 10 张 私人委托（极密封函 · 手绘插画）</text>
+        <text x="3.5" y="19.8" font-family="'Noto Serif SC', serif" font-size="1.85" fill="#2d2214">• 1 张 领航标记卡 ＋ 4 张 桌边对决速查卡</text>
+      </g>
+
+      <g transform="translate(${(x4 + x5)/2}, ${y2 + 65.5})">
+        <text x="0" y="7.5" text-anchor="middle" font-family="'Special Elite', monospace" font-size="1.75" fill="#4a3b2b" letter-spacing="1">
+          1904 - 0916 - 2026 - DAWN
+        </text>
+        <text x="0" y="10.8" text-anchor="middle" font-family="'Noto Serif SC', serif" font-size="1.6" fill="#685641">
+          船长的桌面工坊 · 原创桌面游戏 · CANON G3812
+        </text>
+      </g>
+
+      <!-- 顶盖 (已修复排版，双行居中，绝不溢出) -->
+      <g>
+        <rect x="${x4}" y="${y1}" width="${W}" height="${D}" fill="#14262c" />
+        <rect x="${x4 + 1.5}" y="${y1 + 1.5}" width="${W - 3}" height="${D - 3}" fill="none" stroke="#c4a977" stroke-width="0.3" />
+        <text x="${(x4 + x5)/2}" y="${(y1 + y2)/2 - 1.2}" text-anchor="middle" font-family="'Noto Serif SC', serif" font-weight="900" font-size="3.2" fill="#f7eedb">
+          劫走黎明
+        </text>
+        <text x="${(x4 + x5)/2}" y="${(y1 + y2)/2 + 2.5}" text-anchor="middle" font-family="'Cinzel', serif" font-weight="700" font-size="1.8" fill="#d4af37">
+          THE DAWN RAID
+        </text>
+      </g>
+      <path d="M ${x4} ${y1} L ${x4 + 0.8} ${y0 + 5} A 5 5 0 0 1 ${x4 + 5.8} ${y0} L ${x5 - 5.8} ${y0} A 5 5 0 0 1 ${x5 - 0.8} ${y0 + 5} L ${x5} ${y1} Z" fill="#183339" />
+      <text x="${(x4 + x5)/2}" y="${(y0 + y1)/2 + 1}" text-anchor="middle" font-family="'Cinzel', serif" font-weight="700" font-size="2.0" fill="#c4a977">
+        ▼ OPEN · 开启 ▼
+      </text>
+
+      <!-- 底盖 -->
+      <rect x="${x2}" y="${y3}" width="${W}" height="${D}" fill="#183339" />
+      <text x="${xMid}" y="${(y3 + y4)/2 + 1}" text-anchor="middle" font-family="'Special Elite', monospace" font-size="1.7" fill="#a4b3ae">
+        ORIGINAL BOARD GAME · 2026 EDITION
+      </text>
+      <path d="M ${x2} ${y4} L ${x2 + 0.8} ${y5 - 4} A 4 4 0 0 0 ${x2 + 4.8} ${y5} L ${x3 - 4.8} ${y5} A 4 4 0 0 0 ${x3 - 0.8} ${y5 - 4} L ${x3} ${y4} Z" fill="url(#glue-hatch-c)" />
+
+      <!-- 标线 -->
+      ${showGuides ? `
+        <g stroke="#d9432f" stroke-width="0.32" stroke-dasharray="1.8,1.2" fill="none">
+          ${foldLines.map(l => `<line x1="${l.x1}" y1="${l.y1}" x2="${l.x2}" y2="${l.y2}" />`).join('')}
+        </g>
+        <path d="${cutPathD}" fill="none" stroke="#111111" stroke-width="0.35" />
+      ` : ''}
+    `;
+
+    sheetElem.className = 'a4-sheet landscape';
+    pageStyleElem.textContent = '@page { size: A4 landscape; margin: 0; }';
+    svgElem.setAttribute('viewBox', '0 0 297 210');
+    svgElem.innerHTML = svg;
+  }
+
+  // 总渲染调度
+  function render() {
+    const cfg = SIZES[currentMode];
+    updateGuideText();
+    if (currentStructure === 'folio') {
+      renderFolio(cfg);
+    } else {
+      renderClassic(cfg);
+    }
+  }
+
+  // 绑定模式切换
+  modeBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      modeBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentStructure = btn.dataset.structure;
+      render();
+    });
+  });
+
+  // 绑定尺寸切换
+  sizeBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      sizeBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentMode = btn.dataset.mode;
+      render();
+    });
+  });
+
+  // 标线开关
+  chkGuides.addEventListener('change', e => {
+    showGuides = e.target.checked;
+    render();
+  });
+
+  // 初始化
+  render();
+})();
+</script>
+
+
+<!-- Portal Back Navigation -->
+<div class="portal-floating-nav" style="position:fixed;bottom:24px;left:24px;z-index:99999;">
+  <a href="../index.html" style="display:inline-flex;align-items:center;gap:8px;background:rgba(18,22,28,0.92);backdrop-filter:blur(8px);color:#f0c059;border:1px solid rgba(212,175,55,0.45);border-radius:30px;padding:10px 18px;font-size:14px;font-weight:600;text-decoration:none;box-shadow:0 6px 16px rgba(0,0,0,0.4);font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif;transition:all .2s ease;" onmouseover="this.style.background='rgba(30,36,46,0.98)';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='rgba(18,22,28,0.92)';this.style.transform='translateY(0)'">
+    <span style="font-size:16px;">🏛️</span>
+    <span>返回桌游展馆</span>
+  </a>
+</div>
+<style>
+@media print {
+  .portal-floating-nav { display: none !important; }
+}
+</style>
+
+</body>
+</html>

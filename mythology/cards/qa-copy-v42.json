@@ -1,0 +1,15 @@
+{
+  "date": "2026-09-11",
+  "publishCommit": "f9268c8",
+  "narrativeIdentities": 12,
+  "sharedSources": ["narrative.json", "flavor.json"],
+  "browserLayout": [
+    {"page": "v12-front", "faces": 146, "pages": 15, "overflow": 0, "overlap": 0},
+    {"page": "v12-back", "faces": 146, "pages": 15, "overflow": 0, "overlap": 0},
+    {"page": "m04-front", "faces": 55, "pages": 10, "overflow": 0, "overlap": 0},
+    {"page": "m04-back", "faces": 55, "pages": 10, "overflow": 0, "overlap": 0}
+  ],
+  "webChecks": ["四神共享短句与可展开旧闻", "旧闻与本局结果分开", "选牌短句未触发游戏行动", "选牌重绘保留旧闻展开状态", "无水平溢出"],
+  "validation": ["既有 UI 回归通过", "音效回归通过", "内容与正反面配对验证通过"],
+  "physicalPrintTested": false
+}
