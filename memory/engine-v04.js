@@ -24,7 +24,7 @@ const MemoryGame = (() => {
     for(let i=0;i<3;i++) { const deck=E.flatMap((element,j)=>[0,1].map(n=>({id:`p${i}-${j}-${n}`,element,owner:i})));g.players.push({name:['你','听冬','渡魂'][i],deck:shuffle(g,deck),hand:[],discard:[],forgotten:[],awake:[],rested:[],echo:0,scars:0});draw(g,i,4); }
     storm(g);draw(g,0,1);return g;
   }
-  function settle(g,only) { g.seats.forEach((s,id)=> { if(id!==only||s.state!=='active'||s.offerings.length!==3)return; const counts=g.players.map((_,i)=>s.offerings.filter(o=>o.player===i).length);const winner=counts.findIndex(n=>n>=2);if(winner>=0){const p=g.players[winner];p.awake.push(id);p.hand.push({id:`god-${id}`,god:id,element:'真名',owner:winner});event(g,'awake',winner,id,`${p.name}唤醒${GODS[id].name}，祂的记忆来到手中。`);}else {event(g,'communal',null,id,`${GODS[id].name}众声觉醒，三人各自记住祂。`);g.players.forEach((p,i)=>p.hand.push({id:`god-${id}-p${i}`,god:id,element:'真名',owner:i}));}counts.forEach((n,i)=>{if(i!==winner)g.players[i].echo+=n;});release(g,s);s.state='awake'; }); }
+  function settle(g,only) { g.seats.forEach((s,id)=> { if(id!==only||s.state!=='active'||s.offerings.length!==3)return; const counts=g.players.map((_,i)=>s.offerings.filter(o=>o.player===i).length);const winner=counts.findIndex(n=>n>=2);if(winner>=0){const p=g.players[winner];p.awake.push(id);p.hand.push({id:`god-${id}`,god:id,element:'真名',owner:winner});event(g,'awake',winner,id,`${p.name}唤醒${GODS[id].name}，这尊神的记忆来到手中。`);}else {event(g,'communal',null,id,`${GODS[id].name}众声觉醒，三人各自记住这尊神。`);g.players.forEach((p,i)=>p.hand.push({id:`god-${id}-p${i}`,god:id,element:'真名',owner:i}));}counts.forEach((n,i)=>{if(i!==winner)g.players[i].echo+=n;});release(g,s);s.state='awake'; }); }
   function finishTurn(g) { g.acted++;if(g.acted===3){if(g.round===6||!g.seats.some(s=>s.state==='active')){end(g);return;}g.round++;g.starter=(g.starter+1)%3;g.turn=g.starter;g.acted=0;storm(g);if(g.phase==='ended')return;}else g.turn=(g.turn+1)%3;g.step='aux';draw(g,g.turn,1); }
 function living(g,who){const p=g.players[who];return p.hand.length+p.deck.length+p.discard.length+g.seats.reduce((n,s)=>n+s.offerings.filter(o=>o.player===who).length,0);}
 function guardian(g,seat,attacker){
@@ -37,7 +37,7 @@ function guardian(g,seat,attacker){
   const actor=g=>g.pending?g.pending.defender:g.turn;
   function legal(g,who=actor(g)) { if(g.phase==='ended'||who!==actor(g))return [];const p=g.players[who],out=[];const add=(a,label)=>out.push({...a,label,id:String(out.length)});
     if(g.pending?.kind==='rest'){
-      const q=g.pending;add({type:'yield'},'让祂安息 · 安魂者得2分与一次遗赠');
+      const q=g.pending;add({type:'yield'},'让这尊神安息 · 安魂者得2分与一次遗赠');
       if(living(g,who)>6)for(const c of p.hand)if(c.god!==undefined||GODS[q.seat].elements.includes(c.element))add({type:'keep',card:c.id},`永久燃掉${cardName(c)} · 留住${GODS[q.seat].name}，伤痕＋1`);
       return out;
     }

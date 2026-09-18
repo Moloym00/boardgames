@@ -28,21 +28,11 @@
     "minGapMm": 1.0,
     "overlapMm": 0.2
   },
-  "overBorderDetail": [
-    {
-      "side": "v12-front",
-      "name": "奥贡",
-      "overBorder": 0.37,
-      "gap": 1,
-      "overlap": 0,
-      "blocks": 8,
-      "inFlow": 8
-    }
-  ],
+  "overBorderDetail": [],
   "worstOverBorderMm": {
-    "v12-front": 0.37,
+    "v12-front": -3.86,
     "v12-back": -7.26,
-    "m04-front": -3.34,
+    "m04-front": -3.86,
     "m04-back": -7.26
   }
 }

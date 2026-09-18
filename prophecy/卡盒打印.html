@@ -56,8 +56,8 @@
       text-transform: uppercase;
     }
     h1 {
-      font: 700 30px/1.3 var(--font-title);
-      letter-spacing: 2px;
+      font: 700 28px/1.3 var(--font-title);
+      letter-spacing: 1.5px;
       margin: 0 0 8px;
       color: #fff;
     }
@@ -380,8 +380,8 @@
       guideBoxContent.innerHTML = `
         <h3>📜 为什么强烈推荐「皇家密奏·翻盖档案匣」？</h3>
         <ul class="feature-list">
-          <li><b>平躺大开口，36张一秒抓取：</b>大翻盖向上掀开，全套 36 张卡牌上半截 50mm 完全露出，拇指与食指两边一捏整叠顺滑拿起，再也不用像掏鸟窝一样倒扣抠牌！</li>
-          <li><b>宫廷密奏造型，极具沉浸感：</b>外观像一份盖有朱红火漆印与金冠铭牌的宫廷机密占星奏折，大翻盖深幅包覆 22mm，即使手工折偏 1~2 毫米插进去依然平整笔挺，绝不翘边鼓包！</li>
+          <li><b>平躺大开口，36张一秒抓取：</b>大翻盖向上掀开，全套 36 张卡牌上半截 50mm 完全露出，拇指与食指两边一捏整叠顺滑拿起，再也不用倒扣抠牌！</li>
+          <li><b>宫廷密奏造型，极具沉浸感：</b>大翻盖深幅包覆 22mm，深插舌平整紧密，手工折偏 1~2 毫米插进去依然平整笔挺，绝不翘边鼓包！</li>
           <li><b>极速直刀制作（仅 6 刀）：</b>全图全是平直大长线，无需剪裁任何细小倒角耳朵，贴两条双面胶 40 秒即可组装完毕。</li>
         </ul>
       `;
@@ -391,7 +391,7 @@
         <ul class="feature-list">
           <li><b>专为 36 张卡牌精控深度：</b>普通扑克盒装 36 张牌往往太松垮，本版按实际卡数定制了 14mm / 18mm / 20mm 紧凑净深。</li>
           <li><b>必须先压痕、后剪切：</b>用没墨圆珠笔配合钢尺把所有红虚线用力划一遍压出深深凹痕，再剪外轮廓。</li>
-          <li><b>纯矢量严谨排版：</b>所有字号与行间距均经数学锁定，绝无文字溢出或压折痕线问题。</li>
+          <li><b>纯矢量严谨排版：</b>所有字号经过精确数学锁定与宽度防溢出保护，绝无文字溢出边界或压折痕线问题。</li>
         </ul>
       `;
     }
@@ -499,13 +499,13 @@
         </g>
 
         <!-- 极速步骤 -->
-        <g transform="translate(180, 26)">
+        <g transform="translate(176, 26)">
           <text x="0" y="0" font-weight="900" font-size="2.3" fill="#78262a">📜 极速制作步骤：</text>
-          <text x="0" y="5" font-size="2">• 沿红虚线用力划出折痕</text>
-          <text x="0" y="9" font-size="2">• 沿黑色外实线一圈剪下</text>
-          <text x="0" y="13" font-size="2">• 折起前托袋与两侧翼</text>
-          <text x="0" y="17" font-size="2">• 侧翼贴双面胶固定在背</text>
-          <text x="0" y="21" font-size="2">• 36张牌放入，翻盖插入</text>
+          <text x="0" y="5" font-size="1.95">• 沿红虚线用力划痕</text>
+          <text x="0" y="9" font-size="1.95">• 沿黑色外实线剪下</text>
+          <text x="0" y="13" font-size="1.95">• 折起前托袋与两侧翼</text>
+          <text x="0" y="17" font-size="1.95">• 侧翼贴双面胶固定在背</text>
+          <text x="0" y="21" font-size="1.95">• 36张牌放入，翻盖插入</text>
           <text x="0" y="27" font-weight="700" fill="#78262a">👑 宫廷密奏，即刻封存！</text>
         </g>
 
@@ -522,7 +522,7 @@
 
       <!-- 1. 顶部插舌 (Tuck Tongue) -->
       <path d="M ${X_left} ${Y1} L ${X_left + 4} ${Y_tongue} L ${X_right - 4} ${Y_tongue} L ${X_right} ${Y1} Z" fill="#380d10" />
-      <text x="${X_mid}" y="${(Y_tongue + Y1) / 2 + 1.2}" text-anchor="middle" font-family="'Noto Serif SC', serif" font-weight="700" font-size="2.1" fill="#f7e8a9" letter-spacing="1">
+      <text x="${X_mid}" y="${(Y_tongue + Y1) / 2 + 1.2}" text-anchor="middle" font-family="'Noto Serif SC', serif" font-weight="700" font-size="2.0" fill="#f7e8a9" textLength="${W - 20}" lengthAdjust="spacingAndGlyphs">
         📜 启封密奏 · PULL TO OPEN 📜
       </text>
 
@@ -538,42 +538,42 @@
 
       <!-- 顶标铭牌 -->
       <rect x="${X_left + 5}" y="${Y1 + 3.5}" width="${W - 10}" height="4.5" fill="#2d0b0d" stroke="#d4af37" stroke-width="0.3" rx="0.5" />
-      <text x="${X_mid}" y="${Y1 + 6.6}" text-anchor="middle" font-family="'Cinzel', serif" font-weight="700" font-size="2" fill="#ffd88a" letter-spacing="1.2">
-        ROYAL ASTROLOGER · SECRET CHEST
+      <text x="${X_mid}" y="${Y1 + 6.6}" text-anchor="middle" font-family="'Cinzel', serif" font-weight="700" font-size="1.9" fill="#ffd88a" textLength="${W - 16}" lengthAdjust="spacingAndGlyphs">
+        ROYAL ASTROLOGER - SECRET CHEST
       </text>
 
       <!-- 原画插画 (宫廷夜宴.png) -->
-      <image href="assets/宫廷夜宴.png" x="${X_left + 4}" y="${Y1 + 9.5}" width="${W - 8}" height="35" preserveAspectRatio="xMidYMid slice" />
-      <rect x="${X_left + 4}" y="${Y1 + 9.5}" width="${W - 8}" height="35" fill="none" stroke="#d4af37" stroke-width="0.4" />
+      <image href="assets/宫廷夜宴.png" x="${X_left + 5}" y="${Y1 + 9.5}" width="${W - 10}" height="35" preserveAspectRatio="xMidYMid slice" />
+      <rect x="${X_left + 5}" y="${Y1 + 9.5}" width="${W - 10}" height="35" fill="none" stroke="#d4af37" stroke-width="0.4" />
 
-      <!-- 主标题文字 -->
-      <g transform="translate(${X_mid}, ${Y1 + 50.5})">
-        <text x="0" y="0" text-anchor="middle" font-family="'Noto Serif SC', serif" font-weight="900" font-size="6.5" fill="url(#royal-gold-grad)" letter-spacing="1.5">
+      <!-- 主标题文字 (精控字号与防溢出锁定) -->
+      <g transform="translate(${X_mid}, ${Y1 + 50.0})">
+        <text x="0" y="0" text-anchor="middle" font-family="'Noto Serif SC', serif" font-weight="900" font-size="4.8" fill="url(#royal-gold-grad)" textLength="${W - 14}" lengthAdjust="spacingAndGlyphs">
           今晚必须有个预言成真
         </text>
-        <text x="0" y="3.8" text-anchor="middle" font-family="'Cinzel Decorative', serif" font-weight="900" font-size="2.2" fill="#fff" letter-spacing="1.2">
-          TONIGHT, A PROPHECY MUST COME TRUE
+        <text x="0" y="3.6" text-anchor="middle" font-family="'Cinzel', serif" font-weight="800" font-size="2.0" fill="#ffffff" textLength="${W - 22}" lengthAdjust="spacingAndGlyphs">
+          TONIGHT A PROPHECY
         </text>
-        <text x="0" y="7.2" text-anchor="middle" font-family="'Noto Serif SC', serif" font-weight="600" font-size="2.0" fill="#e8dac0">
+        <text x="0" y="7.0" text-anchor="middle" font-family="'Noto Serif SC', serif" font-weight="600" font-size="1.8" fill="#e8dac0" textLength="${W - 16}" lengthAdjust="spacingAndGlyphs">
           黑色幽默 · 心理博弈 · 宫廷撞车卡牌桌游
         </text>
       </g>
 
       <!-- 人数/时长/年龄底栏 -->
       <g transform="translate(${X_mid}, ${Y1 + 63.5})">
-        <rect x="${-(W - 8)/2}" y="0" width="${W - 8}" height="5" fill="#320d0f" stroke="#85602d" stroke-width="0.3" rx="0.5" />
-        <text x="${-(W - 8)/3}" y="3.4" text-anchor="middle" font-family="'Noto Serif SC', serif" font-size="1.9" fill="#faeed7">👥 3–5 位国师</text>
-        <text x="0" y="3.4" text-anchor="middle" font-family="'Noto Serif SC', serif" font-size="1.9" fill="#faeed7">⏱️ 15–20 分</text>
-        <text x="${(W - 8)/3}" y="3.4" text-anchor="middle" font-family="'Noto Serif SC', serif" font-size="1.9" fill="#faeed7">👑 10+ 岁</text>
+        <rect x="${-(W - 10)/2}" y="0" width="${W - 10}" height="4.8" fill="#320d0f" stroke="#85602d" stroke-width="0.3" rx="0.5" />
+        <text x="${-(W - 10)/3}" y="3.3" text-anchor="middle" font-family="'Noto Serif SC', serif" font-size="1.8" fill="#faeed7">👥 3–5人</text>
+        <text x="0" y="3.3" text-anchor="middle" font-family="'Noto Serif SC', serif" font-size="1.8" fill="#faeed7">⏱️ 15–20分</text>
+        <text x="${(W - 10)/3}" y="3.3" text-anchor="middle" font-family="'Noto Serif SC', serif" font-size="1.8" fill="#faeed7">👑 10+岁</text>
       </g>
 
       <!-- 3. 顶盖面板 (Top Lid) -->
       <rect x="${X_left}" y="${Y2}" width="${W}" height="${D_top}" fill="#380d10" />
       <rect x="${X_left + 1.5}" y="${Y2 + 1.5}" width="${W - 3}" height="${D_top - 3}" fill="none" stroke="#d4af37" stroke-width="0.3" />
-      <text x="${X_mid}" y="${(Y2 + Y3) / 2 - 1.2}" text-anchor="middle" font-family="'Noto Serif SC', serif" font-weight="900" font-size="3.2" fill="#faeed7" letter-spacing="1">
+      <text x="${X_mid}" y="${(Y2 + Y3) / 2 - 0.8}" text-anchor="middle" font-family="'Noto Serif SC', serif" font-weight="900" font-size="2.8" fill="#faeed7" textLength="${W - 16}" lengthAdjust="spacingAndGlyphs">
         今晚必须有个预言成真
       </text>
-      <text x="${X_mid}" y="${(Y2 + Y3) / 2 + 2.5}" text-anchor="middle" font-family="'Cinzel', serif" font-weight="700" font-size="1.8" fill="#ffd88a" letter-spacing="1.2">
+      <text x="${X_mid}" y="${(Y2 + Y3) / 2 + 2.5}" text-anchor="middle" font-family="'Cinzel', serif" font-weight="700" font-size="1.7" fill="#ffd88a" textLength="${W - 24}" lengthAdjust="spacingAndGlyphs">
         ROYAL SECRET DOSSIER
       </text>
 
@@ -583,56 +583,56 @@
       <rect x="${X_left + 2.5}" y="${Y3 + 2.5}" width="${W - 5}" height="${H_back - 5}" fill="none" stroke="#78262a" stroke-width="0.25" />
 
       <!-- 司天台秘卷铭牌 -->
-      <rect x="${X_left + 5}" y="${Y3 + 4}" width="${W - 10}" height="4.5" fill="#78262a" rx="0.5" />
-      <text x="${X_mid}" y="${Y3 + 7.1}" text-anchor="middle" font-family="'Noto Serif SC', serif" font-weight="700" font-size="2.1" fill="#fff" letter-spacing="1">
+      <rect x="${X_left + 5}" y="${Y3 + 3.5}" width="${W - 10}" height="4.5" fill="#78262a" rx="0.5" />
+      <text x="${X_mid}" y="${Y3 + 6.6}" text-anchor="middle" font-family="'Noto Serif SC', serif" font-weight="700" font-size="2.0" fill="#fff" textLength="${W - 20}" lengthAdjust="spacingAndGlyphs">
         司天台秘卷 · 预言成真法则
       </text>
 
       <!-- 故事小传 (经典荒诞格言) -->
-      <g transform="translate(${X_mid}, ${Y3 + 10.5})">
+      <g transform="translate(${X_mid}, ${Y3 + 9.5})">
         <rect x="${-(W - 11)/2}" y="0" width="${W - 11}" height="14.5" fill="#ece0cb" stroke="#cfc0a2" stroke-width="0.25" rx="0.8" />
         <text x="${-(W - 11)/2 + 2.5}" y="3.8" font-family="Georgia, serif" font-size="4" fill="#78262a">“</text>
-        <text x="0" y="3.8" text-anchor="middle" font-family="'Noto Serif SC', serif" font-weight="700" font-size="2.1" fill="#2d1e0f">
+        <text x="0" y="3.8" text-anchor="middle" font-family="'Noto Serif SC', serif" font-weight="700" font-size="1.9" fill="#2d1e0f" textLength="${W - 22}" lengthAdjust="spacingAndGlyphs">
           世上哪有什么通天神谕？
         </text>
-        <text x="0" y="7.5" text-anchor="middle" font-family="'Noto Serif SC', serif" font-size="1.95" fill="#523a1a">
+        <text x="0" y="7.5" text-anchor="middle" font-family="'Noto Serif SC', serif" font-size="1.8" fill="#523a1a" textLength="${W - 18}" lengthAdjust="spacingAndGlyphs">
           所谓的奇迹，全靠国师在夜幕里偷摸落实！
         </text>
-        <text x="0" y="11.2" text-anchor="middle" font-family="'Noto Serif SC', serif" font-weight="700" font-size="1.95" fill="#78262a">
+        <text x="0" y="11.2" text-anchor="middle" font-family="'Noto Serif SC', serif" font-weight="700" font-size="1.8" fill="#78262a" textLength="${W - 18}" lengthAdjust="spacingAndGlyphs">
           神谕既然说出了口，就得有人亲自去办成！
         </text>
         <text x="${(W - 11)/2 - 3}" y="12.5" font-family="Georgia, serif" font-size="4" fill="#78262a">”</text>
       </g>
 
       <!-- 核心戏剧冲突：天启拥堵 -->
-      <g transform="translate(${X_mid}, ${Y3 + 27.5})">
+      <g transform="translate(${X_mid}, ${Y3 + 26.0})">
         <rect x="${-(W - 11)/2}" y="0" width="${W - 11}" height="9.5" fill="#f2e7d5" stroke="#85602d" stroke-width="0.3" rx="0.8" />
-        <text x="0" y="3.2" text-anchor="middle" font-family="'Noto Serif SC', serif" font-weight="900" font-size="2.1" fill="#78262a">
+        <text x="0" y="3.1" text-anchor="middle" font-family="'Noto Serif SC', serif" font-weight="900" font-size="1.95" fill="#78262a">
           现场勘验法则（天启拥堵机制）
         </text>
-        <text x="0" y="6.6" text-anchor="middle" font-family="'Noto Serif SC', serif" font-size="1.8" fill="#1b4632">
+        <text x="0" y="6.2" text-anchor="middle" font-family="'Noto Serif SC', serif" font-size="1.7" fill="#1b4632" textLength="${W - 16}" lengthAdjust="spacingAndGlyphs">
           🟢 恰好 1 人前往 ➔ 神迹应验！独行得分
         </text>
-        <text x="0" y="9.0" text-anchor="middle" font-family="'Noto Serif SC', serif" font-size="1.8" fill="#78262a">
-          🔴 ≥ 2 人前往 ➔ 天启拥堵！撞车双双被捕落空
+        <text x="0" y="8.8" text-anchor="middle" font-family="'Noto Serif SC', serif" font-size="1.7" fill="#78262a" textLength="${W - 16}" lengthAdjust="spacingAndGlyphs">
+          🔴 ≥ 2 人前往 ➔ 天启拥堵！撞车双双被捕
         </text>
       </g>
 
       <!-- 盒内配件清单 -->
-      <g transform="translate(${X_left + 5.5}, ${Y3 + 39.5})">
-        <rect x="0" y="0" width="${W - 11}" height="23" fill="#fffdfa" stroke="#d5c8ae" stroke-width="0.3" rx="0.8" />
+      <g transform="translate(${X_left + 5.5}, ${Y3 + 37.5})">
+        <rect x="0" y="0" width="${W - 11}" height="24" fill="#fffdfa" stroke="#d5c8ae" stroke-width="0.3" rx="0.8" />
         <rect x="0" y="0" width="${W - 11}" height="4.5" fill="#eddcc4" stroke="#d5c8ae" stroke-width="0.3" rx="0.8" />
-        <text x="3" y="3.2" font-family="'Noto Serif SC', serif" font-weight="900" font-size="2.0" fill="#78262a">
-          📦 司天密柜已清点 · 全套 36 张手绘卡牌：
+        <text x="${(W - 11)/2}" y="3.1" text-anchor="middle" font-family="'Noto Serif SC', serif" font-weight="900" font-size="1.85" fill="#78262a">
+          📦 司天密柜全套 36 张手绘卡牌
         </text>
-        <text x="3.5" y="7.8" font-family="'Noto Serif SC', serif" font-size="1.85" fill="#2d2214">• 20 张 基础行动手牌（劝酒 · 盗冠 · 鸣钟 · 灭烛）</text>
-        <text x="3.5" y="11.8" font-family="'Noto Serif SC', serif" font-size="1.85" fill="#2d2214">• 6 张 宫廷异象牌（改变当轮天命与翻倍大结局）</text>
-        <text x="3.5" y="15.8" font-family="'Noto Serif SC', serif" font-size="1.85" fill="#2d2214">• 5 张 司天神职牌（独占特权与隐藏加分）</text>
-        <text x="3.5" y="19.8" font-family="'Noto Serif SC', serif" font-size="1.85" fill="#2d2214">• 5 张 宫廷对决速查卡</text>
+        <text x="3.5" y="8.0" font-family="'Noto Serif SC', serif" font-size="1.75" fill="#2d2214" textLength="${W - 18}" lengthAdjust="spacingAndGlyphs">• 20 张 基础行动手牌（劝酒·盗冠·鸣钟·灭烛）</text>
+        <text x="3.5" y="12.0" font-family="'Noto Serif SC', serif" font-size="1.75" fill="#2d2214" textLength="${W - 18}" lengthAdjust="spacingAndGlyphs">• 6 张 宫廷异象牌（改变天命与终局翻倍）</text>
+        <text x="3.5" y="16.0" font-family="'Noto Serif SC', serif" font-size="1.75" fill="#2d2214" textLength="${W - 18}" lengthAdjust="spacingAndGlyphs">• 5 张 司天神职牌（独占特权与隐藏加分）</text>
+        <text x="3.5" y="20.0" font-family="'Noto Serif SC', serif" font-size="1.75" fill="#2d2214" textLength="${W - 18}" lengthAdjust="spacingAndGlyphs">• 5 张 宫廷对决速查卡</text>
       </g>
 
       <!-- 条形码与注脚 -->
-      <g transform="translate(${X_mid}, ${Y3 + 65.5})">
+      <g transform="translate(${X_mid}, ${Y3 + 64.5})">
         <g stroke="#1a1005" stroke-width="0.35" fill="none">
           <line x1="-16" y1="0" x2="-16" y2="4.5" stroke-width="0.7" />
           <line x1="-14" y1="0" x2="-14" y2="4.5" stroke-width="0.3" />
@@ -650,10 +650,10 @@
           <line x1="14" y1="0" x2="14" y2="4.5" stroke-width="0.7" />
           <line x1="16" y1="0" x2="16" y2="4.5" stroke-width="0.5" />
         </g>
-        <text x="0" y="7.5" text-anchor="middle" font-family="'Special Elite', monospace" font-size="1.75" fill="#4a3b2b" letter-spacing="1">
+        <text x="0" y="7.5" text-anchor="middle" font-family="'Special Elite', monospace" font-size="1.7" fill="#4a3b2b" textLength="34" lengthAdjust="spacingAndGlyphs">
           1492 - ROYAL - PROPHECY - 36
         </text>
-        <text x="0" y="10.8" text-anchor="middle" font-family="'Noto Serif SC', serif" font-size="1.6" fill="#755a40">
+        <text x="0" y="10.8" text-anchor="middle" font-family="'Noto Serif SC', serif" font-size="1.5" fill="#755a40" textLength="${W - 16}" lengthAdjust="spacingAndGlyphs">
           皇家司天台秘制 · 原创桌面游戏 · CANON G3812
         </text>
       </g>
@@ -661,27 +661,27 @@
       <!-- 5. 底部面板 (Bottom Panel) -->
       <rect x="${X_left}" y="${Y4}" width="${W}" height="${D_bottom}" fill="#380d10" />
       <rect x="${X_left + 1.5}" y="${Y4 + 1.5}" width="${W - 3}" height="${D_bottom - 3}" fill="none" stroke="#85602d" stroke-width="0.3" />
-      <text x="${X_mid}" y="${(Y4 + Y5) / 2 + 0.8}" text-anchor="middle" font-family="'Special Elite', monospace" font-size="1.8" fill="#e8dac0" letter-spacing="1">
-        № 1492 ROYAL ASTROLOGY DEPT.
+      <text x="${X_mid}" y="${(Y4 + Y5) / 2 + 0.8}" text-anchor="middle" font-family="'Special Elite', monospace" font-size="1.7" fill="#e8dac0" textLength="${W - 16}" lengthAdjust="spacingAndGlyphs">
+        NO. 1492 ROYAL ASTROLOGY DEPT.
       </text>
 
       <!-- 6. 前置托袋面 (Front Pocket Face) -->
       <rect x="${X_left}" y="${Y5}" width="${W}" height="${H_pocket}" fill="#f7f2e6" />
       <rect x="${X_left + 1.5}" y="${Y5 + 1.5}" width="${W - 3}" height="${H_pocket - 3}" fill="none" stroke="#cbb998" stroke-width="0.4" />
       <rect x="${X_left + 4}" y="${Y5 + 4}" width="${W - 8}" height="5.5" fill="#78262a" rx="0.5" />
-      <text x="${X_mid}" y="${Y5 + 7.8}" text-anchor="middle" font-family="'Noto Serif SC', serif" font-weight="900" font-size="2.2" fill="#fff" letter-spacing="1">
+      <text x="${X_mid}" y="${Y5 + 7.8}" text-anchor="middle" font-family="'Noto Serif SC', serif" font-weight="900" font-size="2.1" fill="#fff" textLength="${W - 16}" lengthAdjust="spacingAndGlyphs">
         👑 司天密柜已封存 · 36 张卡牌
       </text>
       <g transform="translate(${X_mid}, ${Y5 + 20})">
         <rect x="${-(W - 12)/2}" y="-4" width="${W - 12}" height="8" fill="#ece0cb" stroke="#85602d" stroke-width="0.3" rx="0.5" />
-        <text x="0" y="-0.5" text-anchor="middle" font-family="'Noto Serif SC', serif" font-weight="700" font-size="1.8" fill="#78262a">
+        <text x="0" y="-0.5" text-anchor="middle" font-family="'Noto Serif SC', serif" font-weight="700" font-size="1.8" fill="#78262a" textLength="${W - 18}" lengthAdjust="spacingAndGlyphs">
           ▼ 密奏大翻盖直接插入口袋内侧 ▼
         </text>
         <text x="0" y="2.5" text-anchor="middle" font-family="'Cinzel', serif" font-size="1.4" fill="#523a1a">
           [ ROYAL DECREE LOCKING SLOT ]
         </text>
       </g>
-      <text x="${X_mid}" y="${Y6 - 3}" text-anchor="middle" font-family="'Special Elite', monospace" font-size="1.6" fill="#755a40">
+      <text x="${X_mid}" y="${Y6 - 3}" text-anchor="middle" font-family="'Special Elite', monospace" font-size="1.5" fill="#755a40" textLength="${W - 20}" lengthAdjust="spacingAndGlyphs">
         TONIGHT A PROPHECY · TABLETOP ARCHIVE
       </text>
 
@@ -689,7 +689,7 @@
       <!-- 左侧壁 -->
       <rect x="${X_wing_l}" y="${Y5}" width="${D}" height="${H_pocket}" fill="#50161a" />
       <g transform="rotate(-90 ${(X_wing_l + X_left)/2} ${(Y5 + Y6)/2})">
-        <text x="${(X_wing_l + X_left)/2}" y="${(Y5 + Y6)/2 + 1}" text-anchor="middle" font-family="'Cinzel', serif" font-weight="700" font-size="1.8" fill="#faeed7">
+        <text x="${(X_wing_l + X_left)/2}" y="${(Y5 + Y6)/2 + 0.8}" text-anchor="middle" font-family="'Cinzel', serif" font-weight="700" font-size="1.7" fill="#faeed7">
           3–5 PLAYERS 🍷
         </text>
       </g>
@@ -701,7 +701,7 @@
       <!-- 右侧壁 -->
       <rect x="${X_right}" y="${Y5}" width="${D}" height="${H_pocket}" fill="#50161a" />
       <g transform="rotate(90 ${(X_right + X_wing_r)/2} ${(Y5 + Y6)/2})">
-        <text x="${(X_right + X_wing_r)/2}" y="${(Y5 + Y6)/2 + 1}" text-anchor="middle" font-family="'Cinzel', serif" font-weight="700" font-size="1.8" fill="#faeed7">
+        <text x="${(X_right + X_wing_r)/2}" y="${(Y5 + Y6)/2 + 0.8}" text-anchor="middle" font-family="'Cinzel', serif" font-weight="700" font-size="1.7" fill="#faeed7">
           ROYAL PALACE 👑
         </text>
       </g>
@@ -838,7 +838,7 @@
       <!-- 侧边糊口 -->
       <path d="M ${x1} ${y2} L ${x0} ${y2 + 5} L ${x0} ${y3 - 5} L ${x1} ${y3} Z" fill="url(#glue-hatch-cp)" />
       <text x="${(x0 + x1) / 2}" y="${(y2 + y3) / 2}" transform="rotate(-90 ${(x0 + x1) / 2} ${(y2 + y3) / 2})"
-            text-anchor="middle" font-family="'Special Elite', monospace" font-size="2.4" font-weight="700" fill="#78262a" letter-spacing="1">
+            text-anchor="middle" font-family="'Special Elite', monospace" font-size="2.2" font-weight="700" fill="#78262a" letter-spacing="0.8">
         ▨ GLUE HERE · 在此涂胶 ▨
       </text>
 
@@ -848,94 +848,97 @@
       <path d="M ${x3} ${y2} L ${x3} ${y2 - F} L ${x4 - 4} ${y2 - F} L ${x4} ${y2 - 4} L ${x4} ${y2} Z" fill="url(#dust-hatch-cp)" />
       <path d="M ${x3} ${y3} L ${x3} ${y3 + F} L ${x4 - 4} ${y3 + F} L ${x4} ${y3 + 4} L ${x4} ${y3} Z" fill="url(#dust-hatch-cp)" />
 
-      <!-- 左脊 -->
+      <!-- 左脊 (厚度 D) -->
       <rect x="${x1}" y="${y2}" width="${D}" height="${H}" fill="#50161a" />
       <g transform="rotate(90 ${(x1 + x2)/2} ${(y2 + y3)/2})">
-        <text x="${(x1 + x2)/2}" y="${(y2 + y3)/2 + 1}" text-anchor="middle" font-family="'Noto Serif SC', serif" font-weight="900" font-size="3.6" fill="#fcedcf">
+        <text x="${(x1 + x2)/2}" y="${(y2 + y3)/2 + 0.8}" text-anchor="middle" font-family="'Noto Serif SC', serif" font-weight="900" font-size="2.8" fill="#fcedcf" textLength="${H - 24}" lengthAdjust="spacingAndGlyphs">
           今晚必须有个预言成真 · 3–5人 👑
         </text>
       </g>
 
-      <!-- 正面 -->
+      <!-- 正面 (主视面) -->
       <rect x="${x2}" y="${y2}" width="${W}" height="${H}" fill="#5c191e" />
       <rect x="${x2 + 1.5}" y="${y2 + 1.5}" width="${W - 3}" height="${H - 3}" fill="none" stroke="#85602d" stroke-width="0.4" />
       <rect x="${x2 + 2.5}" y="${y2 + 2.5}" width="${W - 5}" height="${H - 5}" fill="none" stroke="#d4af37" stroke-width="0.25" />
-      <rect x="${x2 + 5}" y="${y2 + 4}" width="${W - 10}" height="4.8" fill="#380d10" stroke="#d4af37" stroke-width="0.3" rx="0.5" />
-      <text x="${xMid}" y="${y2 + 7.3}" text-anchor="middle" font-family="'Cinzel', serif" font-weight="700" font-size="2" fill="#ffd88a">
-        ROYAL ASTROLOGER · CARDS CHEST
+      <rect x="${x2 + 5}" y="${y2 + 4}" width="${W - 10}" height="4.5" fill="#380d10" stroke="#d4af37" stroke-width="0.3" rx="0.5" />
+      <text x="${xMid}" y="${y2 + 7.1}" text-anchor="middle" font-family="'Cinzel', serif" font-weight="700" font-size="1.9" fill="#ffd88a" textLength="${W - 18}" lengthAdjust="spacingAndGlyphs">
+        ROYAL ASTROLOGER - CARDS CHEST
       </text>
-      <image href="assets/宫廷夜宴.png" x="${x2 + 4.5}" y="${y2 + 10.5}" width="${W - 9}" height="40" preserveAspectRatio="xMidYMid slice" />
-      <rect x="${x2 + 4.5}" y="${y2 + 10.5}" width="${W - 9}" height="40" fill="none" stroke="#d4af37" stroke-width="0.4" />
-      <g transform="translate(${xMid}, ${y2 + 57.5})">
-        <text x="0" y="0" text-anchor="middle" font-family="'Noto Serif SC', serif" font-weight="900" font-size="7.0" fill="#ffd88a">
+      <image href="assets/宫廷夜宴.png" x="${x2 + 5}" y="${y2 + 10}" width="${W - 10}" height="38" preserveAspectRatio="xMidYMid slice" />
+      <rect x="${x2 + 5}" y="${y2 + 10}" width="${W - 10}" height="38" fill="none" stroke="#d4af37" stroke-width="0.4" />
+      <g transform="translate(${xMid}, ${y2 + 56.5})">
+        <text x="0" y="0" text-anchor="middle" font-family="'Noto Serif SC', serif" font-weight="900" font-size="4.8" fill="#ffd88a" textLength="${W - 14}" lengthAdjust="spacingAndGlyphs">
           今晚必须有个预言成真
         </text>
-        <text x="0" y="4.2" text-anchor="middle" font-family="'Cinzel Decorative', serif" font-weight="900" font-size="2.4" fill="#fff">
+        <text x="0" y="3.8" text-anchor="middle" font-family="'Cinzel', serif" font-weight="800" font-size="2.0" fill="#ffffff" textLength="${W - 22}" lengthAdjust="spacingAndGlyphs">
           TONIGHT A PROPHECY
         </text>
+        <text x="0" y="7.0" text-anchor="middle" font-family="'Noto Serif SC', serif" font-weight="600" font-size="1.8" fill="#e8dac0" textLength="${W - 16}" lengthAdjust="spacingAndGlyphs">
+          黑色幽默 · 心理博弈 · 宫廷撞车卡牌桌游
+        </text>
       </g>
-      <text x="${xMid}" y="${y3 - 4.5}" text-anchor="middle" font-family="'Special Elite', monospace" font-size="1.6" fill="#ffd88a">
-        № 1492 ROYAL ASTROLOGY DEPT.
+      <text x="${xMid}" y="${y3 - 4.5}" text-anchor="middle" font-family="'Special Elite', monospace" font-size="1.6" fill="#ffd88a" textLength="${W - 20}" lengthAdjust="spacingAndGlyphs">
+        NO. 1492 ROYAL ASTROLOGY DEPT.
       </text>
 
       <!-- 右脊 -->
       <rect x="${x3}" y="${y2}" width="${D}" height="${H}" fill="#50161a" />
       <g transform="rotate(90 ${(x3 + x4)/2} ${(y2 + y3)/2})">
-        <text x="${(x3 + x4)/2}" y="${(y2 + y3)/2 + 1}" text-anchor="middle" font-family="'Noto Serif SC', serif" font-weight="900" font-size="3.6" fill="#fcedcf">
+        <text x="${(x3 + x4)/2}" y="${(y2 + y3)/2 + 0.8}" text-anchor="middle" font-family="'Noto Serif SC', serif" font-weight="900" font-size="2.8" fill="#fcedcf" textLength="${H - 24}" lengthAdjust="spacingAndGlyphs">
           司天台密卷 · 皇家预言匣 📜
         </text>
       </g>
 
-      <!-- 背面 -->
+      <!-- 背面 (规则与清单) -->
       <rect x="${x4}" y="${y2}" width="${W}" height="${H}" fill="#f7f2e6" />
       <rect x="${x4 + 1.5}" y="${y2 + 1.5}" width="${W - 3}" height="${H - 3}" fill="none" stroke="#cbb998" stroke-width="0.4" />
-      <rect x="${x4 + 5}" y="${y2 + 4}" width="${W - 10}" height="4.5" fill="#78262a" rx="0.6" />
-      <text x="${(x4 + x5)/2}" y="${y2 + 7.1}" text-anchor="middle" font-family="'Noto Serif SC', serif" font-weight="700" font-size="2.1" fill="#fff">
+      <rect x="${x4 + 5}" y="${y2 + 3.5}" width="${W - 10}" height="4.5" fill="#78262a" rx="0.6" />
+      <text x="${(x4 + x5)/2}" y="${y2 + 6.6}" text-anchor="middle" font-family="'Noto Serif SC', serif" font-weight="700" font-size="2.0" fill="#fff" textLength="${W - 20}" lengthAdjust="spacingAndGlyphs">
         司天台秘卷 · 预言法则
       </text>
 
-      <g transform="translate(${(x4 + x5)/2}, ${y2 + 10.5})">
+      <g transform="translate(${(x4 + x5)/2}, ${y2 + 9.5})">
         <rect x="${-(W - 11)/2}" y="0" width="${W - 11}" height="14.5" fill="#ece0cb" stroke="#cfc0a2" stroke-width="0.25" rx="0.8" />
         <text x="${-(W - 11)/2 + 2.5}" y="3.8" font-family="Georgia, serif" font-size="4" fill="#78262a">“</text>
-        <text x="0" y="3.8" text-anchor="middle" font-family="'Noto Serif SC', serif" font-weight="700" font-size="2.1" fill="#2d1e0f">
+        <text x="0" y="3.8" text-anchor="middle" font-family="'Noto Serif SC', serif" font-weight="700" font-size="1.9" fill="#2d1e0f" textLength="${W - 22}" lengthAdjust="spacingAndGlyphs">
           世上哪有什么通天神谕？
         </text>
-        <text x="0" y="7.5" text-anchor="middle" font-family="'Noto Serif SC', serif" font-size="1.95" fill="#523a1a">
+        <text x="0" y="7.5" text-anchor="middle" font-family="'Noto Serif SC', serif" font-size="1.8" fill="#523a1a" textLength="${W - 18}" lengthAdjust="spacingAndGlyphs">
           所谓的奇迹，全靠国师在夜色里亲手落实！
         </text>
-        <text x="0" y="11.2" text-anchor="middle" font-family="'Noto Serif SC', serif" font-weight="700" font-size="1.95" fill="#78262a">
+        <text x="0" y="11.2" text-anchor="middle" font-family="'Noto Serif SC', serif" font-weight="700" font-size="1.8" fill="#78262a" textLength="${W - 18}" lengthAdjust="spacingAndGlyphs">
           神谕既然说出了口，就得有人去办成！
         </text>
         <text x="${(W - 11)/2 - 3}" y="12.5" font-family="Georgia, serif" font-size="4" fill="#78262a">”</text>
       </g>
 
-      <g transform="translate(${(x4 + x5)/2}, ${y2 + 27.5})">
+      <g transform="translate(${(x4 + x5)/2}, ${y2 + 25.5})">
         <rect x="${-(W - 11)/2}" y="0" width="${W - 11}" height="8.5" fill="#f2e7d5" stroke="#85602d" stroke-width="0.3" rx="0.8" />
-        <text x="0" y="3.2" text-anchor="middle" font-family="'Noto Serif SC', serif" font-weight="900" font-size="2.1" fill="#78262a">
+        <text x="0" y="3.1" text-anchor="middle" font-family="'Noto Serif SC', serif" font-weight="900" font-size="1.95" fill="#78262a">
           现场勘验法则（天启拥堵）
         </text>
-        <text x="0" y="6.6" text-anchor="middle" font-family="'Noto Serif SC', serif" font-size="1.8" fill="#1b4632">
+        <text x="0" y="6.4" text-anchor="middle" font-family="'Noto Serif SC', serif" font-size="1.7" fill="#1b4632" textLength="${W - 16}" lengthAdjust="spacingAndGlyphs">
           🟢 1人前往神迹应验 · 🔴 ≥2人前往撞车皆落空
         </text>
       </g>
 
-      <g transform="translate(${x4 + 5.5}, ${y2 + 38.5})">
-        <rect x="0" y="0" width="${W - 11}" height="23.5" fill="#fffdfa" stroke="#d5c8ae" stroke-width="0.3" rx="0.8" />
+      <g transform="translate(${x4 + 5.5}, ${y2 + 36.0})">
+        <rect x="0" y="0" width="${W - 11}" height="24" fill="#fffdfa" stroke="#d5c8ae" stroke-width="0.3" rx="0.8" />
         <rect x="0" y="0" width="${W - 11}" height="4.5" fill="#eddcc4" stroke="#d5c8ae" stroke-width="0.3" rx="0.8" />
-        <text x="3" y="3.2" font-family="'Noto Serif SC', serif" font-weight="900" font-size="2.0" fill="#78262a">
-          📦 司天密柜已清点 · 全套 36 张卡牌：
+        <text x="${(W - 11)/2}" y="3.1" text-anchor="middle" font-family="'Noto Serif SC', serif" font-weight="900" font-size="1.85" fill="#78262a">
+          📦 司天密柜全套 36 张卡牌
         </text>
-        <text x="3.5" y="7.8" font-family="'Noto Serif SC', serif" font-size="1.85" fill="#2d2214">• 20 张 基础行动手牌（劝酒 · 盗冠 · 鸣钟 · 灭烛）</text>
-        <text x="3.5" y="11.8" font-family="'Noto Serif SC', serif" font-size="1.85" fill="#2d2214">• 6 张 宫廷异象牌（改变当轮天命与翻倍大结局）</text>
-        <text x="3.5" y="15.8" font-family="'Noto Serif SC', serif" font-size="1.85" fill="#2d2214">• 5 张 司天神职牌（独占特权与隐藏加分）</text>
-        <text x="3.5" y="19.8" font-family="'Noto Serif SC', serif" font-size="1.85" fill="#2d2214">• 5 张 宫廷对决速查卡</text>
+        <text x="3.5" y="8.0" font-family="'Noto Serif SC', serif" font-size="1.75" fill="#2d2214" textLength="${W - 18}" lengthAdjust="spacingAndGlyphs">• 20 张 基础行动手牌（劝酒·盗冠·鸣钟·灭烛）</text>
+        <text x="3.5" y="12.0" font-family="'Noto Serif SC', serif" font-size="1.75" fill="#2d2214" textLength="${W - 18}" lengthAdjust="spacingAndGlyphs">• 6 张 宫廷异象牌（改变天命与终局翻倍）</text>
+        <text x="3.5" y="16.0" font-family="'Noto Serif SC', serif" font-size="1.75" fill="#2d2214" textLength="${W - 18}" lengthAdjust="spacingAndGlyphs">• 5 张 司天神职牌（独占特权与隐藏加分）</text>
+        <text x="3.5" y="20.0" font-family="'Noto Serif SC', serif" font-size="1.75" fill="#2d2214" textLength="${W - 18}" lengthAdjust="spacingAndGlyphs">• 5 张 宫廷对决速查卡</text>
       </g>
 
-      <g transform="translate(${(x4 + x5)/2}, ${y2 + 65.5})">
-        <text x="0" y="7.5" text-anchor="middle" font-family="'Special Elite', monospace" font-size="1.75" fill="#4a3b2b" letter-spacing="1">
+      <g transform="translate(${(x4 + x5)/2}, ${y2 + 63.5})">
+        <text x="0" y="7.5" text-anchor="middle" font-family="'Special Elite', monospace" font-size="1.7" fill="#4a3b2b" textLength="34" lengthAdjust="spacingAndGlyphs">
           1492 - ROYAL - PROPHECY - 36
         </text>
-        <text x="0" y="10.8" text-anchor="middle" font-family="'Noto Serif SC', serif" font-size="1.6" fill="#755a40">
+        <text x="0" y="10.8" text-anchor="middle" font-family="'Noto Serif SC', serif" font-size="1.5" fill="#755a40" textLength="${W - 16}" lengthAdjust="spacingAndGlyphs">
           皇家司天台秘制 · 原创桌面游戏 · CANON G3812
         </text>
       </g>
@@ -944,10 +947,10 @@
       <g>
         <rect x="${x4}" y="${y1}" width="${W}" height="${D}" fill="#380d10" />
         <rect x="${x4 + 1.5}" y="${y1 + 1.5}" width="${W - 3}" height="${D - 3}" fill="none" stroke="#d4af37" stroke-width="0.3" />
-        <text x="${(x4 + x5)/2}" y="${(y1 + y2)/2 - 1.2}" text-anchor="middle" font-family="'Noto Serif SC', serif" font-weight="900" font-size="3.2" fill="#fcedcf">
+        <text x="${(x4 + x5)/2}" y="${(y1 + y2)/2 - 0.8}" text-anchor="middle" font-family="'Noto Serif SC', serif" font-weight="900" font-size="2.8" fill="#fcedcf" textLength="${W - 16}" lengthAdjust="spacingAndGlyphs">
           今晚必须有个预言成真
         </text>
-        <text x="${(x4 + x5)/2}" y="${(y1 + y2)/2 + 2.5}" text-anchor="middle" font-family="'Cinzel', serif" font-weight="700" font-size="1.8" fill="#ffd88a">
+        <text x="${(x4 + x5)/2}" y="${(y1 + y2)/2 + 2.5}" text-anchor="middle" font-family="'Cinzel', serif" font-weight="700" font-size="1.7" fill="#ffd88a" textLength="${W - 24}" lengthAdjust="spacingAndGlyphs">
           TONIGHT A PROPHECY
         </text>
       </g>
@@ -958,7 +961,7 @@
 
       <!-- 底盖 -->
       <rect x="${x2}" y="${y3}" width="${W}" height="${D}" fill="#380d10" />
-      <text x="${xMid}" y="${(y3 + y4)/2 + 1}" text-anchor="middle" font-family="'Special Elite', monospace" font-size="1.7" fill="#e8dac0">
+      <text x="${xMid}" y="${(y3 + y4)/2 + 1}" text-anchor="middle" font-family="'Special Elite', monospace" font-size="1.7" fill="#e8dac0" textLength="${W - 16}" lengthAdjust="spacingAndGlyphs">
         ROYAL EDITION · 2026
       </text>
       <path d="M ${x2} ${y4} L ${x2 + 0.8} ${y5 - 4} A 4 4 0 0 0 ${x2 + 4.8} ${y5} L ${x3 - 4.8} ${y5} A 4 4 0 0 0 ${x3 - 0.8} ${y5 - 4} L ${x3} ${y4} Z" fill="url(#glue-hatch-cp)" />
