@@ -1,0 +1,239 @@
+{
+  "version": "M0.5",
+  "counts": {
+    "gods": 8,
+    "memory": 30,
+    "reserve": 8,
+    "player_panels": 3,
+    "public_panel": 1,
+    "tokens": 49
+  },
+  "required_external": [
+    "普通六面骰2颗",
+    "剪刀或裁纸刀与尺",
+    "纸张与胶；可选夹芯卡纸"
+  ],
+  "files": {
+    "gods-front.html": {
+      "pages": 2,
+      "pieces": 8,
+      "side": "front"
+    },
+    "gods-back.html": {
+      "pages": 2,
+      "pieces": 8,
+      "side": "back"
+    },
+    "memory-front.html": {
+      "pages": 4,
+      "pieces": 30,
+      "side": "front"
+    },
+    "memory-back.html": {
+      "pages": 4,
+      "pieces": 30,
+      "side": "back"
+    },
+    "reserve-front.html": {
+      "pages": 1,
+      "pieces": 8,
+      "side": "front"
+    },
+    "reserve-back.html": {
+      "pages": 1,
+      "pieces": 8,
+      "side": "back"
+    },
+    "panels.html": {
+      "pages": 2,
+      "pieces": 4,
+      "side": "front"
+    },
+    "tokens.html": {
+      "pages": 1,
+      "pieces": 49,
+      "side": "front"
+    },
+    "rulebook.html": {
+      "pages": 4,
+      "pieces": 0,
+      "side": "single"
+    }
+  },
+  "items": {
+    "gods-front.html": [
+      "G01",
+      "G03",
+      "G05",
+      "G07",
+      "G08",
+      "G09",
+      "G10",
+      "G12"
+    ],
+    "gods-back.html": [
+      "G01",
+      "G03",
+      "G05",
+      "G07",
+      "G08",
+      "G09",
+      "G10",
+      "G12"
+    ],
+    "memory-front.html": [
+      "M11",
+      "M12",
+      "M13",
+      "M14",
+      "M15",
+      "M16",
+      "M21",
+      "M22",
+      "M23",
+      "M24",
+      "M25",
+      "M26",
+      "M31",
+      "M32",
+      "M33",
+      "M34",
+      "M35",
+      "M36",
+      "M41",
+      "M42",
+      "M43",
+      "M44",
+      "M45",
+      "M46",
+      "M51",
+      "M52",
+      "M53",
+      "M54",
+      "M55",
+      "M56"
+    ],
+    "memory-back.html": [
+      "M11",
+      "M12",
+      "M13",
+      "M14",
+      "M15",
+      "M16",
+      "M21",
+      "M22",
+      "M23",
+      "M24",
+      "M25",
+      "M26",
+      "M31",
+      "M32",
+      "M33",
+      "M34",
+      "M35",
+      "M36",
+      "M41",
+      "M42",
+      "M43",
+      "M44",
+      "M45",
+      "M46",
+      "M51",
+      "M52",
+      "M53",
+      "M54",
+      "M55",
+      "M56"
+    ],
+    "reserve-front.html": [
+      "Q01",
+      "Q03",
+      "Q05",
+      "Q07",
+      "Q08",
+      "Q09",
+      "Q10",
+      "Q12"
+    ],
+    "reserve-back.html": [
+      "Q01",
+      "Q03",
+      "Q05",
+      "Q07",
+      "Q08",
+      "Q09",
+      "Q10",
+      "Q12"
+    ],
+    "panels.html": [
+      "P1",
+      "P2",
+      "P3",
+      "P4"
+    ],
+    "tokens.html": [
+      "T101",
+      "T102",
+      "T103",
+      "T104",
+      "T105",
+      "T106",
+      "T107",
+      "T108",
+      "T109",
+      "T110",
+      "R11",
+      "R12",
+      "R13",
+      "R14",
+      "T201",
+      "T202",
+      "T203",
+      "T204",
+      "T205",
+      "T206",
+      "T207",
+      "T208",
+      "T209",
+      "T210",
+      "R21",
+      "R22",
+      "R23",
+      "R24",
+      "T301",
+      "T302",
+      "T303",
+      "T304",
+      "T305",
+      "T306",
+      "T307",
+      "T308",
+      "T309",
+      "T310",
+      "R31",
+      "R32",
+      "R33",
+      "R34",
+      "E1",
+      "E2",
+      "E3",
+      "E4",
+      "N",
+      "A",
+      "S"
+    ]
+  },
+  "sha256": {
+    "gallery.html": "9029ea64472a94a3b3a07670f88f6137c8284675806119e07f01d699617cace3",
+    "gods-back.html": "79b0d169ffd2a11f19b68c8ba161b424cb87326b2b5a85ef26eb00928a3264bd",
+    "gods-front.html": "3fabd86eeabbb5d4dc7298578b42b7dbab6e7a23aacc32f99481881fba4be945",
+    "index.html": "8e7f4379dc2bc724226b4c6696908de943d5c404a65a83e9bcae621cc83f0fa0",
+    "memory-back.html": "a68acd13681bf4bc3aec4bc3d73c18ecdf00971c36dae4500f61a2bd34e852f6",
+    "memory-front.html": "962fa56cc4a6a8d81638b4615335b0abcf5ebf2c1c8f4b53eaf1f15d188ffe68",
+    "panels.html": "2318215433b77a2d890843ec27b8fc981e6eaaec8e1fbb8fb3ec627d3a9372ac",
+    "reserve-back.html": "074b6d42d84b36d9d8c5d607f0c389910d989b2242428d622707b7030e28459c",
+    "reserve-front.html": "d27fd9c94da3f7c08d49ff7f9bd1ca57e8b74da1f1ec3f2351020a2d113f48e8",
+    "rulebook.html": "30113cbd73950caa04fd33b541d8ab217697c08bcd4d75b0e1f751a6b5c3199e",
+    "tokens.html": "54edaf5a57d8c4a42c6edc1576b7ab1d735822985542ebdd1ec6d58b7c972f36"
+  }
+}
